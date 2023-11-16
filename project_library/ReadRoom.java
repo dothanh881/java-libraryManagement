@@ -33,7 +33,7 @@ public class ReadRoom extends Room {
 	public void display()
 	{
 		super.display();
-		System.out.println("list id shelf in read room number : "+this.noRoom);
+		System.out.println("list id shelf in read room number  "+this.noRoom+" :");
 		for(String list:idShelf)
 		{
 			System.out.println(list+" ");
@@ -51,7 +51,8 @@ public class ReadRoom extends Room {
 		System.out.println("enter id shelf of number read room "+this.noRoom);
 		for(int i=0;i<numberShelf;i++)
 		{
-			System.out.println("enter id of shelf "+i+1+": " );
+			int b=i+1;
+			System.out.println("enter id of shelf "+b+": " );
 			idsf=sc.nextLine();
 			idShelf.add(idsf);
 			

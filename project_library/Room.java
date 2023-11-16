@@ -63,12 +63,16 @@ Scanner sc=new Scanner(System.in);
 			System.out.println("enter number room ");
 			this.noRoom=sc.nextInt();
 			sc.nextLine();
+
 			break;
 		}catch(Exception e)
 		{
-			System.out.print(" you entered invalid data number room !! plese enter again ");
+			System.out.println(" you entered invalid data number room !! plese enter again ");
+								sc.nextLine();
+
 		}
 		}
+
 		System.out.println("enter id room ");
 		this.roomId=sc.nextLine();
 		

@@ -1,21 +1,19 @@
 package project_library;
-
-import java.io.BufferedReader;
-import java.io.FileReader;
+import java.io.*;
 import java.util.ArrayList;
-
+import java.util.Scanner;
 public class main {
 
 	
-	
-	public static void main(String [] args)
+	public static void main(String [] args) throws IOException
 	{
+			Scanner sc=new Scanner(System.in);
+
 		ArrayList<Room>room=new ArrayList<Room>();
 		String[] arr;
 
 		// đọc dữ liệu cho ServiceRoom
 		try {
-
 			
 		BufferedReader br=new BufferedReader( new FileReader("c:\\users\\admin\\desktop\\project-java\\ServiceRoom.txt "));
 		String line=br.readLine();
@@ -63,8 +61,28 @@ public class main {
 		}
 		
       RoomManagement rmt=new  RoomManagement(room);
-      rmt.Display();
-		
+	  int a; String keyContinue;
+     while(true)
+	 {
+		System.out.print("\033[H\033[2J");  // clear sreen
+			System.out.flush();
+        System.out.println("1. to add ");
+		System.out.println(" 2. to display ");
+		System.out.println("enter choose ");
+		a=sc.nextInt();
+		sc.nextLine();
+		if(a==0) break;
+		else if(a==1)
+		{
+			rmt.Add();
+		}
+		else
+		{
+			rmt.Display();
+			System.out.println("Press Enter to continue... ");
+								keyContinue=sc.nextLine();
+		}
+	 }
 		
 	
 		
