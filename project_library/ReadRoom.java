@@ -3,6 +3,7 @@ package project_library;
 import java.util.ArrayList;
 
 public class ReadRoom extends Room {
+	private static String name="read room";
 	private ArrayList<String> idShelf;
 	
 	// hàm khởi tạo không tham số
@@ -23,6 +24,8 @@ public class ReadRoom extends Room {
 	public ArrayList<String> getIdShelf() {
 		return idShelf;
 	}
+	
+
 
 	// hàm truyền giá trị mới cho danh sách id kệ sách
 	public void setIdShelf(ArrayList<String> idShelf) {
@@ -57,6 +60,10 @@ public class ReadRoom extends Room {
 			idShelf.add(idsf);
 			
 		}
+	}
+	public static String getName()
+	{
+		return name;
 	}
 }
 	

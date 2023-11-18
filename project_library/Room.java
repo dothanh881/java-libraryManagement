@@ -5,8 +5,10 @@ public class Room
 {
 Scanner sc=new Scanner(System.in);
 	protected int noRoom;
+
 	protected String roomId;
 	private static String libraryName="KLF Sai Gon University";
+	
 	/* khởi tạo không tham số */
 	public Room()
 	{
@@ -68,11 +70,14 @@ Scanner sc=new Scanner(System.in);
 		}catch(Exception e)
 		{
 			System.out.println(" you entered invalid data number room !! plese enter again ");
-								sc.nextLine();
+			sc.nextLine();
+				System.out.println("Press Enter to continue... ");
+		String keyContinue=sc.nextLine();
+		System.out.print("\033[H\033[2J");  // clear sreen
+			System.out.flush();
 
 		}
 		}
-
 		System.out.println("enter id room ");
 		this.roomId=sc.nextLine();
 		

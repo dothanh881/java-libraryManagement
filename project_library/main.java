@@ -68,6 +68,8 @@ public class main {
 			System.out.flush();
         System.out.println("1. to add ");
 		System.out.println(" 2. to display ");
+		System.out.println("3.search");
+		System.out.println("4.delete");
 		System.out.println("enter choose ");
 		a=sc.nextInt();
 		sc.nextLine();
@@ -75,6 +77,18 @@ public class main {
 		else if(a==1)
 		{
 			rmt.Add();
+		}
+		else if(a==3)
+		{
+			rmt.Search();
+		}
+		else if(a==4)
+		{
+			rmt.Delete();
+		}
+		else if(a==5)
+		{
+			rmt.Edit();
 		}
 		else
 		{
