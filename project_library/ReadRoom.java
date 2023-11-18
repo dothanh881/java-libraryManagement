@@ -47,9 +47,21 @@ public class ReadRoom extends Room {
 	{
 		super.enterData();
 		int numberShelf;String idsf;
-		System.out.println("enter number shelf of number read room "+this.noRoom);
-		numberShelf=sc.nextInt();
-		sc.nextLine();
+
+		while(true)
+		{
+		  try
+		  {
+			  System.out.println("enter number shelf of read room "+this.noRoom);
+			numberShelf=sc.nextInt();
+			   sc.nextLine();
+			   break;
+		  }catch(Exception e)
+		  {
+			  System.out.println("data invidial!! please enter again");
+			  sc.nextLine();
+		  }
+		}
 		
 		System.out.println("enter id shelf of number read room "+this.noRoom);
 		for(int i=0;i<numberShelf;i++)

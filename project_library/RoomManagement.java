@@ -38,40 +38,70 @@ public class RoomManagement implements LibraryManagement {
 	public int checkIdRoom( String m)
 	{
 		m.toLowerCase();
-		int flag=0;int i=0;int index=0;
+		int flag=0;int i=0;int index=-1;
 		for(Room r:list)
 		{
-			if(r instanceof ServiceRoom)
-			{
-                ServiceRoom sr=(ServiceRoom) r;
-				if(sr.getRoomId().toLowerCase().contentEquals(m))
+			
+				if(r.getRoomId().toLowerCase().contentEquals(m))
 				{
 					flag=1;
 					index=i;
-					
+			
 				}
-			}
-			else if( r instanceof ReadRoom)
-			{
-				ReadRoom rd=(ReadRoom) r;
-				if(rd.getRoomId().toLowerCase().contentEquals(m))
-				{
-					flag=1;
-					index=i;
-				}
-			}
+			
 			i++;
 		}
 		if(flag==1) return index;
        return -1;
 	}
 
-	
+	// hàm kiểm tra trùng số phòng dịch vụ
+	public int checkNoRoomService( int m)
+	{
+		int flag=0;int i=0;int index=-1;
+		for(Room r:list)
+		{
+			if(r instanceof ServiceRoom)
+			{
+                ServiceRoom sr=(ServiceRoom) r;
+				if(sr.getNoRoom()==m)
+				{
+					flag=1;
+					index=i;
+					
+				}
+			}
+			i++;
+		}
+		if(flag==1) return index;
+		return -1;
+	}
+
+	// kiểm tra trùng số phòng đọc
+	public int checkNoRoomRead(int m)
+	{
+		int flag=0;int i=0;int index=0;
+		for(Room r:list)
+		{
+			 if( r instanceof ReadRoom)
+			{
+				ReadRoom rd=(ReadRoom) r;
+				if(rd.getNoRoom()==m)
+				{
+					flag=1;
+					index=i;
+					break;
+				}
+			}
+			i++;
+		}
+		if(flag==1) return index;
+		return -1;
+	}
     
 	// hàm thêm dữ liệu phòng
     public void Add() {
 		
-	    
     	while(true){
 			try{
 		int choose;
@@ -93,21 +123,12 @@ public class RoomManagement implements LibraryManagement {
     		case 1: // thêm phòng dịch vụ
     			while(true){
     				ServiceRoom srv=new ServiceRoom();
-    				srv.enterData(); int  flag=0; ServiceRoom a=new ServiceRoom();
+    				srv.enterData(); 
 
-    				for(Room r:list)
-    				{
-    					if(r instanceof ServiceRoom)
-    					{
-    						ServiceRoom s=(ServiceRoom)r;
-    						if(s.getNoRoom()==srv.getNoRoom()){ flag=1;a=s;break;} 
-    						else if(s.getRoomId().toLowerCase().contentEquals(srv.getRoomId().toLowerCase())) {flag=2;a=s;break;}
-    					       						
-    					}
-    					
-    				}
+    				int checkId=checkIdRoom(srv.getRoomId());
+                    int checkNo=checkNoRoomService(srv.getNoRoom());
 
-					if(flag==0) // thông báo nhập thành công
+					if(checkId==-1&&checkNo==-1) // thông báo nhập thành công
     					    {
     					    	list.add(srv);
     					    	System.out.println("add room service successfully ");
@@ -115,21 +136,21 @@ public class RoomManagement implements LibraryManagement {
     					    	break;
     					    	
     					    }
-    					else if(flag==1) // báo lỗi và yêu cầu nhập lại nếu người dùng nhập trùng số phòng
+    					else if(checkNo!=-1) // báo lỗi và yêu cầu nhập lại nếu người dùng nhập trùng số phòng
     					    {
 								
 								System.out.println("number room service you enter is exits !! ");
-								a.display();
+								list.get(checkNo).display();
 								System.out.println("please enter again");
 								pressContinue();
 
     					    }
 
-							else // báo lỗi và yêu cầu nhập lại nếu người dùng nhập trùng id phòng
+							else if(checkId!=-1) // báo lỗi và yêu cầu nhập lại nếu người dùng nhập trùng id phòng
 							{
 								System.out.println("id room you enter is exits!! please enter again ");
 								System.out.println("id room service you enter is exits !! ");
-								a.display();
+								list.get(checkId).display();
 								System.out.println("please enter again");
 								pressContinue();
 							}
@@ -140,42 +161,34 @@ public class RoomManagement implements LibraryManagement {
 				case 2:
 				    while(true){
     				ReadRoom rd=new ReadRoom();
-    				rd.enterData(); int flag=0; ReadRoom a=new ReadRoom();
+    				rd.enterData(); 
 
-    				for(Room r:list)
-    				{
-    					if(r instanceof ReadRoom)
-    					{
-    						ReadRoom s=(ReadRoom)r;
-    						if(s.getNoRoom()==rd.getNoRoom()){ flag=1;a=s;break;} 
-    						else if(s.getRoomId().toLowerCase().contentEquals(rd.getRoomId().toLowerCase())) {flag=2;a=s;break;}
-    					       						
-    					}
-    					
-    				}
+    				int checkId=checkIdRoom(rd.getRoomId());
+                    int checkNo=checkNoRoomRead(rd.getNoRoom());
 
-					if(flag==0) // thông báo nhập thành công
+					if(checkId==-1&&checkNo==-1) // thông báo nhập thành công
     					    {
     					    	list.add(rd);
-    					    	System.out.println("add room service successfully ");
+    					    	System.out.println("add room read successfully ");
     					    	pressContinue();
     					    	break;
     					    	
     					    }
-    					else if(flag==1) // báo lỗi và yêu cầu nhập lại nếu người dùng nhập trùng số phòng
+    					else if(checkNo!=-1) // báo lỗi và yêu cầu nhập lại nếu người dùng nhập trùng số phòng
     					    {
 								
-								System.out.println("number room service you enter is exits !! ");
-								a.display();
+								System.out.println("number room read you enter is exits !! ");
+								list.get(checkNo).display();
 								System.out.println("please enter again");
 								pressContinue();
-    					    	
+
     					    }
+
 							else // báo lỗi và yêu cầu nhập lại nếu người dùng nhập trùng id phòng
 							{
 								System.out.println("id room you enter is exits!! please enter again ");
-								System.out.println("id room service you enter is exits !! ");
-								a.display();
+								System.out.println("id room read you enter is exits !! ");
+								list.get(checkId).display();
 								System.out.println("please enter again");
 								pressContinue();
 							}
@@ -207,42 +220,25 @@ public class RoomManagement implements LibraryManagement {
 		request=sc.nextLine();
 		request.toLowerCase();
 		Room r=new Room();int flag=0;String choice;int i=0;int index=0;
-		for(Room rg:list)
-		{
-          if(request.contentEquals(rg.getRoomId().toLowerCase()))
-		  {
-			r=rg;
-			flag=1;
-			index=i;
-		  }
-		  	i++;
-
-		}
-		if(flag==0) {
+		int checkId=checkIdRoom(request);
+		
+		if(checkId==-1) {
 			System.out.println("room you want to delete no exits or is deleted before");
 			pressContinue();
 
 		}
-		else if(flag==1)
+		else if(checkId!=-1)
 		{
 			String yes="y";
 			String no="n";
 			clearScreen();
-			if( r instanceof ServiceRoom)
-			{
-				r.display();
-				System.out.println("\n ");
-			}
-			else if(r instanceof ReadRoom)
-			{
-				r.display();
-				System.out.println("\n");
-			}
+			list.get(checkId).display();
+			
             action:while(true){
 			
 			System.out.println("are you sure want to delete this (yes/no)? ");
 			
-			System.out.println("enter 'y' to choose 'yes' and enter 'n' to choose no");
+			System.out.println("enter 'y' to choose 'yes' and enter 'n' to choose 'no' ");
 			choice=sc.nextLine();
 			choice.toLowerCase();
 		      if(choice.contentEquals(yes))
@@ -275,215 +271,176 @@ public class RoomManagement implements LibraryManagement {
     // hàm sửa 
    public void Edit()
    {
-
 		Display();
-		String request;
+		String request;String save;int type=0;
 		System.out.println("enter id room you want to edit ");
-		request=sc.nextLine();
+		request=sc.nextLine();String end=" ";int new_num;
 		request.toLowerCase();
-		Room r=new Room();int flag=0;String choice;int i=0;int index=0;int save=0;
-		for(Room rg:list)
-		{
-          if(request.contentEquals(rg.getRoomId().toLowerCase()))
-		  {
-			r=rg;
-			flag=1;
-			index=i;
-		  }
-		  	i++;
-
-		}
-		if(flag==0) {
+		int checkId=checkIdRoom(request);
+       
+		if(checkId==-1) {
 			System.out.println("room you want to edit no exits ");
-			System.out.println("Press Enter to continue... ");
               pressContinue();
 		}
-		else if(flag==1)
+		else
 		{
-			list.get(index).display();
-			String choice_edit;
-			String change;
-			ServiceRoom sr=new ServiceRoom();
-			ReadRoom rd=new ReadRoom();
-			
-			if( r instanceof ServiceRoom)
-			{
-				
-				active:while(true)
+                ServiceRoom temp=new ServiceRoom();
+				if(list.get(checkId) instanceof ServiceRoom)
 				{
-					clearScreen();
-					r.display();
-					System.out.println("\n");
-					System.out.println("enter 'a' to edit all information room ");
-					System.out.println("enter 'id ' to edit room id ");
-					System.out.println("enter 'nb' to edit numer room");
-					System.out.println("enter 'nm' to edit name room ");
-					System.out.println("enter 'e' to end edit room this ");
-					choice_edit=sc.nextLine();
-					choice_edit.toLowerCase();
+					temp= (ServiceRoom)list.get(checkId);
+					type =1;
 
-					if(choice_edit.contentEquals("e"))
+				}	
+
+			    ReadRoom temp1=new ReadRoom();
+			    if(list.get(checkId) instanceof ReadRoom)
+				{
+					temp1= (ReadRoom)list.get(checkId);
+					type=2;
+				}	
+				list.remove(checkId);
+
+				if(type==1)
+				{
+					ServiceRoom sr=new ServiceRoom();
+				    System.out.println("enter data new for service room");
+					sr.enterData();				
+					checkType1:while(true)
 					{
-                        System.out.println("stop edit ");
-						pressContinue();
-						break active;
-					}
+						int checktype1=checkIdRoom(sr.getRoomId());
+				        int checktype2=checkNoRoomService(sr.getNoRoom());
 
-					else if(choice_edit.contentEquals("id"))
-					{
-						System.err.println("enter id new for room ");
-						change=sc.nextLine();int point=0;
-
-						for(Room l:list)
+						if(checktype1==-1&&checktype2==-1)
 						{
-							if(l.getRoomId().toLowerCase().contentEquals(change.toLowerCase()))
-							{
-								
-								System.out.println("id is exist !! please enter again");
-								pressContinue();	 
-								continue active;
-							}
+							break checkType1;
 						}
-						list.get(index).setRoomId(change);
-						System.out.println("edit id sucessfull");
-					    pressContinue(); 
+
+						if(checktype1!=-1 )
+						{
+                            System.out.println("\n");
+					        list.get(checktype1).display();
+					        System.out.println("id room is exist !! please enter again id room");
+					        System.out.println("\n");
+				         	end=sc.nextLine();
+				        	sr.setRoomId(end);
+				        	continue checkType1;
+						}
+						else if(checktype2!=-1 )
+						{
+                          list.get(checktype2).display();
+					      System.out.println("\n");
+						  while(true)
+						  {
+							try
+							{
+								System.out.println("number room is exist !! please enter again number room");
+                                 new_num=sc.nextInt();
+								 sc.nextLine();
+								 break;
+							}catch(Exception e)
+							{
+								System.out.println("data invidial!! please enter again");
+								sc.nextLine();
+
+								pressContinue();
+							}
+						  }
+					      sr.setNoRoom(new_num);
+					      continue checkType1;
+						}
+
+					}
+					list.add(checkId, sr);				    
+				}
+				else if(type==2)
+				{
+					ReadRoom rd=new ReadRoom();
+				    System.out.println("enter data new for read room");
+					rd.enterData();
+					checkType2:while(true)
+					{
+						int checktype1=checkIdRoom(rd.getRoomId());
+				        int checktype2=checkNoRoomRead(rd.getNoRoom());
 						
-					}
-                 
-					else if(choice_edit.contentEquals("nb"))
-					{
-					number:while(true)
-					{
-						try
+						if((checktype1==-1&&checktype2==-1))
 						{
-							int num;
-							System.out.println("enter number room new for room");
-							num=sc.nextInt();
-							sc.nextLine();
-							for(Room l:list)
-							{
-								if(l instanceof ServiceRoom)
-								{
-									ServiceRoom srn= (ServiceRoom)l;
-                                     if(srn.getNoRoom()==num)
-									 {
-										System.err.println("number room is exits!!please enter again");
-										pressContinue();
-										 break number;
-									 }
-								}
-							}
-								list.get(index).setNoRoom(num);
-							System.out.println("edit number room sucessfull");
-							pressContinue();
-							break;
+							break checkType2;
+						}
 
-						}catch(Exception e)
+						if(checktype1!=-1 )
 						{
-							System.out.println("data error! ");
-		                   sc.nextLine();
-		                  pressContinue();
+                            System.out.println("\n");
+					        list.get(checktype1).display();
+					        System.out.println("iD room is exist !! please enter again id room");
+					        System.out.println("\n");
+				         	end=sc.nextLine();
+				        	rd.setRoomId(end);
+				        	continue checkType2;
+						}
+						else if(checktype2!=-1 )
+						{
+						  System.out.println("\n");
+                          list.get(checktype2).display();
+						   System.out.println("\n");
+					       while(true)
+						  {
+							try
+							{
+								System.out.println("number room is exist !! please enter again number room");
+                                 new_num=sc.nextInt();
+								 sc.nextLine();
+								 break;
+							}catch(Exception e)
+							{
+								System.out.println("data invidial!! please enter again");
+								sc.nextLine();
+								pressContinue();
+							}
+						  }
+						  rd.setNoRoom(new_num);
+					      continue checkType2;
 						}
 					}
+					list.add(checkId,rd);
 				}
-				
-
-				else if(choice_edit.contentEquals("nm"))
+				action:while(true)
 				{
-				System.out.println("enter new name for room");
-				change=sc.nextLine();
-				((ServiceRoom) list.get(index)).setName(change);
-				System.out.println("edit name sucessfull");
-				pressContinue();
+					System.out.println("are you sure want to save change this (yes/no)? ");
+			        System.out.println("enter 'y' to choose 'yes' and enter 'n' to choose no");
+			        save=sc.nextLine();
+		         	save.toLowerCase();
+
+		           if(save.contentEquals("y"))
+			       {
+				     System.out.println("you have save change sucessful ");
+				     pressContinue();
+				     break action;
+			       }
+			       else if(save.contentEquals("n"))
+			       {
+				    list.remove(checkId);
+			     	System.out.println("save change failed");
+			    	if(type==1)
+			    	list.add(checkId,temp);
+			    	else if(type==2) list.add(checkId,temp1); 
+			     	pressContinue();
+			    	break action;
+			       }
+			        else
+			       {
+				    System.out.println("your choice is unsuitable!! please enter again");
+				    pressContinue();
+			        }
 				}
-				}
-
-			}
-			else if(r instanceof ReadRoom)
-			{				
-				active:while(true)
-				{
-					clearScreen();
-					r.display();
-					System.out.println("\n");
-					System.out.println("enter 'a' to edit all information room ");
-					System.out.println("enter 'id ' to edit room id ");
-					System.out.println("enter 'nb' to edit numer room");
-					System.out.println("enter 'e' to end edit room this ");
-					choice_edit=sc.nextLine();
-					choice_edit.toLowerCase();
-
-					if(choice_edit.contentEquals("e"))
-					{
-                        System.out.println("stop edit ");
-						pressContinue();
-						break active;
-					}
-
-					else if(choice_edit.contentEquals("id"))
-					{
-						System.err.println("enter id new for room ");
-						change=sc.nextLine();int point=0;
-
-						for(Room l:list)
-						{
-							if(l.getRoomId().toLowerCase().contentEquals(change.toLowerCase()))
-							{
-								
-								System.out.println("id is exist !! please enter again");
-								pressContinue(); 
-								continue active;
-							}
-						}
-						list.get(index).setRoomId(change);
-						System.out.println("edit id sucessfull");
-						pressContinue();
-						
-					}
-                 
-					else if(choice_edit.contentEquals("nb"))
-					{
-					number:while(true)
-					{
-						try
-						{
-							int num;
-							System.out.println("enter number room new for room");
-							num=sc.nextInt();
-							sc.nextLine();
-							for(Room l:list)
-							{
-								if(l instanceof ServiceRoom)
-								{
-									ServiceRoom srn= (ServiceRoom)l;
-                                     if(srn.getNoRoom()==num)
-									 {
-										System.err.println("number room is exits!!please enter again");
-									pressContinue();
-										 break number;
-									 }
-								}
-							}
-								list.get(index).setNoRoom(num);
-							System.out.println("edit number room sucessfull");
-							pressContinue();	
-							break;
-
-						}catch(Exception e)
-						{
-							System.out.println("data error! ");
-		                   sc.nextLine();
-		                 pressContinue();
-						}
-					}
-
-				}
-
-				}
-			}
 
 		}
-   }
+		
+	}
+			
+		
+		
+		
+   
 
 
    // hàm tìm kiếm
@@ -586,18 +543,23 @@ public class RoomManagement implements LibraryManagement {
    };
 
 
+
     // Hàm hiển thị dữ liệu
     public void Display()
     {
+		        
+
+
     	ArrayList<ServiceRoom> service=new ArrayList<ServiceRoom>();
+		System.out.println("===============*==============");
     	System.out.println("list of read room: ");
+		System.out.println("\n");
     	for(Room listTest:list)
     	{
     		if(listTest instanceof ReadRoom)
     		{
     			ReadRoom rd=(ReadRoom)listTest;
     			rd.display();
-                System.out.println("\n ");
     		}
     		else if(listTest instanceof ServiceRoom)
     		{
@@ -605,6 +567,10 @@ public class RoomManagement implements LibraryManagement {
     			service.add(sr);
     		}
     	}
+		
+		
+
+         System.out.println("\n");
         System.out.println("===============*==============");
     	System.out.println("list of service room: ");
     	for(ServiceRoom sr:service)
