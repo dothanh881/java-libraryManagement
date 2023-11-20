@@ -98,6 +98,37 @@ public class RoomManagement implements LibraryManagement {
 		if(flag==1) return index;
 		return -1;
 	}
+
+	//hàm lấy danh sách phòng đọc
+	public ArrayList<ReadRoom> getReadRoom()
+	{
+		ArrayList<ReadRoom> rd= new ArrayList<ReadRoom>();
+		for( Room r:list)
+		{
+			if(r instanceof ReadRoom)
+			{
+				ReadRoom a= (ReadRoom)r;
+				rd.add(a);
+			}
+		}
+		return rd;
+	}
+
+    // hàm lấy danh sách phòng dịch vụ
+	public ArrayList<ServiceRoom> getServiceRoom()
+	{
+		ArrayList<ServiceRoom> sv= new ArrayList<ServiceRoom>();
+		for( Room r:list)
+		{
+			if(r instanceof ServiceRoom)
+			{
+				ServiceRoom a= (ServiceRoom)r;
+				sv.add(a);
+			}
+		}
+		return sv;
+	}
+
     
 	// hàm thêm dữ liệu phòng
     public void Add() {
@@ -436,12 +467,6 @@ public class RoomManagement implements LibraryManagement {
 		}
 		
 	}
-			
-		
-		
-		
-   
-
 
    // hàm tìm kiếm
    public  void Search() {
@@ -542,14 +567,10 @@ public class RoomManagement implements LibraryManagement {
 
    };
 
-
-
     // Hàm hiển thị dữ liệu
     public void Display()
     {
 		        
-
-
     	ArrayList<ServiceRoom> service=new ArrayList<ServiceRoom>();
 		System.out.println("===============*==============");
     	System.out.println("list of read room: ");
@@ -567,10 +588,8 @@ public class RoomManagement implements LibraryManagement {
     			service.add(sr);
     		}
     	}
-		
-		
-
-         System.out.println("\n");
+				
+        System.out.println("\n");
         System.out.println("===============*==============");
     	System.out.println("list of service room: ");
     	for(ServiceRoom sr:service)
@@ -582,8 +601,5 @@ public class RoomManagement implements LibraryManagement {
     	
     }
 
-	
-  
-  
 }
 

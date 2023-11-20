@@ -5,6 +5,7 @@ import java.io.*;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.FileWriter;
 import java.util.Scanner;
 
 public class maintest {
@@ -12,36 +13,25 @@ public class maintest {
      public static void main(String args[]) throws IOException 
      {
     	 Scanner sc=new Scanner(System.in);
-    	 	String a;
+    	 	String a="thanh nien VIT NAM ";
 
-    	 int choose;
-    	while(true)
-    	{
+       try{
+          FileWriter fw= new FileWriter("c:\\users\\admin\\desktop\\input.txt");
+          fw.write(a);
+          fw.write(",");
+          fw.write("\n");
+          fw.write(1);
+          System.out.println("sucess");
+          fw.close();
 
-            System.out.print("\033[H\033[2J");  
-			System.out.flush();
-    		System.out.println("1. Enter number 1");
-    		System.out.println("2. enter number 2 ");
-    		System.out.println("enter number");
-    		choose=sc.nextInt();
-            sc.nextLine();
-    		switch(choose)
-    		{
-    		case 1:
-    			System.out.println("number "+1);
-                System.out.println("Press Enter to continue... ");
-                System.in.read();
-    			break;
-    		case 2:
-    			System.out.println("number "+2);
-                     System.out.println("Press Enter to continue... ");
-                     a=sc.nextLine();
-    			break;
-    		}
-    		System.out.println("\u000C");
+       }catch(Exception e)
+       {
+          System.out.println(e);
+       }
+    	 
 
     		
-    	}
+    	
     	 
      }
   
