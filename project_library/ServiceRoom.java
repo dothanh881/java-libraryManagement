@@ -52,6 +52,8 @@ public void display()
 {
 	super.display();
 	System.out.println("name room: " +name+" ");
+  System.out.println("arae work: "+this.areaPlace);
+
 }
 public void enterData()
 {

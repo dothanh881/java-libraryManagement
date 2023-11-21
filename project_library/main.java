@@ -12,9 +12,8 @@ public class main {
 	public static void main(String [] args) throws IOException
 	{
 			Scanner sc=new Scanner(System.in);
-			
-
-		String[] arr;
+		
+		String[] arr=new String[10];
 
 		// đọc dữ liệu cho ServiceRoom
 		try {
@@ -24,6 +23,7 @@ public class main {
 			while(line!=null)
 			{
                 arr=line.split(",");
+				
                 ServiceRoom sr=new ServiceRoom(Integer.parseInt(arr[0]),arr[1],arr[2],arr[3]);
                 room.add(sr);
                 line=br.readLine();
@@ -43,8 +43,7 @@ public class main {
 		String line=br.readLine();
 			while(line!=null)
 			{
-                arr=line.split(",");
-            
+                arr=line.split(",");            
                 ReadRoom rd=new ReadRoom(Integer.parseInt(arr[0]),arr[1],arr[2]);
                 room.add(rd);
                 line=br.readLine();
@@ -68,8 +67,11 @@ public class main {
 		 	while(line!=null)
 			{
                 arr=line.split(",");
-				Book bk=new Book(arr[0],arr[1],arr[2],arr[3],Integer.parseInt(arr[4]),arr[5]);
-				document.add(bk);
+				if(arr.length>1)
+				{
+				  Book bk=new Book(arr[0],arr[1],arr[2],arr[3],Integer.parseInt(arr[4]),arr[5]);
+				  document.add(bk);
+				}
 				line=br.readLine();
 
 			}
@@ -80,6 +82,9 @@ public class main {
 			System.out.println("error open file book !! ");
 			ex.printStackTrace();
 		}
+		String key;
+		System.out.println("enter press to continue ");
+		key=sc.nextLine();
 
 		//Đọc dữ liệu cho đĩa
 	 	try {
@@ -100,6 +105,7 @@ public class main {
 			System.out.println("error open file disk!! ");
 			ex.printStackTrace();
 		}
+		
 		int a;
 		while(true)
 		{
@@ -118,9 +124,7 @@ public class main {
 			if(a==1)
 			{
 				dmt.Display();
-				String keyContinue;
 		System.out.println("Press Enter to continue... ");
-		keyContinue=sc.nextLine();
 
 			}
 			else if(a==2)
@@ -143,6 +147,7 @@ public class main {
 			else if (a==7) rmt.Add();
 			else if (a==8) rmt.Edit();
 			else if(a==9) rmt.Delete();
+			else if(a==0) break;
  
 		} 
 
