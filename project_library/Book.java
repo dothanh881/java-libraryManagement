@@ -1,5 +1,7 @@
 package project_library;
 
+import java.util.ArrayList;
+
 public class Book extends Document {
     private int page;
 
@@ -31,6 +33,26 @@ public class Book extends Document {
         super.display();
         System.out.println("book page: "+this.page);
     }
-    
+    public void enterData(ArrayList<Document> list,ArrayList<ReadRoom> listrd)
+    {
+        super.enterData(list, listrd);
+        while(true)
+        {
+            try{
+                System.out.println("enter number page of book: ");
+                this.page=sc.nextInt();
+                sc.nextLine();
+                break;
+
+            }catch(Exception e)
+            {
+                System.out.println("data invidial !!please enter again ");
+                sc.nextLine();
+                pressContinue();
+
+            }
+
+        }
+    }
 }
 

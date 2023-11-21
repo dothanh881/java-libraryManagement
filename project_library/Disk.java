@@ -1,5 +1,7 @@
 package project_library;
 
+import java.util.ArrayList;
+
 public class Disk extends Document {
     private double time;
     private double Ram;
@@ -42,8 +44,30 @@ public class Disk extends Document {
     public void display()
     {
         super.display();
-        System.out.println("disk RAM : "+this.Ram);
-        System.out.println("time   : "+this.time);
-        
+        System.out.println("disk RAM : "+this.Ram+" Gb ");
+        System.out.println("time     : "+this.time +" minute");
+    }
+     public void enterData(ArrayList<Document> list,ArrayList<ReadRoom> listrd)
+    {
+        super.enterData(list, listrd);
+        while(true)
+        {
+            try{
+                System.out.println("enter time of disk: ");
+                this.time=sc.nextDouble();
+                System.out.println("enter Ram of disk ");
+                this.Ram=sc.nextDouble();
+                sc.nextLine();
+                break;
+
+            }catch(Exception e)
+            {
+                System.out.println("data invidial !!please enter again ");
+                sc.nextLine();
+                pressContinue();
+
+            }
+
+        }
     }
 }

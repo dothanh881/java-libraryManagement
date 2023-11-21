@@ -77,6 +77,21 @@ public class RoomManagement implements LibraryManagement {
 		return -1;
 	}
 
+	//hàm lấy dữ liệu phòng đọc
+	public ArrayList<ReadRoom> getReadRoom()
+	{
+		ArrayList<ReadRoom> a =new ArrayList<ReadRoom>();
+		for(Room r:list)
+		{
+           if(r instanceof ReadRoom)
+		   {
+              ReadRoom m=(ReadRoom) r;
+			  a.add(m);
+		   }
+		}
+		return a;
+	}
+
 	// kiểm tra trùng số phòng đọc
 	public int checkNoRoomRead(int m)
 	{
@@ -98,37 +113,6 @@ public class RoomManagement implements LibraryManagement {
 		if(flag==1) return index;
 		return -1;
 	}
-
-	//hàm lấy danh sách phòng đọc
-	public ArrayList<ReadRoom> getReadRoom()
-	{
-		ArrayList<ReadRoom> rd= new ArrayList<ReadRoom>();
-		for( Room r:list)
-		{
-			if(r instanceof ReadRoom)
-			{
-				ReadRoom a= (ReadRoom)r;
-				rd.add(a);
-			}
-		}
-		return rd;
-	}
-
-    // hàm lấy danh sách phòng dịch vụ
-	public ArrayList<ServiceRoom> getServiceRoom()
-	{
-		ArrayList<ServiceRoom> sv= new ArrayList<ServiceRoom>();
-		for( Room r:list)
-		{
-			if(r instanceof ServiceRoom)
-			{
-				ServiceRoom a= (ServiceRoom)r;
-				sv.add(a);
-			}
-		}
-		return sv;
-	}
-
     
 	// hàm thêm dữ liệu phòng
     public void Add() {
@@ -193,7 +177,7 @@ public class RoomManagement implements LibraryManagement {
 				    while(true){
     				ReadRoom rd=new ReadRoom();
     				rd.enterData(); 
-
+					rd.enterIdDocument();
     				int checkId=checkIdRoom(rd.getRoomId());
                     int checkNo=checkNoRoomRead(rd.getNoRoom());
 
@@ -274,7 +258,7 @@ public class RoomManagement implements LibraryManagement {
 			choice.toLowerCase();
 		      if(choice.contentEquals(yes))
 			  {
-				list.remove(index);
+				list.remove(checkId);
 				System.out.println("you have deleted sucessful ");
 				pressContinue();
 				break action;
@@ -334,6 +318,7 @@ public class RoomManagement implements LibraryManagement {
 				if(type==1)
 				{
 					ServiceRoom sr=new ServiceRoom();
+					temp.display();
 				    System.out.println("enter data new for service room");
 					sr.enterData();				
 					checkType1:while(true)
@@ -386,6 +371,7 @@ public class RoomManagement implements LibraryManagement {
 				else if(type==2)
 				{
 					ReadRoom rd=new ReadRoom();
+					temp1.display();
 				    System.out.println("enter data new for read room");
 					rd.enterData();
 					checkType2:while(true)
@@ -467,29 +453,32 @@ public class RoomManagement implements LibraryManagement {
 		}
 		
 	}
+			
+		
+		
+		
+   
+
 
    // hàm tìm kiếm
    public  void Search() {
-	String keyContinue;
     String request; ArrayList <Room>rsr=new ArrayList<Room>();
 	System.out.println("enter id or name room you want to search ");
 	request=sc.nextLine();
-	request.toLowerCase();
 	int flag=0;
 	work_search:for(Room r:list)
 	{
 		if(r instanceof ServiceRoom)
 		{
 			ServiceRoom srs= (ServiceRoom) r;
-			if(request.contentEquals(srs.getName().toLowerCase())||request.contentEquals(srs.getRoomId().toLowerCase()))
+			if((request.toLowerCase()).contentEquals((srs.getName()).toLowerCase())||(request.toLowerCase()).contentEquals((srs.getRoomId()).toLowerCase()))
 			{
 				flag=1;
 				rsr.add(srs);
-				break work_search;
 			}
 			else
 			{
-				if((srs.getName().toLowerCase()).contains(request)==true||(srs.getRoomId()).toLowerCase().contains(request)==true)
+				if((srs.getName().toLowerCase()).contains(request.toLowerCase())==true||(srs.getRoomId()).toLowerCase().contains(request.toLowerCase())==true)
 				{
                   flag=2;
 				  rsr.add(srs);
@@ -500,7 +489,7 @@ public class RoomManagement implements LibraryManagement {
 		else if(r instanceof ReadRoom)
 		{
 			ReadRoom rds=(ReadRoom) r;
-			if(request.contentEquals((rds.getRoomId()).toLowerCase())||request.contentEquals(ReadRoom.getName()))
+			if(request.toLowerCase().contentEquals((rds.getRoomId()).toLowerCase())||request.toLowerCase().contentEquals(ReadRoom.getName()))
 			{
 				flag=1;
 				rsr.add(rds);
@@ -508,7 +497,7 @@ public class RoomManagement implements LibraryManagement {
 			}
 			else
 			{
-				if(ReadRoom.getName().contains(request)==true||(rds.getRoomId()).toLowerCase().contains(request)==true)
+				if(ReadRoom.getName().contains(request.toLowerCase())==true||rds.getRoomId().toLowerCase().contains(request.toLowerCase())==true)
 				{
                   flag=2;
 				  rsr.add(rds);
@@ -567,10 +556,14 @@ public class RoomManagement implements LibraryManagement {
 
    };
 
+
+
     // Hàm hiển thị dữ liệu
     public void Display()
     {
 		        
+
+
     	ArrayList<ServiceRoom> service=new ArrayList<ServiceRoom>();
 		System.out.println("===============*==============");
     	System.out.println("list of read room: ");
@@ -588,8 +581,10 @@ public class RoomManagement implements LibraryManagement {
     			service.add(sr);
     		}
     	}
-				
-        System.out.println("\n");
+		
+		
+
+         System.out.println("\n");
         System.out.println("===============*==============");
     	System.out.println("list of service room: ");
     	for(ServiceRoom sr:service)
@@ -601,5 +596,8 @@ public class RoomManagement implements LibraryManagement {
     	
     }
 
+	
+  
+  
 }
 

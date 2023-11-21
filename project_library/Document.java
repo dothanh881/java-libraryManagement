@@ -1,12 +1,16 @@
 package project_library;
+import java.util.Scanner;
+import java.util.ArrayList;
+import java.lang.String;
 
 public class Document {
-
-    protected String potion;
+       Scanner sc=new Scanner(System.in);
+        protected String potion;
 	    protected String id;
 	    protected String name;
 	    protected String author;
 	    protected String type;
+
 	    
 		public Document( String id, String name, String author, String type,String potion) {
 			this.potion=potion;
@@ -22,6 +26,12 @@ public class Document {
 			this.type = " ";
 			
 		}
+		public void pressContinue()
+	   {
+		  String keyContinue;
+		  System.out.println("Press Enter to continue... ");
+		  keyContinue=sc.nextLine();
+	   }
 		public String getPotion() {
 			return potion;
 		}
@@ -59,6 +69,132 @@ public class Document {
 			System.out.println("name  : "+this.name);
 			System.out.println("author:"+this.author);
 			System.out.println("type  : "+this.type);
+		}
+
+		public void searchLocation(ArrayList<ReadRoom> listrd)
+		{
+			ArrayList<ReadRoom> rdd=new ArrayList<ReadRoom>();
+			String temp=(this.potion.toLowerCase()).trim();
+		     for(ReadRoom r:listrd)
+			 {
+				String rm=(r.IdDocument()).toLowerCase().trim();
+				if(temp.contentEquals(rm))
+				{
+                   rdd.add(r);
+				}
+			 }
+			 if(rdd.isEmpty()==true)
+			 {
+				System.out.println("read room is delete before");
+				pressContinue();
+			 }
+			 else
+			 {
+				System.out.println("book is put in: ");
+			    for(ReadRoom r:rdd)
+			    {
+					System.out.println("\n");
+				   System.out.println("number room: "+r.getNoRoom());
+				   System.out.println("Id Room: "+r.roomId);
+				   System.out.println("\n");
+			    }
+				pressContinue();
+			 }
+
+		}
+
+		public void enterData(ArrayList<Document> list,ArrayList<ReadRoom> listrd)
+		{
+			id: while(true)
+			{
+				int flag=0;int index=-1;int i=0;
+
+				System.out.println("enter Id: ");
+		        this.id=sc.nextLine();
+				for(Document d:list)
+				{
+					if(d.getId().toLowerCase().contentEquals(this.id))
+					{
+						flag=1;
+						index=i;
+					}
+					i++;
+
+				}
+				if(flag==0) break id;
+				if(flag==1) 
+				{
+					System.out.println("\n");
+					list.get(index).display();
+					System.out.println("Id document is exist!!please enter again");
+					pressContinue();
+				}
+
+				
+			}
+			System.out.println("enter name: ");
+			name=sc.nextLine();
+			System.out.println("enter author name: ");
+			author=sc.nextLine();
+			System.out.println("enter type: ");
+			type=sc.nextLine();
+
+			position:while(true)
+			{
+				int m;
+              for(ReadRoom r:listrd)
+			  {
+				System.out.println("number room: "+r.getNoRoom());
+				System.out.println(r.IdDocument());
+				System.out.println("\n");
+			  }
+			
+				int flag1=0;
+				try{
+                  System.out.println("enter number room you want put in book ");
+				  m=sc.nextInt();
+				  sc.nextLine();
+				  int index1=-1;
+				  int i=0;
+				   for(ReadRoom r:listrd)
+			       {
+				       if(r.getNoRoom()==m)
+					   {
+						flag1=1;
+						index1=i;
+					   }
+
+					   i++;
+			       }
+				   if(flag1==1) 
+				   {
+					this.potion=listrd.get(index1).IdDocument();
+					break position;
+				   }
+				   else
+				   {
+					System.out.println("\n");
+					  System.out.println("number room you enter is exist !!please enter again");
+					  pressContinue();
+					  System.out.println("\n");
+				   }
+				}catch(Exception e)
+				{
+					System.out.println("data invidial ");
+					sc.nextLine();
+					pressContinue();
+					continue position;
+
+				}
+				ClearScreen.clear();
+
+			  
+			  
+
+			}
+
+			
+
 		}
 
 		
