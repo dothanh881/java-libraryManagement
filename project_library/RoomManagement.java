@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.lang.String;
 
-public class RoomManagement implements LibraryManagement {
+public class  RoomManagement implements LibraryManagement {
     Scanner sc=new Scanner(System.in);
 	private ArrayList<Room> list;
     
@@ -37,12 +37,13 @@ public class RoomManagement implements LibraryManagement {
 	// hàm kiểm tra id trùng
 	public int checkIdRoom( String m)
 	{
-		m.toLowerCase();
+		String temp=(m.toLowerCase()).trim();
+
 		int flag=0;int i=0;int index=-1;
 		for(Room r:list)
 		{
-			
-				if(r.getRoomId().toLowerCase().contentEquals(m))
+			String gd=((r.getRoomId()).toLowerCase()).trim();
+				if(gd.contentEquals(gd))
 				{
 					flag=1;
 					index=i;
@@ -54,6 +55,8 @@ public class RoomManagement implements LibraryManagement {
 		if(flag==1) return index;
        return -1;
 	}
+
+	
 
 	// hàm kiểm tra trùng số phòng dịch vụ
 	public int checkNoRoomService( int m)
@@ -139,6 +142,7 @@ public class RoomManagement implements LibraryManagement {
     			while(true){
     				ServiceRoom srv=new ServiceRoom();
     				srv.enterData(); 
+					srv.enterAreaPlace(list);
 
     				int checkId=checkIdRoom(srv.getRoomId());
                     int checkNo=checkNoRoomService(srv.getNoRoom());
@@ -320,7 +324,7 @@ public class RoomManagement implements LibraryManagement {
 					ServiceRoom sr=new ServiceRoom();
 					temp.display();
 				    System.out.println("enter data new for service room");
-					sr.enterData();				
+					sr.enterData();	
 					checkType1:while(true)
 					{
 						int checktype1=checkIdRoom(sr.getRoomId());
@@ -462,23 +466,26 @@ public class RoomManagement implements LibraryManagement {
 
    // hàm tìm kiếm
    public  void Search() {
-    String request; ArrayList <Room>rsr=new ArrayList<Room>();
+    String request; ArrayList<Room> rsr=new ArrayList<Room>();
 	System.out.println("enter id or name room you want to search ");
 	request=sc.nextLine();
+	String temp=(request.toLowerCase()).trim();
 	int flag=0;
 	work_search:for(Room r:list)
 	{
 		if(r instanceof ServiceRoom)
 		{
 			ServiceRoom srs= (ServiceRoom) r;
-			if((request.toLowerCase()).contentEquals((srs.getName()).toLowerCase())||(request.toLowerCase()).contentEquals((srs.getRoomId()).toLowerCase()))
+			String gn=((srs.getName()).toLowerCase()).trim();
+			String gd=((srs.getRoomId()).toLowerCase()).trim();
+			if(temp.contentEquals(gn)||temp.contentEquals(gd))
 			{
 				flag=1;
 				rsr.add(srs);
 			}
 			else
 			{
-				if((srs.getName().toLowerCase()).contains(request.toLowerCase())==true||(srs.getRoomId()).toLowerCase().contains(request.toLowerCase())==true)
+				if(gn.contains(temp)==true||gd.contains(temp)==true)
 				{
                   flag=2;
 				  rsr.add(srs);
@@ -488,23 +495,23 @@ public class RoomManagement implements LibraryManagement {
 		}
 		else if(r instanceof ReadRoom)
 		{
-			ReadRoom rds=(ReadRoom) r;
-			if(request.toLowerCase().contentEquals((rds.getRoomId()).toLowerCase())||request.toLowerCase().contentEquals(ReadRoom.getName()))
+			ReadRoom srs= (ReadRoom) r;
+			String gn=((ReadRoom.getName()).toLowerCase()).trim();
+			String gd=((srs.getRoomId()).toLowerCase()).trim();
+			if(temp.contentEquals(gn)||temp.contentEquals(gd))
 			{
 				flag=1;
-				rsr.add(rds);
-
+				rsr.add(srs);
 			}
 			else
 			{
-				if(ReadRoom.getName().contains(request.toLowerCase())==true||rds.getRoomId().toLowerCase().contains(request.toLowerCase())==true)
+				if(gn.contains(temp)==true||gd.contains(temp)==true)
 				{
                   flag=2;
-				  rsr.add(rds);
+				  rsr.add(srs);
 				}
 			}
-		}
-	}
+        }
 	if(flag==0)
 	{
 		System.out.println("id or name room you entered no exist");
@@ -513,17 +520,17 @@ public class RoomManagement implements LibraryManagement {
 	else if(flag==1)
 	{
 		System.out.println("information room you need search ");
-		for(Room r:rsr)
+		for(Room rm:rsr)
     	{
     		if(r instanceof ReadRoom)
     		{
-    			ReadRoom rd=(ReadRoom)r;
+    			ReadRoom rd=(ReadRoom)rm;
     			rd.display();
                 System.out.println("\n ");
     		}
     		else if(r instanceof ServiceRoom)
     		{
-    			ServiceRoom sr=(ServiceRoom)r;
+    			ServiceRoom sr=(ServiceRoom)rm;
     			sr.display();
 				System.out.println("\n ");
 
@@ -534,17 +541,17 @@ public class RoomManagement implements LibraryManagement {
 	else if(flag==2)
 	{
 		System.out.println("list of room can you want to search");
-		for(Room r:rsr)
+		for(Room rm:rsr)
     	{
     		if(r instanceof ReadRoom)
     		{
-    			ReadRoom rd=(ReadRoom)r;
+    			ReadRoom rd=(ReadRoom)rm;
     			rd.display();
                 System.out.println("\n ");
     		}
     		else if(r instanceof ServiceRoom)
     		{
-    			ServiceRoom sr=(ServiceRoom)r;
+    			ServiceRoom sr=(ServiceRoom)rm;
     			sr.display();
 				System.out.println("\n ");
 
@@ -554,7 +561,8 @@ public class RoomManagement implements LibraryManagement {
 
 	}
 
-   };
+   }
+}
 
 
 

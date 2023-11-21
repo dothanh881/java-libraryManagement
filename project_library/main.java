@@ -3,14 +3,17 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 public class main {
- 
-	
+	static ArrayList<Room>room=new ArrayList<Room>();
+    public static  RoomManagement rmt=new RoomManagement(room);
+	static ArrayList<Document> document=new ArrayList<Document>();
+	public static DocumentManagement dmt=new DocumentManagement(document);
+    
+
 	public static void main(String [] args) throws IOException
 	{
 			Scanner sc=new Scanner(System.in);
 			
 
-		ArrayList<Room>room=new ArrayList<Room>();
 		String[] arr;
 
 		// đọc dữ liệu cho ServiceRoom
@@ -21,7 +24,7 @@ public class main {
 			while(line!=null)
 			{
                 arr=line.split(",");
-                ServiceRoom sr=new ServiceRoom(Integer.parseInt(arr[0]),arr[1],arr[2]);
+                ServiceRoom sr=new ServiceRoom(Integer.parseInt(arr[0]),arr[1],arr[2],arr[3]);
                 room.add(sr);
                 line=br.readLine();
 			}
@@ -53,12 +56,11 @@ public class main {
 			System.out.println("error open file!! ");
 			ex.printStackTrace();
 		}
-		 RoomManagement rmt=new RoomManagement(room);
+		
 		ArrayList<ReadRoom> rdl=new ArrayList<ReadRoom>();
 		rdl=rmt.getReadRoom();
 
 		//Đọc dữ liệu cho sách
-		ArrayList<Document> document=new ArrayList<Document>();
 		try {
 			
 		BufferedReader br=new BufferedReader( new FileReader("C:\\Users\\ADMIN\\Desktop\\project-java\\Book.txt"));
@@ -98,7 +100,6 @@ public class main {
 			System.out.println("error open file disk!! ");
 			ex.printStackTrace();
 		}
-		DocumentManagement dmt=new DocumentManagement(document,rdl);
 		int a;
 		while(true)
 		{
@@ -108,6 +109,7 @@ public class main {
 			System.out.println("3.delete");
 			System.out.println("4.edit");
 			System.out.println("5.search");
+			System.out.println("7.edit rmt");
 			System.out.println("0.end");
 			a=sc.nextInt();
 			sc.nextLine();
@@ -136,6 +138,7 @@ public class main {
 				dmt.Search();
 			}
 			else if(a==6) rmt.Search();
+			else if (a==7) rmt.Add();
 
 		} 
 

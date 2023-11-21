@@ -5,17 +5,15 @@ import java.lang.String;
 public class DocumentManagement implements LibraryManagement {
     Scanner sc=new Scanner(System.in);
 	private ArrayList<Document> list;
-	private ArrayList<ReadRoom>listrd;
     
     public DocumentManagement()
     {
         list=new ArrayList<Document>();
     }
 
-    public DocumentManagement(ArrayList<Document> arr,ArrayList<ReadRoom> ars)
+    public DocumentManagement(ArrayList<Document> arr)
     {
       list=arr;
-	  listrd=ars;
     }
 
     // hàm xóa màn hình
@@ -76,7 +74,7 @@ public class DocumentManagement implements LibraryManagement {
 				
     	        case 1: // thêm sách
     			Book bk=new Book();
-				bk.enterData(list, listrd);
+				bk.enterData(list, main.rmt.getReadRoom());
 				list.add(bk);
 				System.out.println("add book successfully");
 				pressContinue();
@@ -84,7 +82,7 @@ public class DocumentManagement implements LibraryManagement {
 
 			    case 2:
 				Disk dk=new Disk();
-				dk.enterData(list, listrd);
+				dk.enterData(list, main.rmt.getReadRoom());
 				list.add(dk);
 				System.out.println("add disk successfully");
 				pressContinue();
@@ -195,7 +193,7 @@ public  void Edit()
 			Book sr=new Book();
 			temp.display();
 			System.out.println("enter data new for book");
-			sr.enterData(list, listrd);							
+			sr.enterData(list, main.rmt.getReadRoom());							
  			list.add(checkId, sr);				    
 
 		}				 
@@ -204,7 +202,7 @@ public  void Edit()
 			Disk rd=new Disk();
 			temp1.display();
 			System.out.println("enter data new for disk");
-			rd.enterData(list, listrd);            
+			rd.enterData(list, main.rmt.getReadRoom());            
 			list.add(checkId,rd);
 		}
 		action:while(true)
@@ -272,13 +270,13 @@ public  void Search()
 			{
 				Book cr=(Book) c;
 				cr.display();
-				cr.searchLocation(listrd);
+				cr.searchLocation(main.rmt.getReadRoom());
 			}
 			else if( c instanceof Disk)
 			{
 				Disk dr= (Disk) c;
 				dr.display();
-				dr.searchLocation(listrd);
+				dr.searchLocation(main.rmt.getReadRoom());
 			}
 
 		}
@@ -293,13 +291,13 @@ public  void Search()
 			{
 				Book cr=(Book) c;
 				cr.display();
-				cr.searchLocation(listrd);
+				cr.searchLocation(main.rmt.getReadRoom());
 			}
 			else if( c instanceof Disk)
 			{
 				Disk dr= (Disk) c;
 				dr.display();
-				dr.searchLocation(listrd);
+				dr.searchLocation(main.rmt.getReadRoom());
 			}
 		}
 	}

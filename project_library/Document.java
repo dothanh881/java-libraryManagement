@@ -73,6 +73,7 @@ public class Document {
 
 		public void searchLocation(ArrayList<ReadRoom> listrd)
 		{
+			listrd=main.rmt.getReadRoom();
 			ArrayList<ReadRoom> rdd=new ArrayList<ReadRoom>();
 			String temp=(this.potion.toLowerCase()).trim();
 		     for(ReadRoom r:listrd)
@@ -95,7 +96,7 @@ public class Document {
 			    {
 					System.out.println("\n");
 				   System.out.println("number room: "+r.getNoRoom());
-				   System.out.println("Id Room: "+r.roomId);
+				   System.out.println("Id Room: "+r.getRoomId());
 				   System.out.println("\n");
 			    }
 				pressContinue();
