@@ -109,7 +109,9 @@ public class main {
 			System.out.println("3.delete");
 			System.out.println("4.edit");
 			System.out.println("5.search");
-			System.out.println("7.edit rmt");
+			System.out.println("6.search rmt");
+			System.out.println("7.add rmt");
+			System.out.println(" 8.edit rmt");
 			System.out.println("0.end");
 			a=sc.nextInt();
 			sc.nextLine();
@@ -139,7 +141,9 @@ public class main {
 			}
 			else if(a==6) rmt.Search();
 			else if (a==7) rmt.Add();
-
+			else if (a==8) rmt.Edit();
+			else if(a==9) rmt.Delete();
+ 
 		} 
 
 		/*String an="  The Count of MONTE Cristo " ;

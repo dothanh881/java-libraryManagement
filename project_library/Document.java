@@ -112,9 +112,11 @@ public class Document {
 
 				System.out.println("enter Id: ");
 		        this.id=sc.nextLine();
+				String temp=((this.id).toLowerCase()).trim();
 				for(Document d:list)
 				{
-					if(d.getId().toLowerCase().contentEquals(this.id))
+					String gd =((d.getId()).toLowerCase()).trim();
+					if(temp.contentEquals(gd))
 					{
 						flag=1;
 						index=i;
@@ -172,7 +174,7 @@ public class Document {
 					this.potion=listrd.get(index1).IdDocument();
 					break position;
 				   }
-				   else
+				   else if(flag1==0)
 				   {
 					System.out.println("\n");
 					  System.out.println("number room you enter is exist !!please enter again");

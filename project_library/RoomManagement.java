@@ -39,22 +39,22 @@ public class  RoomManagement implements LibraryManagement {
 	{
 		String temp=(m.toLowerCase()).trim();
 
-		int flag=0;int i=0;int index=-1;
+		int i=0;int index=-1;
 		for(Room r:list)
 		{
 			String gd=((r.getRoomId()).toLowerCase()).trim();
-				if(gd.contentEquals(gd))
+				if(gd.contentEquals(temp))
 				{
-					flag=1;
 					index=i;
 			
 				}
 			
 			i++;
 		}
-		if(flag==1) return index;
-       return -1;
+		return index;
 	}
+
+	
 
 	
 
@@ -143,7 +143,7 @@ public class  RoomManagement implements LibraryManagement {
     				ServiceRoom srv=new ServiceRoom();
     				srv.enterData(); 
 					srv.enterAreaPlace(list);
-
+                     pressContinue();
     				int checkId=checkIdRoom(srv.getRoomId());
                     int checkNo=checkNoRoomService(srv.getNoRoom());
 
@@ -167,8 +167,9 @@ public class  RoomManagement implements LibraryManagement {
 
 							else if(checkId!=-1) // báo lỗi và yêu cầu nhập lại nếu người dùng nhập trùng id phòng
 							{
-								System.out.println("id room you enter is exits!! please enter again ");
 								System.out.println("id room service you enter is exits !! ");
+								System.out.println("id you enter: "+srv.getRoomId());
+								System.out.println("\n id trung: "+list.get(checkId));
 								list.get(checkId).display();
 								System.out.println("please enter again");
 								pressContinue();
@@ -181,7 +182,7 @@ public class  RoomManagement implements LibraryManagement {
 				    while(true){
     				ReadRoom rd=new ReadRoom();
     				rd.enterData(); 
-					rd.enterIdDocument();
+					rd.enterIdDocument(list);
     				int checkId=checkIdRoom(rd.getRoomId());
                     int checkNo=checkNoRoomRead(rd.getNoRoom());
 
@@ -206,7 +207,6 @@ public class  RoomManagement implements LibraryManagement {
 							else // báo lỗi và yêu cầu nhập lại nếu người dùng nhập trùng id phòng
 							{
 								System.out.println("id room you enter is exits!! please enter again ");
-								System.out.println("id room read you enter is exits !! ");
 								list.get(checkId).display();
 								System.out.println("please enter again");
 								pressContinue();

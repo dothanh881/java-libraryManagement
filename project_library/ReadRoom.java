@@ -21,6 +21,12 @@ public class ReadRoom extends Room {
 		this.IdDocument=IdDocument;
 
 	}
+	public void pressContinue()
+	   {
+		  String keyContinue;
+		  System.out.println("Press Enter to continue... ");
+		  keyContinue=sc.nextLine();
+	   }
 
 	// hàm lấy giá trị mảng danh sách id kệ sách
 	public String IdDocument() {
@@ -39,10 +45,41 @@ public class ReadRoom extends Room {
 		System.out.println("Id Document: "+this.IdDocument);
 	}
 	
-	public void enterIdDocument()
+	public void enterIdDocument(ArrayList<Room> list)
 	{
-		System.out.println("enter id document of room read ");
-		this.IdDocument=sc.nextLine();
+		id: while(true)
+			{
+				int flag=0;int index=-1;int i=0;
+
+				System.out.println("enter Id document : ");
+		        this.IdDocument=sc.nextLine();
+				String temp=((this.IdDocument).toLowerCase()).trim();
+				for(Room d:list)
+				{
+					if(d instanceof ReadRoom)
+					{
+						ReadRoom r= (ReadRoom) d;
+					String gd =((r.IdDocument()).toLowerCase()).trim();
+					if(temp.contentEquals(gd))
+					{
+						flag=1;
+						index=i;
+					}
+					i++;
+				   }
+
+				}
+				if(flag==0) break id;
+				else if(flag==1) 
+				{
+					System.out.println("\n");
+					list.get(index).display();
+					System.out.println("Id document is exist!!please enter again");
+					pressContinue();
+				}
+
+				
+			}
 	}
 	public static String getName()
 	{
