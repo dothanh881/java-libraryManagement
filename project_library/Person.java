@@ -55,10 +55,37 @@ public void setId(String id) {
 }
 public void display()
 {
+   System.out.println("id     : "+this.id);
+   System.out.println("name   : "+this.name);
+   System.out.println("gender : "+this.gender);
+   System.out.println("address:"+this.adress);
+   System.out.println("age    : "+this.age);
 
 }
 public void enterData(ArrayList<Person> list)
 {
+    System.out.println("enter name person ");
+    this.name=sc.nextLine();
+    System.out.println("enter adress");
+    this.adress=sc.nextLine();
+    while(true)
+		{
+            try 
+            {
+			   System.out.println("enter age person ");
+			   this.age=sc.nextInt();
+			   sc.nextLine();
+			   break;
+		    }
+            catch(Exception e)
+		    {
+			    System.out.println(" age you enterd is not ividial ");
+			    sc.nextLine();
+				pressContinue();
+	        	
+
+		    }
+		}
     id: while(true)
 			{
 				int flag=0;int index=-1;int i=0;
@@ -82,15 +109,60 @@ public void enterData(ArrayList<Person> list)
 				{
 					System.out.println("\n");
 					list.get(index).display();
-					System.out.println("Id document is exist!!please enter again");
+					System.out.println("Id person is exist!!please enter again");
 					pressContinue();
 				}
 
 				
 			}
     
-    System.out.println("");
+    gender:while(true)
+    {
+        int flag=0;
+        try
+        {
+        ClearScreen.clear();
+        System.out.println("choose gender ");
+        System.out.println("1. Women");
+        System.out.println("2. Men");
+        System.out.println("3. Other");
+        int choose;
+        System.out.println("enter gender follow number ");
+        choose=sc.nextInt();
+        sc.nextLine();
+          switch (choose)
+           {
+               case 1:
+                this.gender="Women";
+                flag=1;
+                break;
+                case 2:
+                this.gender="Men";
+                flag=1;
+                break;
+                case 3:
+                this.gender="Other";
+                flag=1;
+                break;
+                default:
+                System.out.println("you entered number is ividial !! please enter again");
+                pressContinue();
+                break;
+           }
+        }
+        catch(Exception e)
+        {
+            System.out.println("choose is not suitable ! please enter again");
+            sc.nextLine();
+            pressContinue();
+        }
+        if(flag==1) break gender;
+
+    }
+
 }
+public abstract void serviceFee();
+
 
   
 }

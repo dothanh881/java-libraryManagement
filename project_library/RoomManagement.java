@@ -94,6 +94,20 @@ public class  RoomManagement implements LibraryManagement {
 		}
 		return a;
 	}
+	//hàm lấy dữ liệu phòng dịch vụ
+	public ArrayList<ServiceRoom> getServiceRoom()
+	{
+		ArrayList<ServiceRoom> a =new ArrayList<ServiceRoom>();
+		for(Room r:list)
+		{
+           if(r instanceof ServiceRoom)
+		   {
+              ServiceRoom m=(ServiceRoom) r;
+			  a.add(m);
+		   }
+		}
+		return a;
+	}
 
 	// kiểm tra trùng số phòng đọc
 	public int checkNoRoomRead(int m)

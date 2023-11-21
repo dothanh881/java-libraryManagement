@@ -14,7 +14,7 @@ public class Disk extends Document {
     }
 
     // hàm thiết lập có tham số
-    public Disk( String id, String name, String author, String type,int time,int Ram,String potion)
+    public Disk( String id, String name, String author, String type,double time,double Ram,String potion)
     {
         super(id, name, author,  type, potion);
         this.time=time;

@@ -2,12 +2,15 @@ package project_library;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
+
 public class main {
 	static ArrayList<Room>room=new ArrayList<Room>();
     public static  RoomManagement rmt=new RoomManagement(room);
 	static ArrayList<Document> document=new ArrayList<Document>();
 	public static DocumentManagement dmt=new DocumentManagement(document);
-    
+	static ArrayList<Person> person=new ArrayList<Person>();
+	public static PersonManagement pmt=new PersonManagement(person);
+
 
 	public static void main(String [] args) throws IOException
 	{
@@ -44,7 +47,7 @@ public class main {
 			while(line!=null)
 			{
                 arr=line.split(",");            
-                ReadRoom rd=new ReadRoom(Integer.parseInt(arr[0]),arr[1],arr[2]);
+                ReadRoom rd=new ReadRoom(Integer.parseInt(arr[0].trim()),arr[1],arr[2]);
                 room.add(rd);
                 line=br.readLine();
 			}
@@ -69,7 +72,7 @@ public class main {
                 arr=line.split(",");
 				if(arr.length>1)
 				{
-				  Book bk=new Book(arr[0],arr[1],arr[2],arr[3],Integer.parseInt(arr[4]),arr[5]);
+				  Book bk=new Book(arr[0],arr[1],arr[2],arr[3],Integer.parseInt(arr[4].trim()),arr[5]);
 				  document.add(bk);
 				}
 				line=br.readLine();
@@ -94,7 +97,7 @@ public class main {
 			while(line!=null)
 			{
                 arr=line.split(",");
-                Disk dk=new Disk(arr[0],arr[1],arr[2],arr[3],Integer.parseInt(arr[4]),Integer.parseInt(arr[5]),arr[6]);
+                Disk dk=new Disk(arr[0],arr[1],arr[2],arr[3],Double.parseDouble(arr[4].trim()),Double.parseDouble(arr[5].trim()),arr[6]);
                 document.add(dk);
                 line=br.readLine();
 			}
@@ -105,6 +108,46 @@ public class main {
 			System.out.println("error open file disk!! ");
 			ex.printStackTrace();
 		}
+
+		//Đọc dữ liệu cho nhân viên
+		try {
+			
+		BufferedReader br=new BufferedReader( new FileReader("C:\\Users\\ADMIN\\Desktop\\project-java\\Staff.txt"));
+		String line=br.readLine();
+			while(line!=null)
+			{
+                arr=line.split(",");
+                Staff dk=new Staff(arr[0],arr[1],arr[2],arr[3],Integer.parseInt(arr[4].trim()),arr[5],arr[6]);
+                person.add(dk);
+                line=br.readLine();
+			}
+			br.close();		
+		}
+		catch(Exception ex)
+		{
+			System.out.println("error open file staff!! ");
+			ex.printStackTrace();
+		}
+		//Đọc dữ liệu cho người đọc
+		try {
+			
+		BufferedReader br=new BufferedReader( new FileReader("C:\\Users\\ADMIN\\Desktop\\project-java\\Reader.txt"));
+		String line=br.readLine();
+			while(line!=null)
+			{
+                arr=line.split(",");
+                Reader dk=new Reader(arr[0],arr[1],arr[2],arr[3],Integer.parseInt(arr[4].trim()),arr[5],arr[6],arr[7]);
+                person.add(dk);
+                line=br.readLine();
+			}
+			br.close();		
+		}
+		catch(Exception ex)
+		{
+			System.out.println("error open file staff!! ");
+			ex.printStackTrace();
+		}
+
 		
 		int a;
 		while(true)
@@ -123,25 +166,27 @@ public class main {
 			sc.nextLine();
 			if(a==1)
 			{
-				dmt.Display();
-		System.out.println("Press Enter to continue... ");
+				pmt.Display();
+		 System.out.println("Press Enter to continue... ");
+		 String key1;
+		 key1=sc.nextLine();
 
 			}
 			else if(a==2)
 			{
-				dmt.Add();
+				pmt.Add();
 			}
 			else if(a==3)
 			{
-				dmt.Delete();
+				pmt.Delete();
 			}
 			else if(a==4)
 			{
-				dmt.Edit();
+				pmt.Edit();
 			}
 			else if(a==5)
 			{
-				dmt.Search();
+				pmt.Search();
 			}
 			else if(a==6) rmt.Search();
 			else if (a==7) rmt.Add();

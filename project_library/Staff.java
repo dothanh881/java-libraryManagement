@@ -1,0 +1,164 @@
+package project_library;
+
+import java.util.ArrayList;
+
+public class Staff extends Person{
+    private String workRoom;
+    private String position;
+    private int flagAdd;
+    private Double salary;
+    private static int noStaff=0;
+    private static int noAddStaff=0;
+    public Staff(String name, String gender, String adress, String id,int age, String workRoom, String position) {
+        super(name, gender, adress, id,age);
+        this.workRoom = workRoom;
+        this.position = position;
+        noStaff++;
+    }
+    public Staff()
+    {
+        super();
+        this.workRoom=" ";
+        this.position=" ";
+        noStaff++;
+        noAddStaff++;
+
+    }
+    public Staff(int flagAdd)
+    {
+        noAddStaff--;
+    }
+
+    public static int SumStaff()
+    {
+        return noStaff;
+    }
+
+    public static int AddStaff()
+    {
+        return noAddStaff;
+    }
+
+    public void display()
+    {
+        super.display();
+        System.out.println("position: "+this.position);
+        System.out.println("\n");
+    }
+
+
+    public void  enterData(ArrayList<Person>list,ArrayList<ServiceRoom>listsr)
+    {
+        super.enterData(list);
+        gender:while(true)
+        {
+            int flag=0;
+            try
+            {
+            ClearScreen.clear();
+            System.out.println("choose position ");
+            System.out.println("1. Director");
+            System.out.println("2. Manager");
+            System.out.println("3. Employee");
+            int choose;
+            System.out.println("enter position follow number ");
+            choose=sc.nextInt();
+            sc.nextLine();
+              switch (choose)
+               {
+                   case 1:
+                    this.position="Director";
+                    flag=1;
+                    break;
+                    case 2:
+                    this.position="Manager";
+                    flag=1;
+                    break;
+                    case 3:
+                    this.position="Employee";
+                    flag=1;
+                    break;
+                    default:
+                    System.out.println("you entered number is ividial !! please enter again");
+                    pressContinue();
+                    break;
+               }
+            }
+            catch(Exception e)
+            {
+                System.out.println("choose is not suitable ! please enter again");
+                sc.nextLine();
+                pressContinue();
+            }
+            if(flag==1) break gender;
+    
+        }
+
+	position:while(true)
+			{
+				int m;
+              for(ServiceRoom r:listsr)
+			  {
+				System.out.println("number room: "+r.getNoRoom());
+                System.out.println("name room: "+r.getName());
+				System.out.println("area: "+r.getAreaPlace());
+				System.out.println("\n");
+			  }
+			
+				int flag1=0;
+				try{
+                  System.out.println("enter number room you want work ");
+				  m=sc.nextInt();
+				  sc.nextLine();
+				  int index1=-1;
+				  int i=0;
+				   for(ServiceRoom r:listsr)
+			       {
+				       if(r.getNoRoom()==m)
+					   {
+						flag1=1;
+						index1=i;
+					   }
+
+					   i++;
+			       }
+				   if(flag1==1) 
+				   {
+					this.workRoom=listsr.get(index1).getAreaPlace();
+					break position;
+				   }
+				   else if(flag1==0)
+				   {
+					System.out.println("\n");
+					  System.out.println("number room you enter is exist !!please enter again");
+					  pressContinue();
+					  System.out.println("\n");
+				   }
+				}catch(Exception e)
+				{
+					System.out.println("data invidial ");
+					sc.nextLine();
+					pressContinue();
+					continue position;
+
+				}
+				ClearScreen.clear();
+			  
+
+			}
+
+
+    }
+    
+    
+
+
+
+
+
+    @Override
+    public void serviceFee() {
+        
+    }
+    
+}
