@@ -31,6 +31,7 @@ public class Reader extends Person {
         noAddReader++;
         noReader++;
     }
+    
     public static int getNoReader()
     {
         return noReader;
@@ -163,8 +164,30 @@ public class Reader extends Person {
     }
 
     @Override
-    public void serviceFee() {
-        
+    public double serviceFee() 
+    {
+        this.moneyFee=0.0;
+        String temp=((this.typeCard).toLowerCase()).trim();
+        if(temp.contentEquals("normal"))
+        {
+            this.moneyFee=ServiceRoom.getSalaryBasic()*1;
+        }    
+        else if(temp.contentEquals("business"))
+        {
+            this.moneyFee=ServiceRoom.getSalaryBasic()*10;
+        }
+        else if(temp.contentEquals("vip"))
+        {
+            this.moneyFee=ServiceRoom.getSalaryBasic()*20.5;
+
+        }
+        else
+        {
+            this.moneyFee=0.0;
+        }
+        System.out.println("Fee read : "+this.moneyFee+" USD");
+
+        return moneyFee;
     };
     
 }

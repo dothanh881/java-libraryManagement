@@ -168,7 +168,7 @@ public void Statistic()
     int b=Staff.AddStaff()+Reader.getNoAddReader();
     System.out.println("total person add"+b);
 }
-public abstract void serviceFee();
+public abstract double serviceFee();
 
 
   

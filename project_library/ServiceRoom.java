@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class ServiceRoom extends Room{
   private String name;
   private String areaPlace;
+  private static double salaryBasic=200;
   
   /* hàm khởi tạo không tham số*/
   public ServiceRoom()
@@ -27,6 +28,11 @@ public class ServiceRoom extends Room{
 		System.out.println("Press Enter to continue... ");
 		keyContinue=sc.nextLine();
 	}
+
+  public static double getSalaryBasic()
+  {
+       return salaryBasic;
+  }
 
   /* hàm lấy giá trị tên */
 public String getName()

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class ReadRoom extends Room {
 	private static String name="read room";
 	private String IdDocument;
+	private static double readFee=2;
 
 	
 	// hàm khởi tạo không tham số
@@ -21,6 +22,13 @@ public class ReadRoom extends Room {
 		this.IdDocument=IdDocument;
 
 	}
+
+	
+	public static double getFeeBasic()
+	{
+		 return readFee;
+	}
+
 	public void pressContinue()
 	   {
 		  String keyContinue;

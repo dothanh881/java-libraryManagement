@@ -269,11 +269,13 @@ public void pressContinue()
 				Staff cr=(Staff) c;
 				cr.display();
 				cr.searchLocation(main.rmt.getServiceRoom());
+				cr.serviceFee();
 			}
 			else if( c instanceof Reader)
 			{
 				Reader dr= (Reader) c;
 				dr.display();
+				dr.serviceFee();
 			}
 
 		}
@@ -289,6 +291,7 @@ public void pressContinue()
 				Staff cr=(Staff) c;
 				cr.display();
 				cr.searchLocation(main.rmt.getServiceRoom());
+		
 			}
 			else if( c instanceof Reader)
 			{

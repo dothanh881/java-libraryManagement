@@ -188,8 +188,30 @@ public class Staff extends Person{
 
 
     @Override
-    public void serviceFee() {
-        
+    public double serviceFee()
+    {
+        this.salary=0.0;
+        String temp=((this.position).toLowerCase()).trim();
+        if(temp.contentEquals("director"))
+        {
+            this.salary=ServiceRoom.getSalaryBasic()*4;
+        }    
+        else if(temp.contentEquals("employee"))
+        {
+            this.salary=ServiceRoom.getSalaryBasic()*1.5;
+        }
+        else if(temp.contentEquals("manager"))
+        {
+            this.salary=ServiceRoom.getSalaryBasic()*2.5;
+
+        }
+        else
+        {
+            this.salary=0.0;
+        }
+        System.out.println("Salary of Staff: "+this.salary+" USD");
+        return this.salary;
     }
+
     
 }
