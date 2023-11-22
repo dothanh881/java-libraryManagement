@@ -175,10 +175,12 @@ public void pressContinue()
 			}	
 	 
 			Reader temp1=new Reader();
+			String idcards=" ";
 			if(list.get(checkId) instanceof Reader)
 			{
 				temp1= (Reader)list.get(checkId);
 				type=2;
+				idcards=temp1.getIdcard();
 			}	
 			list.remove(checkId);
 	 
@@ -196,7 +198,8 @@ public void pressContinue()
 				Reader rd=new Reader();
 				temp1.display();
 				System.out.println("enter data new for Reader");
-				rd.enterData(list);            
+				rd.enterData(list);   
+				rd.setIdcard(idcards);         
 				list.add(checkId,rd);
 			}
 			action:while(true)
