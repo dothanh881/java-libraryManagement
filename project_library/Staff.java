@@ -149,7 +149,38 @@ public class Staff extends Person{
 
 
     }
-    
+
+    public void searchLocation(ArrayList<ServiceRoom> listrd)
+		{
+			listrd=main.rmt.getServiceRoom();
+			ArrayList<ServiceRoom> rdd=new ArrayList<ServiceRoom>();
+			String temp=(this.workRoom.toLowerCase()).trim();
+		     for( ServiceRoom r:listrd)
+			 {
+				String rm=(r.getAreaPlace()).toLowerCase().trim();
+				if(temp.contentEquals(rm))
+				{
+                   rdd.add(r);
+				}
+			 }
+			 if(rdd.isEmpty()==true)
+			 {
+				System.out.println("service room is delete before");
+			 }
+			 else
+			 {
+				System.out.println("staff work in room: ");
+			    for(ServiceRoom r:rdd)
+			    {
+					r.display();
+					System.out.println();
+
+			    }
+                System.out.println("\n");
+
+			 }
+
+		}
     
 
 

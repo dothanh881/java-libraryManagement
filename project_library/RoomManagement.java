@@ -308,7 +308,7 @@ public class  RoomManagement implements LibraryManagement {
 		String request;String save;int type=0;
 		System.out.println("enter id room you want to edit ");
 		request=sc.nextLine();String end=" ";int new_num;
-		request.toLowerCase();
+		request=(request.toLowerCase()).trim();
 		int checkId=checkIdRoom(request);
        
 		if(checkId==-1) {
@@ -318,19 +318,24 @@ public class  RoomManagement implements LibraryManagement {
 		else
 		{
                 ServiceRoom temp=new ServiceRoom();
+				String areawork=" ";
 				if(list.get(checkId) instanceof ServiceRoom)
 				{
 					temp= (ServiceRoom)list.get(checkId);
 					type =1;
+					areawork=temp.getAreaPlace();
 
 				}	
 
 			    ReadRoom temp1=new ReadRoom();
+                 String positionBook=" ";
 			    if(list.get(checkId) instanceof ReadRoom)
 				{
 					temp1= (ReadRoom)list.get(checkId);
 					type=2;
+					positionBook=temp1.IdDocument();
 				}	
+				
 				list.remove(checkId);
 
 				if(type==1)
@@ -339,6 +344,7 @@ public class  RoomManagement implements LibraryManagement {
 					temp.display();
 				    System.out.println("enter data new for service room");
 					sr.enterData();	
+					sr.setAreaPlace(areawork);
 					checkType1:while(true)
 					{
 						int checktype1=checkIdRoom(sr.getRoomId());
@@ -392,6 +398,7 @@ public class  RoomManagement implements LibraryManagement {
 					temp1.display();
 				    System.out.println("enter data new for read room");
 					rd.enterData();
+					rd.setIdDocuemt(positionBook);
 					checkType2:while(true)
 					{
 						int checktype1=checkIdRoom(rd.getRoomId());

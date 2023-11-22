@@ -1,4 +1,4 @@
-Roronoa Zoro,Men,Japan,11011,21,normal,cd21,tour guide
-Vinsmoke SanJi,Men,France,14052,21,normal,cd22,chef
-Nico Robin, Women, Spanin,41231,28,vip,cd23,teacher
-Tony Chopper,Men, USA,41234,15,vip,cd24,student 
+Roronoa Zoro,Men,Japan,11011,21,Normal,cd21,tour guide
+Vinsmoke SanJi,Men,France,14052,21,Business,cd22,chef
+Nico Robin, Women, Spanin,41231,28,Vip,cd23,teacher
+Tony Chopper,Men, USA,41234,15,Vip,cd24,student 

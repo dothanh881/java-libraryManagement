@@ -5,7 +5,6 @@ public class Room
 {
 Scanner sc=new Scanner(System.in);
 	protected int noRoom;
-
 	protected String roomId;
 	private static String libraryName="KLF Sai Gon University";
 	

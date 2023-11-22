@@ -34,12 +34,12 @@ public class DocumentManagement implements LibraryManagement {
 	// hàm kiểm tra id trùng
 	public int checkIdRoom( String m)
 	{
-		m.toLowerCase();
+		m=(m.toLowerCase()).trim();
 		int flag=0;int i=0;int index=-1;
 		for(Document r:list)
 		{
 			
-				if(r.getId().toLowerCase().contentEquals(m))
+				if(((r.getId().toLowerCase()).trim()).contentEquals(m))
 				{
 					flag=1;
 					index=i;
@@ -115,7 +115,7 @@ public class DocumentManagement implements LibraryManagement {
 		int checkId=checkIdRoom(request);
 		
 		if(checkId==-1) {
-			System.out.println("room you want to delete no exits or is deleted before");
+			System.out.println("document you want to delete no exits or is deleted before");
 			pressContinue();
 
 		}
@@ -131,7 +131,7 @@ public class DocumentManagement implements LibraryManagement {
 			   System.out.println("are you sure want to delete  this document (yes/no)? ");			
 			   System.out.println("enter 'y' to choose 'yes' and enter 'n' to choose 'no' ");
 			   choice=sc.nextLine();
-			   choice.toLowerCase();
+			   (choice.toLowerCase()).trim();
 		        if(choice.contentEquals(yes))
 			    {
 				    list.remove(checkId);
@@ -163,7 +163,7 @@ public  void Edit()
 	String request;String save;int type=0;
 	System.out.println("enter id document you want to edit ");
 	request=sc.nextLine();String end=" ";int new_num;
-	request.toLowerCase();
+	request=(request.toLowerCase()).trim();
 	int checkId=checkIdRoom(request);
 		
 	if(checkId==-1)

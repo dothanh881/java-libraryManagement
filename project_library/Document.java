@@ -69,6 +69,7 @@ public class Document {
 			System.out.println("name  : "+this.name);
 			System.out.println("author:"+this.author);
 			System.out.println("type  : "+this.type);
+			System.out.println("id document: "+this.potion);
 		}
 
 		public void searchLocation(ArrayList<ReadRoom> listrd)
@@ -76,9 +77,9 @@ public class Document {
 			listrd=main.rmt.getReadRoom();
 			ArrayList<ReadRoom> rdd=new ArrayList<ReadRoom>();
 			String temp=(this.potion.toLowerCase()).trim();
-		     for(ReadRoom r:listrd)
+		     for(ReadRoom r:main.rmt.getReadRoom())
 			 {
-				String rm=(r.IdDocument()).toLowerCase().trim();
+				String rm=((r.IdDocument()).toLowerCase()).trim();
 				if(temp.contentEquals(rm))
 				{
                    rdd.add(r);
@@ -95,9 +96,8 @@ public class Document {
 			    for(ReadRoom r:rdd)
 			    {
 					System.out.println("\n");
-				   System.out.println("number room: "+r.getNoRoom());
-				   System.out.println("Id Room: "+r.getRoomId());
-				   System.out.println("\n");
+					r.display();
+					System.out.println();
 			    }
 				pressContinue();
 			 }
@@ -190,9 +190,6 @@ public class Document {
 
 				}
 				ClearScreen.clear();
-
-			  
-			  
 
 			}
 

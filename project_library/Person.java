@@ -41,7 +41,7 @@ public String getGender() {
 public void setGender(String gender) {
 	this.gender = gender;
 }
-public String getData() {
+public String getAddress() {
 	return adress;
 }
 public void setData(String data) {
@@ -160,6 +160,13 @@ public void enterData(ArrayList<Person> list)
 
     }
 
+}
+public void Statistic()
+{
+    int a=Staff.SumStaff()+Reader.getNoReader();
+    System.out.println("total person: "+a);
+    int b=Staff.AddStaff()+Reader.getNoAddReader();
+    System.out.println("total person add"+b);
 }
 public abstract void serviceFee();
 
