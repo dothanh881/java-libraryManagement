@@ -74,7 +74,8 @@ public class DocumentManagement implements LibraryManagement {
 				
     	        case 1: // thêm sách
     			Book bk=new Book();
-				bk.enterData(list, main.rmt.getReadRoom());
+				bk.enterData( main.rmt.getReadRoom());
+				bk.enterId(list);
 				list.add(bk);
 				System.out.println("add book successfully");
 				pressContinue();
@@ -82,7 +83,8 @@ public class DocumentManagement implements LibraryManagement {
 
 			    case 2:
 				Disk dk=new Disk();
-				dk.enterData(list, main.rmt.getReadRoom());
+				dk.enterData( main.rmt.getReadRoom());
+				dk.enterId(list);
 				list.add(dk);
 				System.out.println("add disk successfully");
 				pressContinue();
@@ -174,17 +176,21 @@ public  void Edit()
 	else
 	{
 		Book temp=new Book();
+		String id=" ";
 		if(list.get(checkId) instanceof Book)
 		{
 		     temp= (Book)list.get(checkId);
 			 type =1;
+			  id=temp.getId();
 		}	
  
 		Disk temp1=new Disk();
+		String id1=" ";
 		if(list.get(checkId) instanceof Disk)
 		{
 			temp1= (Disk)list.get(checkId);
 			type=2;
+			 id1=temp1.getId();
 		}	
 		list.remove(checkId);
  
@@ -193,7 +199,8 @@ public  void Edit()
 			Book sr=new Book();
 			temp.display();
 			System.out.println("enter data new for book");
-			sr.enterData(list, main.rmt.getReadRoom());							
+			sr.enterData( main.rmt.getReadRoom());	
+			sr.setId(id);						
  			list.add(checkId, sr);				    
 
 		}				 
@@ -202,7 +209,8 @@ public  void Edit()
 			Disk rd=new Disk();
 			temp1.display();
 			System.out.println("enter data new for disk");
-			rd.enterData(list, main.rmt.getReadRoom());            
+			rd.enterData( main.rmt.getReadRoom()); 
+			rd.setId(id1);           
 			list.add(checkId,rd);
 		}
 		action:while(true)
@@ -243,7 +251,7 @@ public  void Search()
 	System.out.println("enter key word document (id,author,name,type) you want to search ");
 	request=sc.nextLine();
 	String temp=(request.toLowerCase()).trim();
-	int flag=0;
+	int flag=0;int flagsg=0;
 	for(Document dm:list)
 	{
 		String gn=((dm.getName()).toLowerCase()).trim();
@@ -258,7 +266,12 @@ public  void Search()
 		else if(gn.contains(temp)||ga.contains(temp)||gd.contains(temp)||gt.contains(temp))
 		{
 			cmn.add(dm);
-			flag=2;
+			flagsg=2;
+		}
+		else if(temp.contains(gn)||temp.contains(ga)||temp.contains(gd)||temp.contains(gt))
+		{
+			cmn.add(dm);
+			flagsg=2;
 		}
 	}
 	if(flag==1)
@@ -282,7 +295,7 @@ public  void Search()
 		}
 
 	}
-	else if(flag==2)
+	 if(flagsg==2)
 	{
 		System.out.println("document suggest: ");
 		for(Document c:cmn)
@@ -301,7 +314,7 @@ public  void Search()
 			}
 		}
 	}
-	if(flag==0) System.out.println("No documents found matching the keyword!!");
+	if(flag==0&&flagsg==0) System.out.println("No documents found matching the keyword!!");
 	pressContinue();
 	
 	

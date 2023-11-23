@@ -491,7 +491,7 @@ public class  RoomManagement implements LibraryManagement {
 	System.out.println("enter id or name room you want to search ");
 	request=sc.nextLine();
 	String temp=(request.toLowerCase()).trim();
-	int flag=0;
+	int flag=0;int flagsg=0;
 	work_search:for(Room r:list)
 	{
 		if(r instanceof ServiceRoom)
@@ -508,7 +508,12 @@ public class  RoomManagement implements LibraryManagement {
 			{
 				if(gn.contains(temp)==true||gd.contains(temp)==true)
 				{
-                  flag=2;
+                  flagsg=2;
+				  rsr.add(srs);
+				}
+				if(temp.contains(gn)==true||temp.contains(gd)==true)
+				{
+                  flagsg=2;
 				  rsr.add(srs);
 				}
 			}
@@ -528,17 +533,17 @@ public class  RoomManagement implements LibraryManagement {
 			{
 				if(gn.contains(temp)==true||gd.contains(temp)==true)
 				{
-                  flag=2;
+                  flagsg=2;
+				  rsr.add(srs);
+				}
+				if(temp.contains(gn)==true||temp.contains(gd)==true)
+				{
+                  flagsg=2;
 				  rsr.add(srs);
 				}
 			}
         }
-	if(flag==0)
-	{
-		System.out.println("id or name room you entered no exist");
-		pressContinue();
-	}
-	else if(flag==1)
+	 if(flag==1)
 	{
 		System.out.println("information room you need search ");
 		for(Room rm:rsr)
@@ -559,7 +564,7 @@ public class  RoomManagement implements LibraryManagement {
     	}
 		pressContinue();
 	}
-	else if(flag==2)
+	 if(flagsg==2)
 	{
 		System.out.println("list of room can you want to search");
 		for(Room rm:rsr)
@@ -578,9 +583,16 @@ public class  RoomManagement implements LibraryManagement {
 
     		}
     	}
+
 		pressContinue();
 
 	}
+	if(flag==0&&flagsg==0)
+	{
+		System.out.println("id or name room you entered no exist");
+		pressContinue();
+	}
+	
 
    }
 }

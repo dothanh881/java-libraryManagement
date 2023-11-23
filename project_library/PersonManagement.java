@@ -236,12 +236,13 @@ public void pressContinue()
 	// Tìm kiếm
     public void Search()
 	{
+		int mq=0;
 		String request; ArrayList <Person>cmm=new ArrayList<Person>();
 	ArrayList<Person> cmn= new ArrayList<Person>();
 	System.out.println("enter key word person (id,address,name,gender) you want to search ");
 	request=sc.nextLine();
 	String temp=(request.toLowerCase()).trim();
-	int flag=0;
+	int flag=0;int flagsg=0;
 	for(Person dm:list)
 	{
 		String gn=((dm.getName()).toLowerCase()).trim();
@@ -252,11 +253,17 @@ public void pressContinue()
 		{
 			cmm.add(dm);
 			flag=1;
+			mq=1;
 		}
 		else if(gn.contains(temp)||ga.contains(temp)||gd.contains(temp)||gt.contains(temp))
 		{
 			cmn.add(dm);
-			flag=2;
+			flagsg=2;
+		}
+		else if(temp.contains(gn)||temp.contains(ga)||temp.contains(gd)||temp.contains(gt))
+		{
+			cmn.add(dm);
+			flagsg=2;
 		}
 	}
 	if(flag==1)
@@ -281,7 +288,7 @@ public void pressContinue()
 		}
 
 	}
-	else if(flag==2)
+	 if(flagsg==2)
 	{
 		System.out.println("Suggest person: ");
 		for(Person c:cmn)
@@ -300,7 +307,7 @@ public void pressContinue()
 			}
 		}
 	}
-	if(flag==0) System.out.println("No person found matching the keyword!!");
+	if(flag==0 && flagsg==0) System.out.println("No person found matching the keyword!!");
 	pressContinue();
 
 	}

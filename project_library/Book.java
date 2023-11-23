@@ -33,9 +33,9 @@ public class Book extends Document {
         super.display();
         System.out.println("book page: "+this.page);
     }
-    public void enterData(ArrayList<Document> list,ArrayList<ReadRoom> listrd)
+    public void enterData(ArrayList<ReadRoom> listrd)
     {
-        super.enterData(list, listrd);
+        super.enterData(listrd);
         while(true)
         {
             try{

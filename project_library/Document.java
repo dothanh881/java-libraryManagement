@@ -103,10 +103,10 @@ public class Document {
 			 }
 
 		}
-
-		public void enterData(ArrayList<Document> list,ArrayList<ReadRoom> listrd)
+		
+		public void enterId(ArrayList<Document> list)
 		{
-			id: while(true)
+           id: while(true)
 			{
 				int flag=0;int index=-1;int i=0;
 
@@ -135,6 +135,11 @@ public class Document {
 
 				
 			}
+		}
+
+		public void enterData(ArrayList<ReadRoom> listrd)
+		{
+			
 			System.out.println("enter name: ");
 			name=sc.nextLine();
 			System.out.println("enter author name: ");

@@ -47,9 +47,9 @@ public class Disk extends Document {
         System.out.println("disk RAM : "+this.Ram+" Gb ");
         System.out.println("time     : "+this.time +" minute");
     }
-     public void enterData(ArrayList<Document> list,ArrayList<ReadRoom> listrd)
+     public void enterData(ArrayList<ReadRoom> listrd)
     {
-        super.enterData(list, listrd);
+        super.enterData( listrd);
         while(true)
         {
             try{
