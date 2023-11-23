@@ -1,19 +1,19 @@
 package project_library;
 import java.util.Scanner;
 import java.lang.String;
-public class Data {
+public class Date {
     Scanner sc= new Scanner(System.in);
     private int day;
     private int month;
     private int year;
 
-    public Data()
+    public Date()           
     {
         day=0;
         month=0;
         year=0;
     }
-    public Data(int day,int month,int year)
+    public Date(int day,int month,int year)
     {
         this.day=day;
         this.month=month;

@@ -10,7 +10,8 @@ public class main {
 	public static DocumentManagement dmt=new DocumentManagement(document);
 	static ArrayList<Person> person=new ArrayList<Person>();
 	public static PersonManagement pmt=new PersonManagement(person);
-
+	static ArrayList<Card> card=new ArrayList<Card>();
+	public static CardManagement cmt=new CardManagement(card);
 
 	public static void main(String [] args) throws IOException
 	{
@@ -85,10 +86,6 @@ public class main {
 			System.out.println("error open file book !! ");
 			ex.printStackTrace();
 		}
-		String key;
-		System.out.println("enter press to continue ");
-		key=sc.nextLine();
-
 		//Đọc dữ liệu cho đĩa
 	 	try {
 			
@@ -144,9 +141,85 @@ public class main {
 		}
 		catch(Exception ex)
 		{
-			System.out.println("error open file staff!! ");
+			System.out.println("error open file reader!! ");
 			ex.printStackTrace();
 		}
+
+		//Đọc dữ liệu cho thẻ thường
+		try {
+			
+		BufferedReader br=new BufferedReader( new FileReader("C:\\Users\\ADMIN\\Desktop\\project-java\\NormalCard.txt"));
+		String line=br.readLine();
+			while(line!=null)
+			{
+                arr=line.split(",");
+                CardNormal dk=new CardNormal(arr[0],arr[1],Integer.parseInt(arr[2].trim()));
+                card.add(dk);
+                line=br.readLine();
+			}
+			br.close();		
+		}
+		catch(Exception ex)
+		{
+			System.out.println("error open file normal card!! ");
+			ex.printStackTrace();
+		}
+
+		// Đọc dữ liệu cho thẻ mượn
+		int b=0;int c=0;
+		try {
+			
+		BufferedReader br=new BufferedReader( new FileReader("C:\\Users\\ADMIN\\Desktop\\project-java\\BorrowCard.txt"));
+		String line=br.readLine();
+		ArrayList<CardDetail> cdl=new ArrayList<CardDetail>();
+		ArrayList<CardDetail> ctemp;
+		flag:while(line!=null)
+			{
+
+				if(line.contains("/"))
+				{
+					arr=line.split("/");
+					if(arr.length>1)
+					{
+					CardDetail cd=new CardDetail(arr[0],arr[1],arr[2]);
+					cdl.add(cd);
+					}
+					line=br.readLine();
+
+				}
+				else
+				{
+					ctemp=(ArrayList<CardDetail>) cdl.clone();
+					arr=line.split(",");
+					if(arr.length>1)
+					{
+					CardBorrow cb=new CardBorrow(arr[0],arr[1],ctemp);
+					card.add(cb);					
+					cdl.clear();
+					}
+					line=br.readLine();
+				}
+             
+			}
+			br.close();		
+		}
+		catch(Exception ex)
+		{
+			System.out.println("error open file borrow card!! ");
+			ex.printStackTrace();
+			 System.out.println("Press Enter to continue... ");
+		 String key1;
+		 key1=sc.nextLine();
+		}
+		
+       System.out.println("Press Enter to continue... ");
+		        String key21;
+		         key21=sc.nextLine();
+	
+		
+
+
+
 
 		
 		int a;
@@ -161,32 +234,36 @@ public class main {
 			System.out.println("6.search room");
 			System.out.println("7.add room");
 			System.out.println(" 8.edit room");
+			System.out.println("9.delete");
+			System.out.println("10.statictis");
 			System.out.println("0.end");
 			a=sc.nextInt();
 			sc.nextLine();
 			if(a==1)
 			{
-				pmt.Display();
-		 System.out.println("Press Enter to continue... ");
-		 String key1;
-		 key1=sc.nextLine();
+				
+				cmt.Display();
+				System.out.println("Press Enter to continue... ");
+		        String key1;
+		         key1=sc.nextLine();
+				
 
 			}
 			else if(a==2)
 			{
-				pmt.Add();
+				cmt.Add();
 			}
 			else if(a==3)
 			{
-				pmt.Delete();
+				cmt.Delete();
 			}
 			else if(a==4)
 			{
-				pmt.Edit();
+				cmt.Edit();
 			}
 			else if(a==5)
 			{
-				pmt.Search();
+				cmt.Search();
 			}
 			else if(a==6) rmt.Search();
 			else if (a==7) rmt.Add();

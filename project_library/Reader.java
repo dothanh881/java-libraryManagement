@@ -189,5 +189,13 @@ public class Reader extends Person {
 
         return moneyFee;
     };
+    public void Statistic()
+   {
+    int a=Reader.getNoReader();
+    System.out.println("total reader: "+a);
+    int b=Reader.getNoAddReader();
+    System.out.println("total reader add: "+b);
+   }
+    
     
 }

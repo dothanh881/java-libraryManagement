@@ -212,6 +212,13 @@ public class Staff extends Person{
         System.out.println("Salary of Staff: "+this.salary+" USD");
         return this.salary;
     }
+    public void Statistic()
+    {
+    int a=Staff.SumStaff();
+    System.out.println("total staff: "+a);
+    int b=Staff.AddStaff();
+    System.out.println("total staff add"+b);
+    }
 
     
 }

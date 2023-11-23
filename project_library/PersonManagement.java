@@ -16,6 +16,20 @@ public PersonManagement(ArrayList<Person> arr)
   list=arr;
 }
 
+public ArrayList<Reader> geListReader()
+{
+	ArrayList<Reader> rdr=new ArrayList<Reader>();
+	for(Person p: list)
+	{
+          if(p instanceof Reader)
+		  {
+			Reader r=(Reader) p;
+			rdr.add(r);
+		  }
+	}
+	return rdr;
+}
+
 public void pressContinue()
 	{
 		String keyContinue;
@@ -341,8 +355,10 @@ public void pressContinue()
     	{
     		sr.display();
             System.out.println("\n ");
-
     	}
 
     }
+
+   
+
 }

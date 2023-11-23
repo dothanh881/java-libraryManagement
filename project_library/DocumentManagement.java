@@ -6,6 +6,7 @@ public class DocumentManagement implements LibraryManagement {
     Scanner sc=new Scanner(System.in);
 	private ArrayList<Document> list;
     
+
     public DocumentManagement()
     {
         list=new ArrayList<Document>();
@@ -16,6 +17,11 @@ public class DocumentManagement implements LibraryManagement {
       list=arr;
     }
 
+	public ArrayList<Document> getDocumentManagement()
+	{
+             return list;
+	}
+     
     // hàm xóa màn hình
 	public void clearScreen()
 	{
@@ -73,7 +79,7 @@ public class DocumentManagement implements LibraryManagement {
     	    	{
 				
     	        case 1: // thêm sách
-    			Book bk=new Book();
+    			Document bk=new Book();
 				bk.enterData( main.rmt.getReadRoom());
 				bk.enterId(list);
 				list.add(bk);
@@ -82,7 +88,7 @@ public class DocumentManagement implements LibraryManagement {
 				break;
 
 			    case 2:
-				Disk dk=new Disk();
+				Document dk=new Disk();
 				dk.enterData( main.rmt.getReadRoom());
 				dk.enterId(list);
 				list.add(dk);
@@ -196,7 +202,7 @@ public  void Edit()
  
 		if(type==1)
 		{
-			Book sr=new Book();
+			Document sr=new Book();
 			temp.display();
 			System.out.println("enter data new for book");
 			sr.enterData( main.rmt.getReadRoom());	
@@ -206,7 +212,7 @@ public  void Edit()
 		}				 
 		else if(type==2)
 		{
-			Disk rd=new Disk();
+			Document rd=new Disk();
 			temp1.display();
 			System.out.println("enter data new for disk");
 			rd.enterData( main.rmt.getReadRoom()); 
