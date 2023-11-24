@@ -9,8 +9,8 @@ public class Date {
 
     public Date()           
     {
-        day=0;
-        month=0;
+       this. day=0;
+       this. month=0;
         year=0;
     }
     public Date(int day,int month,int year)
@@ -134,16 +134,16 @@ public class Date {
             try
             {
                 System.out.println("enter month: ");
-                this.day=sc.nextInt();
+                this.month=sc.nextInt();
                 sc.nextLine();
-                  if(day>12)
+                  if(this.month>12)
                    {
                         System.out.println("day must be greater than 0 and less than 13 !!please enter again month ");
                         pressContinue();
                         continue month;
                         
                    }
-                   else if(day<=0)
+                   else if(this.month<=0)
                    {
                         System.out.println("day must be greater than 0 and less than 13 !!please enter again month ");
                         pressContinue();
@@ -170,16 +170,16 @@ public class Date {
             try
             {
                 System.out.println("enter year: ");
-                this.day=sc.nextInt();
+                this.year=sc.nextInt();
                 sc.nextLine();
-                  if(day>2025)
+                  if(this.year<=2022)
                    {
                         System.out.println("day must be greater than 2022 and less than 2026 !!please enter again month ");
                         pressContinue();
                         continue year;
                         
                    }
-                   else if(day<=0)
+                   else if(this.year>2025)
                    {
                         System.out.println("day must be greater than 2022 and less than 2026 !!please enter again month ");
                         pressContinue();
@@ -204,9 +204,16 @@ public class Date {
 
        
     }
-    public String toString()
+    public String DayString()
     {
-        return this.month+" - "+this.day+" - "+this.year;
+        String tempMonth;
+        tempMonth=String.valueOf(this.month);
+        String tempDay;
+        tempDay=String.valueOf(this.day);
+        String tempYears;
+        tempYears=String.valueOf(this.year);
+        String tempDate=tempMonth+"-"+tempDay+"-"+tempYears;
+        return tempDate;
     }
 
     

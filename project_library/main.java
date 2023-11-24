@@ -245,6 +245,9 @@ public class main {
 			}
 			else if(a==3)
 			{
+		
+				
+
 				cmt.Delete();
 			}
 			else if(a==4)
@@ -253,7 +256,7 @@ public class main {
 			}
 			else if(a==5)
 			{
-				pmt.Search();
+				cmt.Search();
 			}
 			else if(a==6) pmt.Search();
 			else if (a==7) pmt.Add();

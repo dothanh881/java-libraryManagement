@@ -4,3 +4,4 @@ Nico Robin, Women, Spanin,41231,28,Vip,cd23,teacher
 Tony Chopper,Men, USA,41234,15,Normal,cd24,student 
 Doraemon,Men,Japan,12023,11,Business,cd25,student
 Nobi Nobita,Men,Japan,071299,12,Normal,cd26,student
+Huynh Khang,Men,Viet Nam,034852,14,Business,cd27,student

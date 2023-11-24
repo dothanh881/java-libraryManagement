@@ -67,6 +67,9 @@ public class Card {
         }
     }
 
+
+	
+
 	public static ArrayList<Reader> testIdOwner()
 	{
 		ArrayList<Reader> tio=new ArrayList<Reader>();

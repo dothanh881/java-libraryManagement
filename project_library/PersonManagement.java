@@ -250,7 +250,6 @@ public void pressContinue()
 	// Tìm kiếm
     public void Search()
 	{
-		int mq=0;
 		String request; ArrayList <Person>cmm=new ArrayList<Person>();
 	ArrayList<Person> cmn= new ArrayList<Person>();
 	System.out.println("enter key word person (id,address,name,gender) you want to search ");
@@ -267,7 +266,6 @@ public void pressContinue()
 		{
 			cmm.add(dm);
 			flag=1;
-			mq=1;
 		}
 		else if(gn.contains(temp)||ga.contains(temp)||gd.contains(temp)||gt.contains(temp))
 		{

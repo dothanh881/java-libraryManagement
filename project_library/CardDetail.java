@@ -16,9 +16,9 @@ public class CardDetail {
 	}
 	
 	public CardDetail() {
-		this.idDocument = " ";
-		this.timeBorrow = " ";
-		this.timeReturn = " ";
+		this.idDocument = "no ";
+		this.timeBorrow = "no ";
+		this.timeReturn = "no ";
 	}
 	
 	public String getIdDocument() {
@@ -44,10 +44,13 @@ public class CardDetail {
     {
         for(Document dt:main.dmt.getDocumentManagement())
         {
-            
-            if(dt.getId()==this.idDocument)
+			String temp=((dt.getId()).toLowerCase()).trim();
+			String tempthis=(this.idDocument.toLowerCase()).trim();
+            if(temp.contentEquals(tempthis))
             {
                 System.out.println("name book: "+dt.getName());
+				System.out.println("day borrow "+this.timeBorrow);
+				System.out.println("day return "+this.timeReturn);
             }
         }
     }

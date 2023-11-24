@@ -3,7 +3,7 @@ package project_library;
 import java.util.ArrayList;
 
 public class CardBorrow extends Card {
-        private ArrayList<CardDetail> listBorrow=new ArrayList<CardDetail>();
+        private ArrayList<CardDetail> listBorrow;
         private static int numberCardBorrow=0;
 
 	public CardBorrow(String idCard, String idOnwer, ArrayList<CardDetail> listBorrow) {
@@ -13,7 +13,7 @@ public class CardBorrow extends Card {
 	}
 	public CardBorrow() {
 		super();
-		this.listBorrow = null;
+		this.listBorrow =new ArrayList<CardDetail>();;
         numberCardBorrow++;
 	}
     public static int getNumberCardBorrow()
@@ -25,6 +25,14 @@ public class CardBorrow extends Card {
 	}
 	public void setListBorrow(ArrayList<CardDetail> listBorrow) {
 		this.listBorrow = listBorrow;
+	}
+
+    // hàm dừng màn hình
+	public void pressContinue()
+	{
+		String keyContinue;
+		System.out.println("Press Enter to continue... ");
+		keyContinue=sc.nextLine();
 	}
 
     public String getNameDocument(String iddocument)
@@ -126,14 +134,15 @@ public class CardBorrow extends Card {
                 {
                     int flag=0;String choose;
                    
-                       ClearScreen.clear();
-                       System.out.println("enter id owner card ");
-                       System.out.println("enter 'e' to end");
-                       System.out.println("\n");
+                       
                        for(Reader al:alts)
                        {
                            al.display();
                        }
+                       System.out.println("\n");
+                       System.out.println("enter id owner card ");
+                       System.out.println("enter 'e' to end");
+                       System.out.println("\n");
                        choose=sc.nextLine();
                        choose=(choose.toLowerCase()).trim();
                        if(choose.contentEquals("e")==true) break idOnwer;
@@ -182,7 +191,6 @@ public class CardBorrow extends Card {
                 pressContinue();
             }
         }
-        ClearScreen.clear();
         main.dmt.Display();
        
         ArrayList<String>ListIdDocument=new ArrayList<String>();
@@ -192,7 +200,7 @@ public class CardBorrow extends Card {
             ListIdDocument.add(temp12);
         }
         System.out.println("enter id of "+numbers+" document you want borrow and borrow day ,return day");
-        int i=1;
+        int i=0;
         System.out.println("\n");
         String choice;
        borrow: while (true)
@@ -211,16 +219,20 @@ public class CardBorrow extends Card {
                 System.out.println("enter day borrow");
                 Date ab=new Date();
                 ab.enterDate();
-                String db=ab.toString();
+                String db=ab.DayString();
+
                 System.out.println("enter day return ");
                 Date ar=new Date();
                 ar.enterDate();
-                String dr=ar.toString();
+                String dr=ar.DayString();
+
                 CardDetail moi =new CardDetail(choice,db,dr);
-                listBorrow.add(moi);
-                            i++;
+                pressContinue();
+                this.listBorrow.add(moi);
+                i++;
+                 if(i==numbers) break borrow;
+
             }
-            if(i==numbers) break borrow;
 
             
         }
