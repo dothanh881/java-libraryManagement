@@ -4,11 +4,12 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Card {
-       Scanner sc=new Scanner(System.in);
-       private static int numberCard=0;
+    Scanner sc=new Scanner(System.in);
+    private static int numberCard=0;
 
     protected String idCard;
-	   protected String idOnwer;
+	protected String idOnwer;
+
 	public Card(String idCard, String idOnwer)
 	{
 		this.idCard = idCard;
@@ -66,6 +67,21 @@ public class Card {
         }
     }
 
+	public static ArrayList<Reader> testIdOwner()
+	{
+		ArrayList<Reader> tio=new ArrayList<Reader>();
+		for(Reader cd:main.pmt.geListReader())
+		{
+          String temp=((cd.getIdcard()).toLowerCase()).trim();
+		  if((main.cmt.getIdOnwer()).contains(temp)!=true)
+		  {
+			tio.add(cd);
+	
+		  }
+		}
+		return tio;
+	}
+
     public void enterIdcard(ArrayList<Card> list)
     {
       id: while(true)
@@ -95,25 +111,12 @@ public class Card {
 					pressContinue();
 				}
 
-				
 			}
     }
 
-    public void enterDataNew(ArrayList<Card> list)
-    {
-       if(Reader.getNoReader()>CardBorrow.getNumberCardBorrow()+CardNormal.getNumberCardNormal())
-       {
-          for(Card p:main.cmt.getListCards())
-          {
-            String tempp=((p.getIdOnwer()).toLowerCase()).trim();
-            for(Person q:main.pmt.geListReader())
-            {
-                
-                   
-            }
-          }
-       }
-    }
+
+
+    
 
 
 	 

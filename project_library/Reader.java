@@ -71,10 +71,13 @@ public class Reader extends Person {
 	public void setMoneyFee(Double moneyFee) {
 		this.moneyFee = moneyFee;
 	}
+
     public void display()
     {
         super.display();
         System.out.println("job: "+this.job);
+        System.out.println("type card: "+this.typeCard);
+        
     }
 
     public void enterIdcard(ArrayList<Person> list)

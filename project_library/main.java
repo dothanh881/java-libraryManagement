@@ -210,17 +210,7 @@ public class main {
 			 System.out.println("Press Enter to continue... ");
 		 String key1;
 		 key1=sc.nextLine();
-		}
-		
-       System.out.println("Press Enter to continue... ");
-		        String key21;
-		         key21=sc.nextLine();
-	
-		
-
-
-
-
+		}		
 		
 		int a;
 		while(true)
@@ -232,7 +222,7 @@ public class main {
 			System.out.println("4.edit");
 			System.out.println("5.search");
 			System.out.println("6.search room");
-			System.out.println("7.add room");
+			System.out.println("7.add person");
 			System.out.println(" 8.edit room");
 			System.out.println("9.delete");
 			System.out.println("10.statictis");
@@ -263,10 +253,10 @@ public class main {
 			}
 			else if(a==5)
 			{
-				cmt.Search();
+				pmt.Search();
 			}
-			else if(a==6) rmt.Search();
-			else if (a==7) rmt.Add();
+			else if(a==6) pmt.Search();
+			else if (a==7) pmt.Add();
 			else if (a==8) rmt.Edit();
 			else if(a==9) rmt.Delete();
 			else if(a==0) break;
