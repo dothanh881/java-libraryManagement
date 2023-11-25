@@ -488,6 +488,7 @@ public class  RoomManagement implements LibraryManagement {
    // hàm tìm kiếm
    public  void Search() {
     String request; ArrayList<Room> rsr=new ArrayList<Room>();
+	ArrayList<Room> srsm =new ArrayList<Room>();
 	System.out.println("enter id or name room you want to search ");
 	request=sc.nextLine();
 	String temp=(request.toLowerCase()).trim();
@@ -509,12 +510,12 @@ public class  RoomManagement implements LibraryManagement {
 				if(gn.contains(temp)==true||gd.contains(temp)==true)
 				{
                   flagsg=2;
-				  rsr.add(srs);
+				  srsm.add(srs);
 				}
 				if(temp.contains(gn)==true||temp.contains(gd)==true)
 				{
                   flagsg=2;
-				  rsr.add(srs);
+				  srsm.add(srs);
 				}
 			}
 
@@ -534,27 +535,28 @@ public class  RoomManagement implements LibraryManagement {
 				if(gn.contains(temp)==true||gd.contains(temp)==true)
 				{
                   flagsg=2;
-				  rsr.add(srs);
+				  srsm.add(srs);
 				}
 				if(temp.contains(gn)==true||temp.contains(gd)==true)
 				{
                   flagsg=2;
-				  rsr.add(srs);
+				  srsm.add(srs);
 				}
 			}
         }
+	}
 	 if(flag==1)
 	{
 		System.out.println("information room you need search ");
 		for(Room rm:rsr)
     	{
-    		if(r instanceof ReadRoom)
+    		if(rm instanceof ReadRoom)
     		{
     			ReadRoom rd=(ReadRoom)rm;
     			rd.display();
                 System.out.println("\n ");
     		}
-    		else if(r instanceof ServiceRoom)
+    		else if(rm instanceof ServiceRoom)
     		{
     			ServiceRoom sr=(ServiceRoom)rm;
     			sr.display();
@@ -567,15 +569,15 @@ public class  RoomManagement implements LibraryManagement {
 	 if(flagsg==2)
 	{
 		System.out.println("list of room can you want to search");
-		for(Room rm:rsr)
+		for(Room rm:srsm)
     	{
-    		if(r instanceof ReadRoom)
+    		if(rm instanceof ReadRoom)
     		{
     			ReadRoom rd=(ReadRoom)rm;
     			rd.display();
                 System.out.println("\n ");
     		}
-    		else if(r instanceof ServiceRoom)
+    		else if(rm instanceof ServiceRoom)
     		{
     			ServiceRoom sr=(ServiceRoom)rm;
     			sr.display();
@@ -587,14 +589,14 @@ public class  RoomManagement implements LibraryManagement {
 		pressContinue();
 
 	}
-	if(flag==0&&flagsg==0)
+	else if(flag==0&&flagsg==0)
 	{
 		System.out.println("id or name room you entered no exist");
 		pressContinue();
 	}
 	
 
-   }
+   
 }
 
 
