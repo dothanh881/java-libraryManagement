@@ -71,6 +71,7 @@ public class CardManagement implements LibraryManagement {
 		for(Card r:list)
 		{
 			
+			
 				if(((r.getIdOnwer().toLowerCase()).trim()).contentEquals(m))
 				{
 					flag=1;
@@ -395,8 +396,6 @@ public class CardManagement implements LibraryManagement {
 		for(String n:suggestname)
 		{
 			int indexsug=checkIdOwner(n);
-			System.out.println("index: "+indexsug);
-			list.get(indexsug);
 			if(indexsug!=-1)
 			{
 				if(list.get(indexsug) instanceof CardNormal)

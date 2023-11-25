@@ -13,6 +13,18 @@ public class main {
 	static ArrayList<Card> card=new ArrayList<Card>();
 	public static CardManagement cmt=new CardManagement(card);
 
+	public static void  displayWork()
+	{
+		System.out.println("1.Add ");
+		System.out.println("2.Delete");
+		System.out.println("3.Edit");
+		System.out.println("4.Search ");
+		System.out.println("5.Display ");
+		System.out.println("0.end");
+		System.out.println("choose work");
+
+	}
+
 	public static void main(String [] args) throws IOException
 	{
 			Scanner sc=new Scanner(System.in);
@@ -212,57 +224,169 @@ public class main {
 		 key1=sc.nextLine();
 		}		
 		
-		int a;
-		while(true)
+		int chooseObject;int chooseRoom;int chooseDocument;int choosePerson;int chooseCard;
+	rdpr:while(true)
 		{
-			ClearScreen.clear();
-			System.out.println("1. display");
-			System.out.println("2.add");
-			System.out.println("3.delete");
-			System.out.println("4.edit");
-			System.out.println("5.search");
-			System.out.println("6.search room");
-			System.out.println("7.add person");
-			System.out.println(" 8.edit room");
-			System.out.println("9.delete");
-			System.out.println("10.statictis");
-			System.out.println("0.end");
-			a=sc.nextInt();
-			sc.nextLine();
-			if(a==1)
+			object:while(true)
 			{
-				
-				cmt.Display();
-				System.out.println("Press Enter to continue... ");
-		        String key1;
-		         key1=sc.nextLine();
-				
+				ClearScreen.clear();
+				System.out.println("choose object to work");
+				System.out.println("1.room ");
+				System.out.println("2.document");
+				System.out.println("3.person");
+				System.out.println("4.card ");
+				System.out.println("0.end ");
+				chooseObject=sc.nextInt();
+				sc.nextLine();
+				if(chooseObject==0) break rdpr;
+				else if(chooseObject==1)
+				{
+				    ClearScreen.clear();
+				    displayWork();
+					chooseRoom=sc.nextInt();
+					sc.nextLine();
+					if(chooseRoom==1)
+					{
+						rmt.Add();
+						pessContinue.press();
+					}
+					else if(chooseRoom==2)
+					{
+						rmt.Delete();
+						pessContinue.press();
+					}
+					else if(chooseRoom==3)
+					{
+						rmt.Edit();
+						pessContinue.press();
+					}
+					else if(chooseRoom==4)
+					{
+						rmt.Search();
+						pessContinue.press();
+					}
+					else if(chooseRoom==5)
+					{
+						rmt.Display();
+						pessContinue.press();
+					}
+
+				}
+				else if(chooseObject==2)
+				{
+					
+				    ClearScreen.clear();
+				    displayWork();
+					chooseDocument=sc.nextInt();
+					sc.nextLine();
+					if(chooseDocument==1)
+					{
+						ClearScreen.clear();
+						dmt.Add();
+						pessContinue.press();
+					}
+					else if(chooseDocument==2)
+					{
+						ClearScreen.clear();
+						dmt.Delete();
+						pessContinue.press();
+					}
+					else if(chooseDocument==3)
+					{
+						ClearScreen.clear();
+						dmt.Edit();
+						pessContinue.press();
+					}
+					else if(chooseDocument==4)
+					{
+						ClearScreen.clear();
+						dmt.Search();
+						pessContinue.press();
+					}
+					else if(chooseDocument==5)
+					{
+						ClearScreen.clear();
+						dmt.Display();
+						pessContinue.press();
+					}
+				}
+				else if(chooseObject==3)
+				{
+				    ClearScreen.clear();
+				    displayWork();
+					choosePerson=sc.nextInt();
+					sc.nextLine();
+					if(choosePerson==1)
+					{
+						ClearScreen.clear();
+						pmt.Add();
+						pessContinue.press();
+					}
+					else if(choosePerson==2)
+					{
+						ClearScreen.clear();
+						pmt.Delete();
+						pessContinue.press();
+					}
+					else if(choosePerson==3)
+					{
+						ClearScreen.clear();
+						pmt.Edit();
+						pessContinue.press();
+					}
+					else if(choosePerson==4)
+					{
+						ClearScreen.clear();
+						pmt.Search();
+						pessContinue.press();
+					}
+					else if(choosePerson==5)
+					{
+						ClearScreen.clear();
+						pmt.Display();
+						pessContinue.press();
+					}
+				}
+				else if(chooseObject==4)
+				{
+				    ClearScreen.clear();
+				    displayWork();
+					chooseCard=sc.nextInt();
+					sc.nextLine();
+					if(chooseCard==1)
+					{
+						ClearScreen.clear();
+						cmt.Add();
+						pessContinue.press();
+					}
+					else if(chooseCard==2)
+					{
+						ClearScreen.clear();
+						cmt.Delete();
+						pessContinue.press();
+					}
+					else if(chooseCard==3)
+					{
+						ClearScreen.clear();
+						cmt.Edit();
+						pessContinue.press();
+					}
+					else if(chooseCard==4)
+					{
+					    ClearScreen.clear();
+						cmt.Search();
+						pessContinue.press();
+					}
+					else if(chooseCard==5)
+					{
+						ClearScreen.clear();
+						cmt.Display();
+						pessContinue.press();
+					}
+				}
+
 
 			}
-			else if(a==2)
-			{
-				cmt.Add();
-			}
-			else if(a==3)
-			{
-		
-				
-
-				cmt.Delete();
-			}
-			else if(a==4)
-			{
-				cmt.Edit();
-			}
-			else if(a==5)
-			{
-				cmt.Search();
-			}
-			else if(a==6) pmt.Search();
-			else if (a==7) pmt.Add();
-			else if (a==8) rmt.Edit();
-			else if(a==9) rmt.Delete();
-			else if(a==0) break;
  
 		} 
 
