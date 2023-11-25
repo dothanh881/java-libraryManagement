@@ -34,7 +34,7 @@ public class main {
 		// đọc dữ liệu cho ServiceRoom
 		try {
 			
-		BufferedReader br=new BufferedReader( new FileReader("c:\\users\\admin\\desktop\\project-java\\ServiceRoom.txt "));
+		BufferedReader br=new BufferedReader( new FileReader("ServiceRoom.txt"));
 		String line=br.readLine();
 			while(line!=null)
 			{
@@ -55,7 +55,7 @@ public class main {
 		// đọc dữ liệu cho ReadRoom
 		
 		try {
-		BufferedReader br=new BufferedReader( new FileReader("c:\\users\\admin\\desktop\\project-java\\ReadRoom.txt "));
+		BufferedReader br=new BufferedReader( new FileReader("ReadRoom.txt "));
 		String line=br.readLine();
 			while(line!=null)
 			{
@@ -78,7 +78,7 @@ public class main {
 		//Đọc dữ liệu cho sách
 		try {
 			
-		BufferedReader br=new BufferedReader( new FileReader("C:\\Users\\ADMIN\\Desktop\\project-java\\Book.txt"));
+		BufferedReader br=new BufferedReader( new FileReader("Book.txt"));
 		String line=br.readLine();
 		 	while(line!=null)
 			{
@@ -101,7 +101,7 @@ public class main {
 		//Đọc dữ liệu cho đĩa
 	 	try {
 			
-		BufferedReader br=new BufferedReader( new FileReader("C:\\Users\\ADMIN\\Desktop\\project-java\\Disk.txt"));
+		BufferedReader br=new BufferedReader( new FileReader("Disk.txt"));
 		String line=br.readLine();
 			while(line!=null)
 			{
@@ -121,7 +121,7 @@ public class main {
 		//Đọc dữ liệu cho nhân viên
 		try {
 			
-		BufferedReader br=new BufferedReader( new FileReader("C:\\Users\\ADMIN\\Desktop\\project-java\\Staff.txt"));
+		BufferedReader br=new BufferedReader( new FileReader("Staff.txt"));
 		String line=br.readLine();
 			while(line!=null)
 			{
@@ -140,7 +140,7 @@ public class main {
 		//Đọc dữ liệu cho người đọc
 		try {
 			
-		BufferedReader br=new BufferedReader( new FileReader("C:\\Users\\ADMIN\\Desktop\\project-java\\Reader.txt"));
+		BufferedReader br=new BufferedReader( new FileReader("Reader.txt"));
 		String line=br.readLine();
 			while(line!=null)
 			{
@@ -160,7 +160,7 @@ public class main {
 		//Đọc dữ liệu cho thẻ thường
 		try {
 			
-		BufferedReader br=new BufferedReader( new FileReader("C:\\Users\\ADMIN\\Desktop\\project-java\\NormalCard.txt"));
+		BufferedReader br=new BufferedReader( new FileReader("NormalCard.txt"));
 		String line=br.readLine();
 			while(line!=null)
 			{
@@ -181,7 +181,7 @@ public class main {
 		int b=0;int c=0;
 		try {
 			
-		BufferedReader br=new BufferedReader( new FileReader("C:\\Users\\ADMIN\\Desktop\\project-java\\BorrowCard.txt"));
+		BufferedReader br=new BufferedReader( new FileReader("BorrowCard.txt"));
 		String line=br.readLine();
 		ArrayList<CardDetail> cdl=new ArrayList<CardDetail>();
 		ArrayList<CardDetail> ctemp;
