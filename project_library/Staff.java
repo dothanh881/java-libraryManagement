@@ -38,14 +38,19 @@ public class Staff extends Person{
     {
         return noAddStaff;
     }
-
+    public String getPosition() {
+        return position;
+    }
+    public void setPosition(String potion) {
+        this.position = potion;
+    }
     public void display()
     {
         super.display();
         System.out.println("position: "+this.position);
         System.out.println("\n");
     }
-
+      
 
     public void  enterData(ArrayList<Person>list,ArrayList<ServiceRoom>listsr)
     {

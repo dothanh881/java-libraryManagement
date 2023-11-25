@@ -14,16 +14,21 @@ public class main {
 	public static CardManagement cmt=new CardManagement(card);
 
 	public static void  displayWork()
-	{
-		System.out.println("1.Add ");
+	{   System.out.println("----------------------------------------------------------------------------------------------------");
+		System.out.printf("| %-14s | %-14s | %-14s |%-14s |%-14s |%-14s |\n"," 1. ADD "," 2. DELETE ","  3. EDIT ","  4 .SEARCH ", "  5. DISPLAY ","  0. END ");
+	    System.out.println("----------------------------------------------------------------------------------------------------");
+  	    System.out.println("choose work");
+		/*System.out.println("1.Add ");
 		System.out.println("2.Delete");
 		System.out.println("3.Edit");
 		System.out.println("4.Search ");
 		System.out.println("5.Display ");
 		System.out.println("0.end");
-		System.out.println("choose work");
+		System.out.println("choose work");*/
 
 	}
+
+	
 
 	public static void main(String [] args) throws IOException
 	{
@@ -39,10 +44,12 @@ public class main {
 			while(line!=null)
 			{
                 arr=line.split(",");
-				
-                ServiceRoom sr=new ServiceRoom(Integer.parseInt(arr[0]),arr[1],arr[2],arr[3]);
+				if(arr.length>1)
+                {ServiceRoom sr=new ServiceRoom(Integer.parseInt(arr[0]),arr[1],arr[2],arr[3]);
                 room.add(sr);
+				}
                 line=br.readLine();
+				
 			}
 			br.close();		
 		}
@@ -50,6 +57,8 @@ public class main {
 		{
 			System.out.println("error open file!! ");
 			e.printStackTrace();
+			pessContinue.press();
+
 		}
 		
 		// đọc dữ liệu cho ReadRoom
@@ -59,10 +68,14 @@ public class main {
 		String line=br.readLine();
 			while(line!=null)
 			{
-                arr=line.split(",");            
+                arr=line.split(",");    
+				if(arr.length>1)
+				{        
                 ReadRoom rd=new ReadRoom(Integer.parseInt(arr[0].trim()),arr[1],arr[2]);
                 room.add(rd);
+				}
                 line=br.readLine();
+				
 			}
 			br.close();		
 		}
@@ -106,9 +119,13 @@ public class main {
 			while(line!=null)
 			{
                 arr=line.split(",");
+				if(arr.length>1)
+				{
                 Disk dk=new Disk(arr[0],arr[1],arr[2],arr[3],Double.parseDouble(arr[4].trim()),Double.parseDouble(arr[5].trim()),arr[6]);
                 document.add(dk);
+				}
                 line=br.readLine();
+				
 			}
 			br.close();		
 		}
@@ -126,9 +143,13 @@ public class main {
 			while(line!=null)
 			{
                 arr=line.split(",");
+				if(arr.length>1)
+				{
                 Staff dk=new Staff(arr[0],arr[1],arr[2],arr[3],Integer.parseInt(arr[4].trim()),arr[5],arr[6]);
                 person.add(dk);
+				}
                 line=br.readLine();
+				
 			}
 			br.close();		
 		}
@@ -145,8 +166,11 @@ public class main {
 			while(line!=null)
 			{
                 arr=line.split(",");
+				if(arr.length>1)
+				{
                 Reader dk=new Reader(arr[0],arr[1],arr[2],arr[3],Integer.parseInt(arr[4].trim()),arr[5],arr[6],arr[7]);
                 person.add(dk);
+				}
                 line=br.readLine();
 			}
 			br.close();		
@@ -165,8 +189,11 @@ public class main {
 			while(line!=null)
 			{
                 arr=line.split(",");
+				if(arr.length>1)
+				{
                 CardNormal dk=new CardNormal(arr[0],arr[1],Integer.parseInt(arr[2].trim()));
                 card.add(dk);
+				}
                 line=br.readLine();
 			}
 			br.close();		
@@ -229,19 +256,27 @@ public class main {
 		{
 			object:while(true)
 			{
+				
 				ClearScreen.clear();
+				System.out.println("-------------------------------------------------------------------------------------");
+		        System.out.printf("| %-14s | %-14s | %-14s |%-14s |%-14s |\n"," 1. ROOM "," 2. DOCUMENT ","  3. PERSON ","  4 .CARD ","  0. END ");
+	            System.out.println("-------------------------------------------------------------------------------------");
 				System.out.println("choose object to work");
+				/*System.out.println("choose object to work");
 				System.out.println("1.room ");
 				System.out.println("2.document");
 				System.out.println("3.person");
 				System.out.println("4.card ");
-				System.out.println("0.end ");
+				System.out.println("0.end ");*/
 				chooseObject=sc.nextInt();
 				sc.nextLine();
 				if(chooseObject==0) break rdpr;
 				else if(chooseObject==1)
 				{
+					or:while(true)
+					{
 				    ClearScreen.clear();
+					System.out.println("    ROOM   ");
 				    displayWork();
 					chooseRoom=sc.nextInt();
 					sc.nextLine();
@@ -270,12 +305,16 @@ public class main {
 						rmt.Display();
 						pessContinue.press();
 					}
+					else if(chooseRoom==0) break or;
 
-				}
+				    }
+			    }
 				else if(chooseObject==2)
 				{
-					
+					od:while(true)
+					{
 				    ClearScreen.clear();
+					System.out.println("    DOCUMENT   ");
 				    displayWork();
 					chooseDocument=sc.nextInt();
 					sc.nextLine();
@@ -309,10 +348,15 @@ public class main {
 						dmt.Display();
 						pessContinue.press();
 					}
+					else if(chooseDocument==0) break od;
+				    }
 				}
 				else if(chooseObject==3)
 				{
 				    ClearScreen.clear();
+					ops:while(true)
+					{
+					System.out.println("    PERSON   ");
 				    displayWork();
 					choosePerson=sc.nextInt();
 					sc.nextLine();
@@ -346,10 +390,15 @@ public class main {
 						pmt.Display();
 						pessContinue.press();
 					}
+					else if(choosePerson==0) break ops;
+				    }
 				}
 				else if(chooseObject==4)
 				{
+					ocd:while(true)
+					{
 				    ClearScreen.clear();
+					System.out.println("     CARD     ");
 				    displayWork();
 					chooseCard=sc.nextInt();
 					sc.nextLine();
@@ -383,10 +432,12 @@ public class main {
 						cmt.Display();
 						pessContinue.press();
 					}
+					else if(chooseCard==0) break ocd;
+			      	}
 				}
-
-
+			   
 			}
+		    
  
 		} 
 

@@ -141,9 +141,13 @@ public class  RoomManagement implements LibraryManagement {
     	work_add:while(true)
     	{
 			clearScreen();
-			System.out.println("0. press number 0 to end add");
+			/*System.out.println("0. press number 0 to end add");
     		System.out.println("1. press number 1 to add service room ");
-    		System.out.println("2. press number 2 to add read room ");
+    		System.out.println("2. press number 2 to add read room ");*/
+			System.out.println("          ADD ROOM        ");
+			System.out.println("-------------------------------------------------------------------------------------------");
+			System.out.printf("| %-27s | %-27s | %-27s |\n"," 1. ADD SERVICE ROOM "," 2. ADD READ ROOM ","          0. END ");
+			System.out.println("-------------------------------------------------------------------------------------------");
     		System.out.println("enter type room want to add ");
 			choose=sc.nextInt();
 			sc.nextLine();
@@ -173,7 +177,7 @@ public class  RoomManagement implements LibraryManagement {
     					    {
 								
 								System.out.println("number room service you enter is exits !! ");
-								list.get(checkNo).display();
+								list.get(checkNo).displayTable();
 								System.out.println("please enter again");
 								pressContinue();
 
@@ -182,9 +186,9 @@ public class  RoomManagement implements LibraryManagement {
 							else if(checkId!=-1) // báo lỗi và yêu cầu nhập lại nếu người dùng nhập trùng id phòng
 							{
 								System.out.println("id room service you enter is exits !! ");
-								System.out.println("id you enter: "+srv.getRoomId());
-								System.out.println("\n id trung: "+list.get(checkId));
-								list.get(checkId).display();
+								//System.out.println("id you enter: "+srv.getRoomId());
+								//System.out.println("\n id trung: "+list.get(checkId));
+								list.get(checkId).displayTable();
 								System.out.println("please enter again");
 								pressContinue();
 							}
@@ -212,7 +216,7 @@ public class  RoomManagement implements LibraryManagement {
     					    {
 								
 								System.out.println("number room read you enter is exits !! ");
-								list.get(checkNo).display();
+								list.get(checkNo).displayTable();
 								System.out.println("please enter again");
 								pressContinue();
 
@@ -221,7 +225,7 @@ public class  RoomManagement implements LibraryManagement {
 							else // báo lỗi và yêu cầu nhập lại nếu người dùng nhập trùng id phòng
 							{
 								System.out.println("id room you enter is exits!! please enter again ");
-								list.get(checkId).display();
+								list.get(checkId).displayTable();
 								System.out.println("please enter again");
 								pressContinue();
 							}
@@ -265,8 +269,8 @@ public class  RoomManagement implements LibraryManagement {
 			String yes="y";
 			String no="n";
 			clearScreen();
-			list.get(checkId).display();
-			
+			list.get(checkId).displayTable();
+			System.out.println("\n");
             action:while(true){
 			
 			System.out.println("are you sure want to delete this (yes/no)? ");
@@ -341,7 +345,7 @@ public class  RoomManagement implements LibraryManagement {
 				if(type==1)
 				{
 					ServiceRoom sr=new ServiceRoom();
-					temp.display();
+					temp.displayTable();
 				    System.out.println("enter data new for service room");
 					sr.enterData();	
 					sr.setAreaPlace(areawork);
@@ -358,7 +362,7 @@ public class  RoomManagement implements LibraryManagement {
 						if(checktype1!=-1 )
 						{
                             System.out.println("\n");
-					        list.get(checktype1).display();
+					        list.get(checktype1).displayTable();
 					        System.out.println("id room is exist !! please enter again id room");
 					        System.out.println("\n");
 				         	end=sc.nextLine();
@@ -367,7 +371,7 @@ public class  RoomManagement implements LibraryManagement {
 						}
 						else if(checktype2!=-1 )
 						{
-                          list.get(checktype2).display();
+                          list.get(checktype2).displayTable();
 					      System.out.println("\n");
 						  while(true)
 						  {
@@ -412,7 +416,7 @@ public class  RoomManagement implements LibraryManagement {
 						if(checktype1!=-1 )
 						{
                             System.out.println("\n");
-					        list.get(checktype1).display();
+					        list.get(checktype1).displayTable();
 					        System.out.println("iD room is exist !! please enter again id room");
 					        System.out.println("\n");
 				         	end=sc.nextLine();
@@ -422,7 +426,7 @@ public class  RoomManagement implements LibraryManagement {
 						else if(checktype2!=-1 )
 						{
 						  System.out.println("\n");
-                          list.get(checktype2).display();
+                          list.get(checktype2).displayTable();
 						   System.out.println("\n");
 					       while(true)
 						  {
@@ -553,14 +557,12 @@ public class  RoomManagement implements LibraryManagement {
     		if(rm instanceof ReadRoom)
     		{
     			ReadRoom rd=(ReadRoom)rm;
-    			rd.display();
-                System.out.println("\n ");
+    			rd.displayTable();
     		}
     		else if(rm instanceof ServiceRoom)
     		{
     			ServiceRoom sr=(ServiceRoom)rm;
-    			sr.display();
-				System.out.println("\n ");
+    			sr.displayTable();
 
     		}
     	}
@@ -604,10 +606,51 @@ public class  RoomManagement implements LibraryManagement {
     // Hàm hiển thị dữ liệu
     public void Display()
     {
-		        
+		ArrayList<ServiceRoom> service=new ArrayList<ServiceRoom>();
+		System.out.println("        READ ROOM LIST       ");
+        System.out.println("--------------------------------------------------");
+        System.out.printf("| %-15s | %-15s | %-15s |\n", "number room ", "room id", "ID document ");
+        System.out.println("--------------------------------------------------");
 
+            for (Room listTest :list) 
+			{
+                if (listTest instanceof ReadRoom) {
+                    ReadRoom clothing = (ReadRoom) listTest;
+                    System.out.printf("| %-15s | %-15s | %-15s |\n",clothing.getNoRoom(), clothing.getRoomId(),clothing.IdDocument());        
+                }
+				else if(listTest instanceof ServiceRoom)
+    		   {
+    			ServiceRoom sr=(ServiceRoom)listTest;
+    			service.add(sr);
+    		   }
+            }
+		System.out.println("--------------------------------------------------");
 
-    	ArrayList<ServiceRoom> service=new ArrayList<ServiceRoom>();
+		System.out.println("\n");
+
+		System.out.println("        SERVICE ROOM LIST       ");
+        System.out.println("------------------------------------------------------------------------------------------");
+        System.out.printf("| %-15s | %-15s | %-35s | %-15s |\n","number room ", "room id", "name ","area ID");       
+        System.out.println("------------------------------------------------------------------------------------------");
+
+            for (Room listTest :list) {
+                if (listTest instanceof ServiceRoom) {
+                    ServiceRoom clothing = (ServiceRoom) listTest;
+                    System.out.printf("| %-15s | %-15s | %-35s |  %-15s |\n",clothing.getNoRoom(), clothing.getRoomId(),clothing.getName(), clothing.getAreaPlace());
+
+                }
+				else if(listTest instanceof ServiceRoom)
+    		   {
+    			ServiceRoom sr=(ServiceRoom)listTest;
+    			service.add(sr);
+    		   }
+            }
+        }
+
+    }
+		
+
+    	/*ArrayList<ServiceRoom> service=new ArrayList<ServiceRoom>();
 		System.out.println("===============*==============");
     	System.out.println("list of read room: ");
 		System.out.println("\n");
@@ -637,10 +680,10 @@ public class  RoomManagement implements LibraryManagement {
 
     	}
     	
-    }
+    }*/
 
 	
   
-  
-}
+
+
 

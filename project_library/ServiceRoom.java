@@ -61,6 +61,14 @@ public void display()
   System.out.println("arae work: "+this.areaPlace);
 
 }
+public void displayTable()
+{
+  System.out.println("------------------------------------------------------------------------------------------");
+  System.out.printf("| %-15s | %-15s | %-35s | %-15s |\n","number room ", "room id", "name ","area ID");       
+  System.out.println("------------------------------------------------------------------------------------------");
+  System.out.printf("| %-15s | %-15s | %-35s |  %-15s |\n",this.getNoRoom(), this.getRoomId(),this.getName(), this.getAreaPlace());
+
+}
 public void enterData()
 {
 	super.enterData();

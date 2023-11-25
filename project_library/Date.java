@@ -89,7 +89,7 @@ public class Date {
             this.year=years;
         }
     }
-
+    
     public void enterDate()
     {
        day: while(true)
@@ -128,7 +128,7 @@ public class Date {
             }
 
         }
-
+       System.out.println("\n");
         month: while(true)
         {
             try
@@ -165,6 +165,7 @@ public class Date {
             }
 
         }
+        System.out.println("\n");
         year: while(true)
         {
             try

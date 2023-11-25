@@ -130,12 +130,17 @@ public class CardManagement implements LibraryManagement {
 			  int choose;       
 			  work_add:while(true)
 			  {
-				  ClearScreen.clear();
-				  System.out.println("0. press number 0 to end add card");
-				  System.out.println("1. press number 1 to add card normal ");
-				  System.out.println("2. press number 2 to add card borrow(vip,bussines) ");
-				  System.out.println("enter type card want to add follow number  ");
-				   choose=sc.nextInt();
+				ClearScreen.clear();
+
+				 // System.out.println("0. press number 0 to end add card");
+				//  System.out.println("1. press number 1 to add card normal ");
+				//  System.out.println("2. press number 2 to add card borrow(vip,bussines) ");
+				System.out.println("          ADD CARD        ");
+				System.out.println("-------------------------------------------------------------------------------------");
+				System.out.printf("| %-25s | %-25s | %-25s |\n"," 1. ADD CARD NORMAL "," 2. ADD CARD BORROW ","  0. END ");
+				System.out.println("-------------------------------------------------------------------------------------");
+    		    System.out.println("enter type card want to add ");
+				  choose=sc.nextInt();
 				  sc.nextLine();
 				  if(choose==0) break work_add ;			
 				switch(choose)
@@ -484,7 +489,39 @@ public class CardManagement implements LibraryManagement {
 
    public void Display()
    {
-      ArrayList<CardBorrow> cardnormals=new  ArrayList<CardBorrow>();
+	ArrayList<CardBorrow> cardnormals=new  ArrayList<CardBorrow>();
+	System.out.println("        NORMAL CARD LIST      ");
+	System.out.println("-------------------------------------------------------------------------------------------------------------------------------");
+	System.out.printf("| %-15s |%-15s | %-36s | %-15s |%-20s |\n","ID Reader ","ID Card", "Name Reader", "Type Card  ","Time Use(day) ");
+	for(Card listTest:list)
+	{
+		if(listTest instanceof CardNormal)
+		{
+			CardNormal bk=(CardNormal)listTest;
+			System.out.printf("| %-15s |%-15s | %-36s | %-15s |%-20s |\n",bk.getIdReader(), bk.getIdCard(), bk.getNameReader(),bk.getIdTypeCard(),bk.getTimeUse());
+
+		}
+		else if(listTest instanceof CardBorrow)
+		{
+			CardBorrow dk=(CardBorrow)listTest;
+			cardnormals.add(dk);
+		}
+	}
+	System.out.println("------------------------------------------------------------------------------------------------------------------------------");
+	System.out.println("\n");
+	System.out.println("          BORROW CARD    ");
+	System.out.println("-------------------------------------------------------------------------------------------------------------------------");
+	System.out.printf("| %-15s | %-15s | %-36s |%-15s |%-20s |\n","ID Reader ", "ID Card", "Name Reader  ","Type Card ","Time Use ");
+	for(CardBorrow sr:cardnormals)
+	{
+		System.out.printf("| %-15s | %-15s | %-36s |%-15s |%-20s |\n",sr.getIdReader(), sr.getIdCard(), sr.getNameReader(),sr.getIdTypeCard()," 1 Year ");
+
+	}
+	System.out.println("--------------------------------------------------------------------------------------------------------------------------");
+
+
+
+     /*  ArrayList<CardBorrow> cardnormals=new  ArrayList<CardBorrow>();
 		System.out.println("===============*==============");
     	System.out.println("list of card normal: ");
 		System.out.println("\n");
@@ -511,6 +548,6 @@ public class CardManagement implements LibraryManagement {
     		   sr.display();
             System.out.println("\n ");
 
-    	}
+    	}*/
    }
 }

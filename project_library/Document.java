@@ -71,6 +71,10 @@ public class Document {
 			System.out.println("type  : "+this.type);
 			System.out.println("id document: "+this.potion);
 		}
+		public void displayTable()
+		{
+
+		}
 
 		public void searchLocation(ArrayList<ReadRoom> listrd)
 		{
@@ -96,10 +100,9 @@ public class Document {
 			    for(ReadRoom r:rdd)
 			    {
 					System.out.println("\n");
-					r.display();
+					r.displayTable();
 					System.out.println();
 			    }
-				pressContinue();
 			 }
 
 		}
@@ -128,7 +131,7 @@ public class Document {
 				if(flag==1) 
 				{
 					System.out.println("\n");
-					list.get(index).display();
+					list.get(index).displayTable();
 					System.out.println("Id document is exist!!please enter again");
 					pressContinue();
 				}
@@ -182,7 +185,7 @@ public class Document {
 				   else if(flag1==0)
 				   {
 					System.out.println("\n");
-					  System.out.println("number room you enter is exist !!please enter again");
+					  System.out.println("number room you enter is not exist !!please enter again");
 					  pressContinue();
 					  System.out.println("\n");
 				   }

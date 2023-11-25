@@ -42,6 +42,57 @@ public class Card {
 		keyContinue=sc.nextLine();
 	}
 
+	public String getNameReader()
+	{
+		String m="NULL";
+		 for(Reader pn:main.pmt.geListReader() )
+        {
+            String temp=((this.idOnwer).toLowerCase()).trim();
+            String gid=((pn.getIdcard()).toLowerCase()).trim();
+            if(temp.contentEquals(gid))
+            {
+               m=pn.getName();
+                break;
+            }
+            
+        }
+		return m;
+	}
+	public String getIdReader()
+	{
+		String m="NULL";
+		 for(Reader pn:main.pmt.geListReader() )
+        {
+            String temp=((this.idOnwer).toLowerCase()).trim();
+            String gid=((pn.getIdcard()).toLowerCase()).trim();
+            if(temp.contentEquals(gid))
+            {
+               m=pn.getId();
+                break;
+            }
+            
+        }
+		return m;
+	}
+	public String getIdTypeCard()
+	{
+		String m="NULL";
+		 for(Reader pn:main.pmt.geListReader() )
+        {
+            String temp=((this.idOnwer).toLowerCase()).trim();
+            String gid=((pn.getIdcard()).toLowerCase()).trim();
+            if(temp.contentEquals(gid))
+            {
+               m=pn.getTypeCard();
+                break;
+            }
+            
+        }
+		return m;
+	}
+	
+	
+
     public void display()
     {
         int flag=0;
@@ -62,8 +113,8 @@ public class Card {
         }
         if(flag==0)
         {
-            System.out.println("id reader: reader is deleted before ");
-            System.out.println("name reader: reader is deleted before");
+            System.out.println("id reader: NULL ");
+            System.out.println("name reader: NULL");
         }
     }
 

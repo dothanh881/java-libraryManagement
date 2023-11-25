@@ -33,6 +33,14 @@ public class Book extends Document {
         super.display();
         System.out.println("book page: "+this.page);
     }
+    public void displayTable()
+    {
+        System.out.println("----------------------------------------------------------------------------------------------------------------------------------");
+        System.out.printf("| %-15s | %-50s | %-30s |%-23s |%-5s |\n","ID ", "Name", "Author  ","Type ","Page ");
+        System.out.println("----------------------------------------------------------------------------------------------------------------------------------");
+        System.out.printf("| %-15s | %-50s | %-30s |%-23s |%-5s |\n",this.getId(), this.getName(), this.getAuthor(),this.getType(),this.getPage());
+
+    }
     public void enterData(ArrayList<ReadRoom> listrd)
     {
         super.enterData(listrd);

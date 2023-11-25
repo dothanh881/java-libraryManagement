@@ -200,13 +200,13 @@ public class CardBorrow extends Card {
             ListIdDocument.add(temp12);
         }
         System.out.println("enter id of "+numbers+" document you want borrow and borrow day ,return day");
-        int i=0;
+        int i=0;int in=i+1;
         System.out.println("\n");
         String choice;
        borrow: while (true)
         {
             CardDetail cd=new CardDetail();
-            System.out.println("enter id document "+i+" want borrow");
+            System.out.println("enter id document+"+in+ " want borrow");
             choice=sc.nextLine();
             choice=(choice.toLowerCase()).trim();
             if(ListIdDocument.contains(choice)!=true)
@@ -220,7 +220,7 @@ public class CardBorrow extends Card {
                 Date ab=new Date();
                 ab.enterDate();
                 String db=ab.DayString();
-
+                System.out.println("\n");
                 System.out.println("enter day return ");
                 Date ar=new Date();
                 ar.enterDate();
@@ -230,6 +230,7 @@ public class CardBorrow extends Card {
                 pressContinue();
                 this.listBorrow.add(moi);
                 i++;
+                in=i+1;
                  if(i==numbers) break borrow;
 
             }

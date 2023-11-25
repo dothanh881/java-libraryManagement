@@ -55,6 +55,11 @@ Scanner sc=new Scanner(System.in);
 		System.out.println("number room: "+this.noRoom);
 		System.out.println("id room: "+this.roomId);
 	}
+    public void displayTable()
+	{
+
+	};
+
 	
 	// nhập dữ liệu
 	public void enterData()

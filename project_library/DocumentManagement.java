@@ -68,9 +68,14 @@ public class DocumentManagement implements LibraryManagement {
             work_add:while(true)
     	    {
 			    clearScreen();
-			    System.out.println("0. press number 0 to end add document");
+			  /*   System.out.println("0. press number 0 to end add document");
     		    System.out.println("1. press number 1 to add book ");
     		    System.out.println("2. press number 2 to add read disk ");
+				*/
+				System.out.println("          ADD DOCUMENT        ");
+				System.out.println("-----------------------------------------------------------------------");
+				System.out.printf("| %-20s | %-20s | %-20s |\n"," 1. ADD BOOK "," 2. ADD DISK ","  0. END ");
+				System.out.println("-----------------------------------------------------------------------");
     		    System.out.println("enter type document want to add ");
 		     	choose=sc.nextInt();
 		    	sc.nextLine();
@@ -132,8 +137,8 @@ public class DocumentManagement implements LibraryManagement {
 			String yes="y";
 			String no="n";
 			clearScreen();
-			list.get(checkId).display();
-			
+			list.get(checkId).displayTable();
+			System.out.println("\n");
             action:while(true)
 			{			
 			   System.out.println("are you sure want to delete  this document (yes/no)? ");			
@@ -203,7 +208,8 @@ public  void Edit()
 		if(type==1)
 		{
 			Document sr=new Book();
-			temp.display();
+			temp.displayTable();
+			System.out.println("\n");
 			System.out.println("enter data new for book");
 			sr.enterData( main.rmt.getReadRoom());	
 			sr.setId(id);						
@@ -213,7 +219,8 @@ public  void Edit()
 		else if(type==2)
 		{
 			Document rd=new Disk();
-			temp1.display();
+			temp1.displayTable();
+			System.out.println("\n");
 			System.out.println("enter data new for disk");
 			rd.enterData( main.rmt.getReadRoom()); 
 			rd.setId(id1);           
@@ -288,13 +295,13 @@ public  void Search()
 			if(c instanceof Book)
 			{
 				Book cr=(Book) c;
-				cr.display();
+				cr.displayTable();
 				cr.searchLocation(main.rmt.getReadRoom());
 			}
 			else if( c instanceof Disk)
 			{
 				Disk dr= (Disk) c;
-				dr.display();
+				dr.displayTable();
 				dr.searchLocation(main.rmt.getReadRoom());
 			}
 
@@ -327,8 +334,38 @@ public  void Search()
 }
 
   public   void Display()
-  {
-    ArrayList<Disk> disk=new ArrayList<Disk>();
+  {    ArrayList<Disk> disk=new ArrayList<Disk>();   
+	    System.out.println("        BOOK LIST      ");
+        System.out.println("----------------------------------------------------------------------------------------------------------------------------------");
+        System.out.printf("| %-15s | %-50s | %-30s |%-23s |%-5s |\n","ID ", "Name", "Author  ","Type ","Page ");
+		for(Document listTest:list)
+    	{
+    		if(listTest instanceof Book)
+    		{
+    			Book bk=(Book)listTest;
+				System.out.printf("| %-15s | %-50s | %-30s |%-23s |%-5s |\n",bk.getId(), bk.getName(), bk.getAuthor(),bk.getType(),bk.getPage());
+
+    		}
+    		else if(listTest instanceof Disk)
+    		{
+    			Disk dk=(Disk)listTest;
+    			disk.add(dk);
+    		}
+    	}
+		System.out.println("-----------------------------------------------------------------------------------------------------------------------------------");
+		System.out.println("\n");
+        System.out.println("          DISK LIST");
+		System.out.println("----------------------------------------------------------------------------------------------------------------------------------");
+        System.out.printf("| %-14s | %-37s | %-25s |%-17s |%-15s |%-15s |\n","ID ", "Name", "Author  ","Type ","Time (minute) ","Ram (Gb) ");
+    	for(Disk sr:disk)
+    	{
+    		System.out.printf("| %-14s | %-37s | %-25s |%-17s |%-15s |%-15s |\n",sr.getId(), sr.getName(), sr.getAuthor(),sr.getType(),sr.getTime(),sr.getRam());
+
+    	}
+		System.out.println("----------------------------------------------------------------------------------------------------------------------------------");
+
+
+   /*  ArrayList<Disk> disk=new ArrayList<Disk>();
 		System.out.println("===============*==============");
     	System.out.println("list of book: ");
 		System.out.println("\n");
@@ -357,7 +394,7 @@ public  void Search()
 
     	}
 
-  }
+  }*/
     
-    
+   }
 }

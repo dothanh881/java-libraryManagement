@@ -1,5 +1,6 @@
 package project_library;
 
+import java.security.AlgorithmParameterGeneratorSpi;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -40,6 +41,12 @@ public String getGender() {
 }
 public void setGender(String gender) {
 	this.gender = gender;
+}
+public int getAge() {
+	return age;
+}
+public void setAge(int Age) {
+	this.age = Age;
 }
 public String getAddress() {
 	return adress;

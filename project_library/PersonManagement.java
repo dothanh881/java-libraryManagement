@@ -69,9 +69,14 @@ public void pressContinue()
 			  work_add:while(true)
 			  {
 				  ClearScreen.clear();
-				  System.out.println("0. press number 0 to end add person");
+				 /*  System.out.println("0. press number 0 to end add person");
 				  System.out.println("1. press number 1 to add staff ");
 				  System.out.println("2. press number 2 to add reader ");
+				  System.out.println("enter type person want to add follow number  ");*/
+                  System.out.println("         ADD PERSON          ");
+				  System.out.println("-----------------------------------------------------------------------");
+				  System.out.printf("| %-20s | %-20s | %-20s |\n"," 1. ADD STAFF "," 2. ADD READER ","  0. END ");
+				  System.out.println("-----------------------------------------------------------------------");
 				  System.out.println("enter type person want to add follow number  ");
 				   choose=sc.nextInt();
 				  sc.nextLine();
@@ -328,7 +333,37 @@ public void pressContinue()
     public void Display()
     {
         ArrayList<Reader> disk=new ArrayList<Reader>();
-		System.out.println("===============*==============");
+		System.out.println("        STAFF LIST       ");
+        System.out.println("-----------------------------------------------------------------------------------------------------------------------------");
+        System.out.printf("| %-15s | %-27s | %-10s |%-20s |%-10s |%-15s |\n","ID ", "Name", "Gender  ","Address ","Age ","Position ");
+        for(Person listTest:list)
+    	{
+    		if(listTest instanceof Staff)
+    		{
+    			Staff bk=(Staff)listTest;
+				System.out.printf("| %-15s | %-27s | %-10s |%-20s |%-10s |%-15s |\n",bk.getId(), bk.getName(), bk.getGender(),bk.getAddress(),bk.getAge(),bk.getPosition());
+    		}
+    		else if(listTest instanceof Reader)
+    		{
+    			Reader dk=(Reader)listTest;
+    			disk.add(dk);
+    		}
+    	} 
+		System.out.println("-----------------------------------------------------------------------------------------------------------------------------");
+         System.out.println("\n");
+
+		System.out.println("        READER LIST       ");
+        System.out.println("---------------------------------------------------------------------------------------------------------------------------------------------");
+        System.out.printf("| %-15s | %-27s | %-10s |%-20s |%-10s |%-15s |%-15s |\n","ID ", "Name", "Gender  ","Address ","Age ","Type card ","Job ");
+        for(Reader bk:disk)
+    	{
+    		
+			System.out.printf("| %-15s | %-27s | %-10s |%-20s |%-10s |%-15s |%-15s |\n",bk.getId(), bk.getName(), bk.getGender(),bk.getAddress(),bk.getAge(),bk.getTypeCard(),bk.getJob());
+    		
+    	} 
+		System.out.println("---------------------------------------------------------------------------------------------------------------------------------------------");
+
+		/*System.out.println("===============*==============");
     	System.out.println("list of Staff: ");
 		System.out.println("\n");
     	for(Person listTest:list)
@@ -353,7 +388,7 @@ public void pressContinue()
     	{
     		sr.display();
             System.out.println("\n ");
-    	}
+    	}*/
 
     }
 

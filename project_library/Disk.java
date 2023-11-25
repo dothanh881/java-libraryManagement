@@ -47,6 +47,14 @@ public class Disk extends Document {
         System.out.println("disk RAM : "+this.Ram+" Gb ");
         System.out.println("time     : "+this.time +" minute");
     }
+    public void displayTable()
+    {
+        System.out.println("----------------------------------------------------------------------------------------------------------------------------------");
+        System.out.printf("| %-14s | %-37s | %-25s |%-17s |%-15s |%-15s |\n","ID ", "Name", "Author  ","Type ","Time (minute) ","Ram (Gb) ");
+        System.out.println("----------------------------------------------------------------------------------------------------------------------------------");
+        System.out.printf("| %-14s | %-37s | %-25s |%-17s |%-15s |%-15s |\n",this.getId(), this.getName(), this.getAuthor(),this.getType(),this.getTime(),this.getRam());
+
+    }
      public void enterData(ArrayList<ReadRoom> listrd)
     {
         super.enterData( listrd);

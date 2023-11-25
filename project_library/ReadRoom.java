@@ -50,7 +50,17 @@ public class ReadRoom extends Room {
 	public void display()
 	{
 		super.display();
-		System.out.println("Id Document: "+this.IdDocument);
+		System.out.println("ID document "+this.IdDocument);
+	}
+	public void displayTable()
+	{
+	 System.out.println("--------------------------------------------------");
+     System.out.printf("| %-15s | %-15s | %-15s |\n", "number room ", "room id", "ID document ");
+	 System.out.println("--------------------------------------------------");
+	 System.out.printf("| %-15s | %-15s | %-15s |\n",this.getNoRoom(), this.getRoomId(),this.IdDocument());        
+	 System.out.println("--------------------------------------------------");
+
+
 	}
 	
 	public void enterIdDocument(ArrayList<Room> list)
