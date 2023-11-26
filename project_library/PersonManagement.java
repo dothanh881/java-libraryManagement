@@ -114,6 +114,8 @@ public void pressContinue()
 			  pressContinue();
 		  }
 		}
+		pessContinue.press();
+		ClearScreen.clear();
 	}
 
 
@@ -124,7 +126,7 @@ public void pressContinue()
 		System.out.println("enter id person you want to delete ");
 		request=sc.nextLine();
 		request.toLowerCase();
-		Room r=new Room();int flag=0;String choice;int i=0;int index=0;
+		String choice;
 		int checkId=checkIdPerson(request);
 		
 		if(checkId==-1) {
@@ -137,7 +139,7 @@ public void pressContinue()
 			String yes="y";
 			String no="n";
 			ClearScreen.clear();
-			list.get(checkId).display();
+			list.get(checkId).displayTable();
 			
             action:while(true)
 			{			
@@ -167,6 +169,8 @@ public void pressContinue()
 			
 
 		}
+		pressContinue();
+		ClearScreen.clear();
 	}
 
 	//
@@ -175,7 +179,7 @@ public void pressContinue()
 		Display();
 		String request;String save;int type=0;
 		System.out.println("enter id person you want to edit ");
-		request=sc.nextLine();String end=" ";int new_num;
+		request=sc.nextLine();
 		request=(request.toLowerCase()).trim();
 		int checkId=checkIdPerson(request);
 			
@@ -206,7 +210,7 @@ public void pressContinue()
 			if(type==1)
 			{
 				Staff sr=new Staff();
-				temp.display();
+				temp.displayTable();
 				System.out.println("enter data new for Staff");
 				sr.enterData(list, main.rmt.getServiceRoom());							
 				 list.add(checkId, sr);				    
@@ -215,7 +219,7 @@ public void pressContinue()
 			else if(type==2)
 			{
 				Reader rd=new Reader();
-				temp1.display();
+				temp1.displayTable();
 				System.out.println("enter data new for Reader");
 				rd.enterData(list);   
 				rd.setIdcard(idcards);         
@@ -250,6 +254,8 @@ public void pressContinue()
 					}
 	 
 		}
+		pressContinue();
+		ClearScreen.clear();
 	}
 
 	// Tìm kiếm
@@ -313,19 +319,20 @@ public void pressContinue()
 			if(c instanceof Staff)
 			{
 				Staff cr=(Staff) c;
-				cr.display();
+				cr.displayTable();
 				cr.searchLocation(main.rmt.getServiceRoom());
 		
 			}
 			else if( c instanceof Reader)
 			{
 				Reader dr= (Reader) c;
-				dr.display();
+				dr.displayTable();
 			}
 		}
 	}
 	if(flag==0 && flagsg==0) System.out.println("No person found matching the keyword!!");
 	pressContinue();
+	ClearScreen.clear();
 
 	}
 
@@ -389,7 +396,8 @@ public void pressContinue()
     		sr.display();
             System.out.println("\n ");
     	}*/
-
+        pessContinue.press();
+		ClearScreen.clear();
     }
 
    

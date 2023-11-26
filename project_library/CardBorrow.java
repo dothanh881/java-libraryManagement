@@ -77,7 +77,6 @@ public class CardBorrow extends Card {
     public void display()
     {
         super.display();
-        int flag=0;
         System.out.println("list of document borrow: ");
         for(CardDetail cdt: listBorrow)
         {
@@ -95,6 +94,48 @@ public class CardBorrow extends Card {
         System.out.println("time use: 1 year ");        
         System.out.println("\n");
     }
+
+    public void displayTable()
+    {
+        int i=0;
+        System.out.println("------------------------------------------------------------------------------------------------------------------------------------");
+        System.out.printf("| %-10s | %-10s | %-20s |%-45s |%-15s |%-15s |\n","ID Reader ", "ID Card", "Name Reader  ","Name Document ","Day Borrow ","Day Return ");
+        System.out.println("------------------------------------------------------------------------------------------------------------------------------------");
+        for(CardDetail cdt: listBorrow)
+        {
+            if(i==0)
+            {
+            if(getNameDocument(cdt.getIdDocument()).contentEquals("n"))
+            {
+             System.out.printf("| %-10s | %-10s | %-20s |%-45s |%-15s |%-15s |\n",this.getIdReader(), this.getIdCard(), this.getNameReader(),"NUll ","NULL","NULL ");
+             i++;
+            }
+            else
+            {
+                 System.out.printf("| %-10s | %-10s | %-20s |%-45s |%-15s |%-15s |\n",this.getIdReader(), this.getIdCard(), this.getNameReader(),getNameDocument(cdt.getIdDocument()),cdt.getTimeBorrow(),cdt.getTimeReturn());
+                 i++;
+            }
+            }
+            else
+            {
+              if(getNameDocument(cdt.getIdDocument()).contentEquals("n"))
+              {
+                 System.out.printf("| %-10s | %-10s | %-20s |%-45s |%-15s |%-15s |\n"," ", " ", " ","NUll ","NULL","NULL ");
+                 i++;
+              }
+               else
+              {
+                 System.out.printf("| %-10s | %-10s | %-20s |%-45s |%-15s |%-15s |\n"," " , " ", " ",getNameDocument(cdt.getIdDocument()),cdt.getTimeBorrow(),cdt.getTimeReturn());
+                 i++;
+              }
+            }
+
+        }
+        System.out.println("------------------------------------------------------------------------------------------------------------------------------------");
+
+    }
+
+
 
     public int enterIdOwner()
     {
@@ -137,12 +178,11 @@ public class CardBorrow extends Card {
                        
                        for(Reader al:alts)
                        {
-                           al.display();
+                           al.displayTable();
+                           System.out.println("\n");
                        }
-                       System.out.println("\n");
                        System.out.println("enter id owner card ");
                        System.out.println("enter 'e' to end");
-                       System.out.println("\n");
                        choose=sc.nextLine();
                        choose=(choose.toLowerCase()).trim();
                        if(choose.contentEquals("e")==true) break idOnwer;

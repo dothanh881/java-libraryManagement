@@ -103,7 +103,7 @@ public void enterAreaPlace(ArrayList<Room>list)
     else 
     {
       System.out.println("\n");
-      list.get(index).display();
+      list.get(index).displayTable();
       System.out.println("Area work is exist!!please enter again");
       pressContinue();
     }

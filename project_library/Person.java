@@ -69,6 +69,10 @@ public void display()
    System.out.println("age    : "+this.age);
 
 }
+public void displayTable()
+{
+
+}
 public void enterData(ArrayList<Person> list)
 {
     System.out.println("enter name person ");
@@ -115,7 +119,7 @@ public void enterData(ArrayList<Person> list)
 				if(flag==1) 
 				{
 					System.out.println("\n");
-					list.get(index).display();
+					list.get(index).displayTable();
 					System.out.println("Id person is exist!!please enter again");
 					pressContinue();
 				}

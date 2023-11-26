@@ -79,6 +79,15 @@ public class Reader extends Person {
         System.out.println("type card: "+this.typeCard);
         
     }
+    public void displayTable()
+    {
+        System.out.println("---------------------------------------------------------------------------------------------------------------------------------------------");
+        System.out.printf("| %-15s | %-27s | %-10s |%-20s |%-10s |%-15s |%-15s |\n","ID ", "Name", "Gender  ","Address ","Age ","Type card ","Job ");
+        System.out.println("---------------------------------------------------------------------------------------------------------------------------------------------");	
+		System.out.printf("| %-15s | %-27s | %-10s |%-20s |%-10s |%-15s |%-15s |\n",this.getId(), this.getName(), this.getGender(),this.getAddress(),this.getAge(),this.getTypeCard(),this.getJob());
+		System.out.println("---------------------------------------------------------------------------------------------------------------------------------------------");
+     
+    }
 
     public void enterIdcard(ArrayList<Person> list)
     {
@@ -189,6 +198,7 @@ public class Reader extends Person {
             this.moneyFee=0.0;
         }
         System.out.println("Fee read : "+this.moneyFee+" USD");
+        System.out.println("==============*===============");
 
         return moneyFee;
     };

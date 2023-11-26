@@ -256,7 +256,7 @@ public class  RoomManagement implements LibraryManagement {
 		System.out.println("enter id room you want to delete ");
 		request=sc.nextLine();
 		request.toLowerCase();
-		Room r=new Room();int flag=0;String choice;int i=0;int index=0;
+		String choice;
 		int checkId=checkIdRoom(request);
 		
 		if(checkId==-1) {
@@ -399,7 +399,7 @@ public class  RoomManagement implements LibraryManagement {
 				else if(type==2)
 				{
 					ReadRoom rd=new ReadRoom();
-					temp1.display();
+					temp1.displayTable();
 				    System.out.println("enter data new for read room");
 					rd.enterData();
 					rd.setIdDocuemt(positionBook);
@@ -557,16 +557,15 @@ public class  RoomManagement implements LibraryManagement {
     		if(rm instanceof ReadRoom)
     		{
     			ReadRoom rd=(ReadRoom)rm;
-    			rd.displayTable();
+    			rd.display();
     		}
     		else if(rm instanceof ServiceRoom)
     		{
     			ServiceRoom sr=(ServiceRoom)rm;
-    			sr.displayTable();
+    			sr.display();
 
     		}
     	}
-		pressContinue();
 	}
 	 if(flagsg==2)
 	{
@@ -576,13 +575,13 @@ public class  RoomManagement implements LibraryManagement {
     		if(rm instanceof ReadRoom)
     		{
     			ReadRoom rd=(ReadRoom)rm;
-    			rd.display();
+    			rd.displayTable();
                 System.out.println("\n ");
     		}
     		else if(rm instanceof ServiceRoom)
     		{
     			ServiceRoom sr=(ServiceRoom)rm;
-    			sr.display();
+    			sr.displayTable();
 				System.out.println("\n ");
 
     		}

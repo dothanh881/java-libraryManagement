@@ -69,14 +69,12 @@ Scanner sc=new Scanner(System.in);
 			System.out.println("enter number room ");
 			this.noRoom=sc.nextInt();
 			sc.nextLine();
-
 			break;
 		}catch(Exception e)
 		{
 			System.out.println(" you entered invalid data number room !! plese enter again ");
 			sc.nextLine();
-				System.out.println("Press Enter to continue... ");
-		String keyContinue=sc.nextLine();
+		pessContinue.press();
 		System.out.print("\033[H\033[2J");  // clear sreen
 			System.out.flush();
 

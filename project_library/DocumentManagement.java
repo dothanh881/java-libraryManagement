@@ -124,7 +124,7 @@ public class DocumentManagement implements LibraryManagement {
 		System.out.println("enter id document you want to delete ");
 		request=sc.nextLine();
 		request.toLowerCase();
-		Room r=new Room();int flag=0;String choice;int i=0;int index=0;
+		String choice;
 		int checkId=checkIdRoom(request);
 		
 		if(checkId==-1) {
@@ -175,7 +175,7 @@ public  void Edit()
 	Display();
 	String request;String save;int type=0;
 	System.out.println("enter id document you want to edit ");
-	request=sc.nextLine();String end=" ";int new_num;
+	request=sc.nextLine();
 	request=(request.toLowerCase()).trim();
 	int checkId=checkIdRoom(request);
 		
@@ -295,13 +295,13 @@ public  void Search()
 			if(c instanceof Book)
 			{
 				Book cr=(Book) c;
-				cr.displayTable();
+				cr.display();
 				cr.searchLocation(main.rmt.getReadRoom());
 			}
 			else if( c instanceof Disk)
 			{
 				Disk dr= (Disk) c;
-				dr.displayTable();
+				dr.display();
 				dr.searchLocation(main.rmt.getReadRoom());
 			}
 
@@ -316,14 +316,14 @@ public  void Search()
 			if(c instanceof Book)
 			{
 				Book cr=(Book) c;
-				cr.display();
-				cr.searchLocation(main.rmt.getReadRoom());
+				cr.displayTable();
+				//cr.searchLocation(main.rmt.getReadRoom());
 			}
 			else if( c instanceof Disk)
 			{
 				Disk dr= (Disk) c;
-				dr.display();
-				dr.searchLocation(main.rmt.getReadRoom());
+				dr.displayTable();
+			//	dr.searchLocation(main.rmt.getReadRoom());
 			}
 		}
 	}

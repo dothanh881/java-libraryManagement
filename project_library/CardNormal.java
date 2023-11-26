@@ -39,6 +39,18 @@ public class CardNormal extends Card {
         System.out.println("\n ");
     }
 
+    public void displayTable()
+    {
+        System.out.println("-------------------------------------------------------------------------------------------------------------------------------");
+	    System.out.printf("| %-15s |%-15s | %-36s | %-15s |%-20s |\n","ID Reader ","ID Card", "Name Reader", "Type Card  ","Time Use(day) ");
+        System.out.println("-------------------------------------------------------------------------------------------------------------------------------");
+        System.out.printf("| %-15s |%-15s | %-36s | %-15s |%-20s |\n",this.getIdReader(), this.getIdCard(), this.getNameReader(),this.getIdTypeCard(),this.getTimeUse());
+        System.out.println("-------------------------------------------------------------------------------------------------------------------------------");
+
+    }
+
+
+
     public int enterIdOwner()
     {
         if(Card.testIdOwner().isEmpty()==true)
@@ -64,7 +76,7 @@ public class CardNormal extends Card {
             {
 				 for(Reader r:Card.testIdOwner())
                  {
-                      r.display();
+                      r.displayTable();
                  }
                  System.out.println("plesase add reader (normal) before add card normal");
                  pressContinue();
@@ -81,13 +93,13 @@ public class CardNormal extends Card {
                     int flag=0;String choose;
                    
                        ClearScreen.clear();
-                       System.out.println("enter id owner card ");
-                       System.out.println("enter 'e' to end");
-                       System.out.println("\n");
                        for(Reader al:alts)
                        {
-                           al.display();
+                           al.displayTable();
                        }
+                       System.out.println("\n ");
+                       System.out.println("enter id reader you want create for card ");
+                       System.out.println("enter 'e' to end");
                        choose=sc.nextLine();
                        choose=(choose.toLowerCase()).trim();
                        if(choose.contentEquals("e")==true) break idOnwer;

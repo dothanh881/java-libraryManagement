@@ -27,6 +27,30 @@ public class main {
 		System.out.println("choose work");*/
 
 	}
+	public static int numberTryCatch()
+	{
+		Scanner sc=new Scanner(System.in);
+
+		int a=0;
+		number:while(true)
+        {
+            try
+            {
+                System.out.println("enter number to follow button to work");
+                a=sc.nextInt();
+                sc.nextLine();
+                break;
+            }
+            catch(Exception e)
+            {
+                System.out.println("data invidial! please again");
+                sc.nextLine();
+                pessContinue.press();
+            }
+        }
+		return a;
+
+	}
 
 	
 
@@ -268,8 +292,7 @@ public class main {
 				System.out.println("3.person");
 				System.out.println("4.card ");
 				System.out.println("0.end ");*/
-				chooseObject=sc.nextInt();
-				sc.nextLine();
+				chooseObject=numberTryCatch();
 				if(chooseObject==0) break rdpr;
 				else if(chooseObject==1)
 				{
@@ -278,8 +301,7 @@ public class main {
 				    ClearScreen.clear();
 					System.out.println("    ROOM   ");
 				    displayWork();
-					chooseRoom=sc.nextInt();
-					sc.nextLine();
+					chooseRoom=numberTryCatch();
 					if(chooseRoom==1)
 					{
 						rmt.Add();
@@ -316,8 +338,7 @@ public class main {
 				    ClearScreen.clear();
 					System.out.println("    DOCUMENT   ");
 				    displayWork();
-					chooseDocument=sc.nextInt();
-					sc.nextLine();
+					chooseDocument=numberTryCatch();
 					if(chooseDocument==1)
 					{
 						ClearScreen.clear();
@@ -400,8 +421,7 @@ public class main {
 				    ClearScreen.clear();
 					System.out.println("     CARD     ");
 				    displayWork();
-					chooseCard=sc.nextInt();
-					sc.nextLine();
+					chooseCard=numberTryCatch();
 					if(chooseCard==1)
 					{
 						ClearScreen.clear();
@@ -433,23 +453,17 @@ public class main {
 						pessContinue.press();
 					}
 					else if(chooseCard==0) break ocd;
+					
 			      	}
+					
 				}
-			   
+				
 			}
 		    
  
 		} 
 
-		
-		
 	
-
-
-		
-
-		
-      
 	}
 		
 	

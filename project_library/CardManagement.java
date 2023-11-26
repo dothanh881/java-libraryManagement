@@ -206,7 +206,7 @@ public class CardManagement implements LibraryManagement {
 		System.out.println("enter id person you want to delete ");
 		request=sc.nextLine();
 		request.toLowerCase();
-		Room r=new Room();int flag=0;String choice;int i=0;int index=0;
+		String choice;
 		int checkId=checkIdCard(request);
 		
 		if(checkId==-1) {
@@ -219,7 +219,7 @@ public class CardManagement implements LibraryManagement {
 			String yes="y";
 			String no="n";
 			ClearScreen.clear();
-			list.get(checkId).display();
+			list.get(checkId).displayTable();
 			
             action:while(true)
 			{			
@@ -255,7 +255,7 @@ public class CardManagement implements LibraryManagement {
 	Display();
 	String request;String save;int type=0;
 	System.out.println("enter id card you want to edit ");
-	request=sc.nextLine();String end=" ";int new_num;
+	request=sc.nextLine();
 	request=(request.toLowerCase()).trim();
 	int checkId=checkIdCard(request);
 		
@@ -290,7 +290,7 @@ public class CardManagement implements LibraryManagement {
 		if(type==1)
 		{
 			CardNormal sr=new CardNormal();
-			temp.display();
+			temp.displayTable();
 			System.out.println("enter data new for card normal");
 			sr.enterIdcard(list);
 			sr.enterTimeUse();
@@ -301,7 +301,7 @@ public class CardManagement implements LibraryManagement {
 		else if(type==2)
 		{
 			CardBorrow rd=new CardBorrow();
-			temp1.display();
+			temp1.displayTable();
 			System.out.println("enter data new for card borrow");
 			rd.enterIdcard(list);
 			actions:while(true)
@@ -386,11 +386,14 @@ public class CardManagement implements LibraryManagement {
 				{
 					CardNormal cdl=(CardNormal) list.get(indexful);
 					cdl.display();
+					System.out.println("\n");
+					//cdl.display();
 				}
 				else if(list.get(indexful) instanceof CardBorrow)
 				{
 					CardBorrow cdb=(CardBorrow) list.get(indexful);
 					cdb.displayDetails();
+					System.out.println("\n");
 				}
 			}
 		}
@@ -406,12 +409,12 @@ public class CardManagement implements LibraryManagement {
 				if(list.get(indexsug) instanceof CardNormal)
 				{
 					CardNormal cdl=(CardNormal) list.get(indexsug);
-					cdl.display();
+					cdl.displayTable();
 				}
 				else if(list.get(indexsug) instanceof CardBorrow)
 				{
 					CardBorrow cdb=(CardBorrow) list.get(indexsug);
-					cdb.display();
+					cdb.displayTable();
 				}
 			}
 		}
@@ -448,6 +451,7 @@ public class CardManagement implements LibraryManagement {
 			if(c instanceof CardNormal)
 			{
 				CardNormal cr=(CardNormal) c;
+				//cr.display();
 				cr.display();
 				
 			}
@@ -469,13 +473,13 @@ public class CardManagement implements LibraryManagement {
 			if(c instanceof CardNormal)
 			{
 				CardNormal cr=(CardNormal) c;
-				cr.display();
+				cr.displayTable();
 				
 			}
 			else if( c instanceof CardBorrow)
 			{
 			  CardBorrow  dr= (CardBorrow) c;
-				dr.display();
+				dr.displayTable();
 			}
 
 		}

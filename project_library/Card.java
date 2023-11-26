@@ -118,6 +118,11 @@ public class Card {
         }
     }
 
+	public void displayTable()
+	{
+		
+	}
+
 
 	
 
@@ -160,7 +165,7 @@ public class Card {
 				if(flag==1) 
 				{
 					System.out.println("\n");
-					list.get(index).display();
+					list.get(index).displayTable();
 					System.out.println("Id card is exist!!please enter again");
 					pressContinue();
 				}

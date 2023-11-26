@@ -50,6 +50,15 @@ public class Staff extends Person{
         System.out.println("position: "+this.position);
         System.out.println("\n");
     }
+    public void displayTable()
+    {
+        System.out.println("-----------------------------------------------------------------------------------------------------------------------------");
+        System.out.printf("| %-15s | %-27s | %-10s |%-20s |%-10s |%-15s |\n","ID ", "Name", "Gender  ","Address ","Age ","Position ");
+        System.out.println("-----------------------------------------------------------------------------------------------------------------------------");
+        System.out.printf("| %-15s | %-27s | %-10s |%-20s |%-10s |%-15s |\n",this.getId(), this.getName(), this.getGender(),this.getAddress(),this.getAge(),this.getPosition());
+        System.out.println("-----------------------------------------------------------------------------------------------------------------------------");
+
+    }
       
 
     public void  enterData(ArrayList<Person>list,ArrayList<ServiceRoom>listsr)
@@ -215,6 +224,7 @@ public class Staff extends Person{
             this.salary=0.0;
         }
         System.out.println("Salary of Staff: "+this.salary+" USD");
+        System.out.println("==============*===============");
         return this.salary;
     }
     public void Statistic()
