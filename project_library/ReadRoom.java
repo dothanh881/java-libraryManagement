@@ -69,7 +69,7 @@ public class ReadRoom extends Room {
 			{
 				int flag=0;int index=-1;int i=0;
 
-				System.out.println("enter Id document : ");
+				System.out.println("Enter Id document : ");
 		        this.IdDocument=sc.nextLine();
 				String temp=((this.IdDocument).toLowerCase()).trim();
 				for(Room d:list)

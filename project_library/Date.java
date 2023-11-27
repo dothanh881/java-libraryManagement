@@ -96,19 +96,19 @@ public class Date {
         {
             try
             {
-                System.out.println("enter day: ");
+                System.out.println("Enter day: ");
                 this.day=sc.nextInt();
                 sc.nextLine();
                   if(day>31)
                    {
-                        System.out.println("day must be greater than 0 and less than 32 !!please enter again day ");
+                        System.out.println("Day must be greater than 0 and less than 32 !! Please enter again day ");
                         pressContinue();
                         continue day;
                         
                    }
                    else if(day<=0)
                    {
-                        System.out.println("day must be greater than 0 and less than 32 !!please enter again day ");
+                        System.out.println("Day must be greater than 0 and less than 32 !! Please enter again day ");
                         pressContinue();
                         continue day;
                     }
@@ -121,7 +121,7 @@ public class Date {
             }
             catch(Exception e)
             {
-                System.out.println("data invidial !!please again");
+                System.out.println("Error data !! Please enter again!");
                 sc.nextLine();
                 pressContinue();
 
@@ -133,19 +133,19 @@ public class Date {
         {
             try
             {
-                System.out.println("enter month: ");
+                System.out.println("Enter month: ");
                 this.month=sc.nextInt();
                 sc.nextLine();
                   if(this.month>12)
                    {
-                        System.out.println("day must be greater than 0 and less than 13 !!please enter again month ");
+                        System.out.println("Day must be greater than 0 and less than 13 !! Please enter again month ");
                         pressContinue();
                         continue month;
                         
                    }
                    else if(this.month<=0)
                    {
-                        System.out.println("day must be greater than 0 and less than 13 !!please enter again month ");
+                        System.out.println("Day must be greater than 0 and less than 13 !! Please enter again month ");
                         pressContinue();
                         continue month;
                     }
@@ -158,7 +158,7 @@ public class Date {
             }
             catch(Exception e)
             {
-                System.out.println("data invidial !!please again");
+                System.out.println("Error data !! Please enter again");
                 sc.nextLine();
                 pressContinue();
 
@@ -170,19 +170,19 @@ public class Date {
         {
             try
             {
-                System.out.println("enter year: ");
+                System.out.println("Enter year: ");
                 this.year=sc.nextInt();
                 sc.nextLine();
                   if(this.year<=2022)
                    {
-                        System.out.println("day must be greater than 2022 and less than 2026 !!please enter again month ");
+                        System.out.println("Day must be greater than 2022 and less than 2026 !! Please enter again month ");
                         pressContinue();
                         continue year;
                         
                    }
                    else if(this.year>2025)
                    {
-                        System.out.println("day must be greater than 2022 and less than 2026 !!please enter again month ");
+                        System.out.println("Day must be greater than 2022 and less than 2026 !! Please enter again month ");
                         pressContinue();
                         continue year;
                     }
@@ -195,7 +195,7 @@ public class Date {
             }
             catch(Exception e)
             {
-                System.out.println("data invidial !!please again");
+                System.out.println("Error data !! Please enter again");
                 sc.nextLine();
                 pressContinue();
 

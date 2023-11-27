@@ -75,17 +75,17 @@ public class Reader extends Person {
     public void display()
     {
         super.display();
-        System.out.println("job: "+this.job);
-        System.out.println("type card: "+this.typeCard);
+        System.out.println("Job: "+this.job);
+        System.out.println("Type card: "+this.typeCard);
         
     }
     public void displayTable()
     {
-        System.out.println("---------------------------------------------------------------------------------------------------------------------------------------------");
-        System.out.printf("| %-15s | %-27s | %-10s |%-20s |%-10s |%-15s |%-15s |\n","ID ", "Name", "Gender  ","Address ","Age ","Type card ","Job ");
-        System.out.println("---------------------------------------------------------------------------------------------------------------------------------------------");	
-		System.out.printf("| %-15s | %-27s | %-10s |%-20s |%-10s |%-15s |%-15s |\n",this.getId(), this.getName(), this.getGender(),this.getAddress(),this.getAge(),this.getTypeCard(),this.getJob());
-		System.out.println("---------------------------------------------------------------------------------------------------------------------------------------------");
+        System.out.println("-----------------------------------------------------------------------------------------------------------------");
+        System.out.printf("| %-10s | %-26s | %-8s |%-20s |%-7s |%-14s |%-15s |\n","ID ", "Name", "Gender  ","Address ","Age ","Type card ","Job ");
+        System.out.println("-----------------------------------------------------------------------------------------------------------------");
+		System.out.printf("| %-10s | %-26s | %-8s |%-20s |%-7s |%-14s |%-15s |\n",this.getId(), this.getName(), this.getGender(),this.getAddress(),this.getAge(),this.getTypeCard(),this.getJob());
+        System.out.println("-----------------------------------------------------------------------------------------------------------------");
      
     }
 
@@ -95,7 +95,7 @@ public class Reader extends Person {
         {
             int index=-1;int i=0;
       
-          System.out.println("enter Id Card( Can not Change): ");
+          System.out.println("Enter Id Card (Can not Change): ");
               this.idCard=sc.nextLine();
               String temp=((this.idCard).toLowerCase()).trim();
           for(Person d:list)
@@ -116,7 +116,7 @@ public class Reader extends Person {
           {
             System.out.println("\n");
             list.get(index).display();
-            System.out.println("Id Card is exist!!please enter again");
+            System.out.println("Id Card exists !! Please enter again!");
             pressContinue();
           }
       
@@ -133,12 +133,12 @@ public class Reader extends Person {
             try
             {
             ClearScreen.clear();
-            System.out.println("choose type Card ");
+            System.out.println("Choose type of the card: ");
             System.out.println("1. Normal");
             System.out.println("2. Business");
             System.out.println("3. Vip");
             int choose;
-            System.out.println("enter type Card follow number ");
+            System.out.println("Enter type card follow number: ");
             choose=sc.nextInt();
             sc.nextLine();
               switch (choose)
@@ -156,21 +156,21 @@ public class Reader extends Person {
                     flag=1;
                     break;
                     default:
-                    System.out.println("you entered number is ividial !! please enter again");
+                    System.out.println("Entered data is not suitable !! Please enter again!");
                     pressContinue();
                     break;
                }
             }
             catch(Exception e)
             {
-                System.out.println("choose is not suitable ! please enter again");
+                System.out.println("Choice is not suitable ! Please enter again!");
                 sc.nextLine();
                 pressContinue();
             }
             if(flag==1) break typecard;
     
         }
-        System.out.println("enter job of reader");
+        System.out.println("Enter the job of reader: ");
         this.job=sc.nextLine();
        
     }
@@ -182,7 +182,7 @@ public class Reader extends Person {
         String temp=((this.typeCard).toLowerCase()).trim();
         if(temp.contentEquals("normal"))
         {
-            this.moneyFee=ServiceRoom.getSalaryBasic()*1;
+            this.moneyFee=ServiceRoom.getSalaryBasic()*ReadRoom.getFeeBasic();
         }    
         else if(temp.contentEquals("business"))
         {
@@ -202,13 +202,7 @@ public class Reader extends Person {
 
         return moneyFee;
     };
-    public void Statistic()
-   {
-    int a=Reader.getNoReader();
-    System.out.println("total reader: "+a);
-    int b=Reader.getNoAddReader();
-    System.out.println("total reader add: "+b);
-   }
+   
     
     
 }

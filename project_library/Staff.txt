@@ -1,6 +1,0 @@
-Huynh Duy Khang, Men, Quang Ngai, 3122 ,19,area1,Director
-Monkey D Luffy, Men, East Sea, 4110 ,19,area1,Employee
-Do Phu Thanh, Men ,An Giang, 1209 ,18,area2,Manager
-Vo Van Luan, Men, Binh Dinh, 4578 ,19,area2,Manager
-Phan Thanh Dai,Men, Long An, 6843,18,area3,Manager
-Alice Pham,Women, Quang Ngai,5387,19,area3,Employee

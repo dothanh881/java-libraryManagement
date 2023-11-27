@@ -62,11 +62,11 @@ public void setId(String id) {
 }
 public void display()
 {
-   System.out.println("id     : "+this.id);
-   System.out.println("name   : "+this.name);
-   System.out.println("gender : "+this.gender);
-   System.out.println("address:"+this.adress);
-   System.out.println("age    : "+this.age);
+   System.out.println("Id     : "+this.id);
+   System.out.println("Name   : "+this.name);
+   System.out.println("Gender : "+this.gender);
+   System.out.println("Address:"+this.adress);
+   System.out.println("Age    : "+this.age);
 
 }
 public void displayTable()
@@ -75,22 +75,22 @@ public void displayTable()
 }
 public void enterData(ArrayList<Person> list)
 {
-    System.out.println("enter name person ");
+    System.out.println("Enter name of the person: ");
     this.name=sc.nextLine();
-    System.out.println("enter adress");
+    System.out.println("Enter address: ");
     this.adress=sc.nextLine();
     while(true)
 		{
             try 
             {
-			   System.out.println("enter age person ");
+			   System.out.println("Enter age of the person: ");
 			   this.age=sc.nextInt();
 			   sc.nextLine();
 			   break;
 		    }
             catch(Exception e)
 		    {
-			    System.out.println(" age you enterd is not ividial ");
+			    System.out.println(" Entered data is not suitable!! ");
 			    sc.nextLine();
 				pressContinue();
 	        	
@@ -101,7 +101,7 @@ public void enterData(ArrayList<Person> list)
 			{
 				int flag=0;int index=-1;int i=0;
 
-				System.out.println("enter Id: ");
+				System.out.println("Enter ID: ");
 		        this.id=sc.nextLine();
 				String temp=((this.id).toLowerCase()).trim();
 				for(Person d:list)
@@ -120,7 +120,7 @@ public void enterData(ArrayList<Person> list)
 				{
 					System.out.println("\n");
 					list.get(index).displayTable();
-					System.out.println("Id person is exist!!please enter again");
+					System.out.println("Id person exists !! Please enter again!");
 					pressContinue();
 				}
 
@@ -133,22 +133,22 @@ public void enterData(ArrayList<Person> list)
         try
         {
         ClearScreen.clear();
-        System.out.println("choose gender ");
-        System.out.println("1. Women");
-        System.out.println("2. Men");
+        System.out.println("Choose gender: ");
+        System.out.println("1. Female");
+        System.out.println("2. Male");
         System.out.println("3. Other");
         int choose;
-        System.out.println("enter gender follow number ");
+        System.out.println("Enter the gender follow number: ");
         choose=sc.nextInt();
         sc.nextLine();
           switch (choose)
            {
                case 1:
-                this.gender="Women";
+                this.gender="Female";
                 flag=1;
                 break;
                 case 2:
-                this.gender="Men";
+                this.gender="Male";
                 flag=1;
                 break;
                 case 3:
@@ -156,14 +156,14 @@ public void enterData(ArrayList<Person> list)
                 flag=1;
                 break;
                 default:
-                System.out.println("you entered number is ividial !! please enter again");
+                System.out.println("Entered data is not suitable!! Please enter again!");
                 pressContinue();
                 break;
            }
         }
         catch(Exception e)
         {
-            System.out.println("choose is not suitable ! please enter again");
+            System.out.println("Choice is not suitable ! Please enter again!");
             sc.nextLine();
             pressContinue();
         }
@@ -172,13 +172,7 @@ public void enterData(ArrayList<Person> list)
     }
 
 }
-public void Statistic()
-{
-    int a=Staff.SumStaff()+Reader.getNoReader();
-    System.out.println("total person: "+a);
-    int b=Staff.AddStaff()+Reader.getNoAddReader();
-    System.out.println("total person add"+b);
-}
+
 public abstract double serviceFee();
 
 

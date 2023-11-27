@@ -30,6 +30,20 @@ public ArrayList<Reader> geListReader()
 	return rdr;
 }
 
+public ArrayList<Staff> geListStaff()
+{
+	ArrayList<Staff> rdr=new ArrayList<Staff>();
+	for(Person p: list)
+	{
+          if(p instanceof Staff)
+		  {
+			Staff r=(Staff) p;
+			rdr.add(r);
+		  }
+	}
+	return rdr;
+}
+
 public void pressContinue()
 	{
 		String keyContinue;
@@ -77,7 +91,7 @@ public void pressContinue()
 				  System.out.println("-----------------------------------------------------------------------");
 				  System.out.printf("| %-20s | %-20s | %-20s |\n"," 1. ADD STAFF "," 2. ADD READER ","  0. END ");
 				  System.out.println("-----------------------------------------------------------------------");
-				  System.out.println("enter type person want to add follow number  ");
+				  System.out.println("Enter type of the person want to add follow number:  ");
 				   choose=sc.nextInt();
 				  sc.nextLine();
 				  if(choose==0) break work_add ;			
@@ -89,7 +103,7 @@ public void pressContinue()
 				  Staff bk=new Staff();
 				  bk.enterData(list,main.rmt.getServiceRoom());
 				  list.add(bk);
-				  System.out.println("add staff successfully");
+				  System.out.println("Add staff successfully!");
 				  pressContinue();
 				  break;
   
@@ -98,7 +112,7 @@ public void pressContinue()
 				  dk.enterData(list);
 				  dk.enterIdcard(list);
 				  list.add(dk);
-				  System.out.println("add reader successfully");
+				  System.out.println("Add reader successfully!");
 				  pressContinue();
 				  break;				   
 				  }
@@ -109,7 +123,7 @@ public void pressContinue()
 		  }
 		  catch(Exception e)
 		  {
-			  System.out.println("data error! ");
+			  System.out.println("Data error! ");
 			  sc.nextLine();
 			  pressContinue();
 		  }
@@ -123,14 +137,14 @@ public void pressContinue()
 	{
 		Display();
 		String request;
-		System.out.println("enter id person you want to delete ");
+		System.out.println("Enter id person you want to delete: ");
 		request=sc.nextLine();
 		request.toLowerCase();
 		String choice;
 		int checkId=checkIdPerson(request);
 		
 		if(checkId==-1) {
-			System.out.println("person you want to delete no exits or is deleted before");
+			System.out.println("Person you want to delete does not exit or can be deleted before");
 			pressContinue();
 
 		}
@@ -143,26 +157,26 @@ public void pressContinue()
 			
             action:while(true)
 			{			
-			   System.out.println("are you sure want to delete  this person (yes/no)? ");			
-			   System.out.println("enter 'y' to choose 'yes' and enter 'n' to choose 'no' ");
+			   System.out.println("Are you sure want to delete  this person (yes/no)? ");			
+			   System.out.println("Enter 'y' to choose 'yes' and enter 'n' to choose 'no' ");
 			   choice=sc.nextLine();
 			  choice=(choice.toLowerCase()).trim();
 		        if(choice.contentEquals(yes))
 			    {
 				    list.remove(checkId);
-				    System.out.println("you have deleted sucessful ");
+				    System.out.println("You have deleted sucessfully!");
 				    pressContinue();
 				    break action;
 			    }
 			    else if(choice.contentEquals(no))
 			    {
-				    System.out.println("delete failed");
+				    System.out.println("Delete failed");
 				    pressContinue();
 				    break action;
 			    }
 			    else
 			    {
-				    System.out.println("your choice is unsuitable!! please enter again");
+				    System.out.println("Your choice is unsuitable!! Please enter again!");
 				    pressContinue();
 			    }
 			}
@@ -178,14 +192,14 @@ public void pressContinue()
 	{
 		Display();
 		String request;String save;int type=0;
-		System.out.println("enter id person you want to edit ");
+		System.out.println("Enter ID of the person you want to edit: ");
 		request=sc.nextLine();
 		request=(request.toLowerCase()).trim();
 		int checkId=checkIdPerson(request);
 			
 		if(checkId==-1)
 		{
-			System.out.println("person you want to edit no exits ");
+			System.out.println("Person you want to edit does not exit!");
 			pressContinue();
 		}
 		else
@@ -211,7 +225,7 @@ public void pressContinue()
 			{
 				Staff sr=new Staff();
 				temp.displayTable();
-				System.out.println("enter data new for Staff");
+				System.out.println("Enter new data for Staff: ");
 				sr.enterData(list, main.rmt.getServiceRoom());							
 				 list.add(checkId, sr);				    
 	
@@ -220,27 +234,27 @@ public void pressContinue()
 			{
 				Reader rd=new Reader();
 				temp1.displayTable();
-				System.out.println("enter data new for Reader");
+				System.out.println("Enter new data for Reader: ");
 				rd.enterData(list);   
 				rd.setIdcard(idcards);         
 				list.add(checkId,rd);
 			}
 			action:while(true)
 					{
-						System.out.println("are you sure want to save change this (yes/no)? ");
-						System.out.println("enter 'y' to choose 'yes' and enter 'n' to choose no");
+						System.out.println("Are you sure want to save this change (yes/no)? ");
+						System.out.println("Enter 'y' to choose 'yes' and enter 'n' to choose no");
 						save=sc.nextLine();
 						save.toLowerCase();
 						if(save.contentEquals("y"))
 						{
-						  System.out.println("you have save change sucessful ");
+						  System.out.println("You have save the change sucessfully! ");
 						  pressContinue();
 						  break action;
 						}
 						else if(save.contentEquals("n"))
 						{
 						  list.remove(checkId);
-						  System.out.println("save change failed");
+						  System.out.println("Save change failed");
 						  if(type==1) list.add(checkId,temp);					
 						  else if(type==2) list.add(checkId,temp1); 
 						  pressContinue();
@@ -248,7 +262,7 @@ public void pressContinue()
 						}
 						else
 						{
-						  System.out.println("your choice is unsuitable!! please enter again");
+						  System.out.println("Your choice is unsuitable!! Please enter again!");
 						  pressContinue();
 						}
 					}
@@ -263,7 +277,7 @@ public void pressContinue()
 	{
 		String request; ArrayList <Person>cmm=new ArrayList<Person>();
 	ArrayList<Person> cmn= new ArrayList<Person>();
-	System.out.println("enter key word person (id,address,name,gender) you want to search ");
+	System.out.println("Enter key word person (id,address,name,gender) you want to search: ");
 	request=sc.nextLine();
 	String temp=(request.toLowerCase()).trim();
 	int flag=0;int flagsg=0;
@@ -291,7 +305,7 @@ public void pressContinue()
 	}
 	if(flag==1)
 	{
-		System.out.println("person you want find ");
+		System.out.println("Person you want find: ");
 		for(Person c: cmm)
 		{
 			if(c instanceof Staff)
@@ -330,7 +344,7 @@ public void pressContinue()
 			}
 		}
 	}
-	if(flag==0 && flagsg==0) System.out.println("No person found matching the keyword!!");
+	if(flag==0 && flagsg==0) System.out.println("Don't find person matching the keyword!!");
 	pressContinue();
 	ClearScreen.clear();
 
@@ -341,14 +355,15 @@ public void pressContinue()
     {
         ArrayList<Reader> disk=new ArrayList<Reader>();
 		System.out.println("        STAFF LIST       ");
-        System.out.println("-----------------------------------------------------------------------------------------------------------------------------");
-        System.out.printf("| %-15s | %-27s | %-10s |%-20s |%-10s |%-15s |\n","ID ", "Name", "Gender  ","Address ","Age ","Position ");
+		System.out.println("-----------------------------------------------------------------------------------------------------------------");	
+        System.out.printf("| %-10s | %-28s | %-8s |%-21s |%-8s |%-13s |%-11s |\n","ID ", "Name", "Gender  ","Address ","Age ","Position ","area work");
+		System.out.println("-----------------------------------------------------------------------------------------------------------------");
         for(Person listTest:list)
     	{
     		if(listTest instanceof Staff)
     		{
     			Staff bk=(Staff)listTest;
-				System.out.printf("| %-15s | %-27s | %-10s |%-20s |%-10s |%-15s |\n",bk.getId(), bk.getName(), bk.getGender(),bk.getAddress(),bk.getAge(),bk.getPosition());
+				System.out.printf("| %-10s | %-28s | %-8s |%-21s |%-8s |%-13s |%-11s |\n",bk.getId(), bk.getName(), bk.getGender(),bk.getAddress(),bk.getAge(),bk.getPosition(),bk.getWorkroom());
     		}
     		else if(listTest instanceof Reader)
     		{
@@ -356,19 +371,22 @@ public void pressContinue()
     			disk.add(dk);
     		}
     	} 
-		System.out.println("-----------------------------------------------------------------------------------------------------------------------------");
+		System.out.println("-----------------------------------------------------------------------------------------------------------------");
+
          System.out.println("\n");
 
 		System.out.println("        READER LIST       ");
-        System.out.println("---------------------------------------------------------------------------------------------------------------------------------------------");
-        System.out.printf("| %-15s | %-27s | %-10s |%-20s |%-10s |%-15s |%-15s |\n","ID ", "Name", "Gender  ","Address ","Age ","Type card ","Job ");
+		System.out.println("-----------------------------------------------------------------------------------------------------------------");
+        System.out.printf("| %-10s | %-26s | %-8s |%-20s |%-7s |%-14s |%-15s |\n","ID ", "Name", "Gender  ","Address ","Age ","Type card ","Job ");
+		System.out.println("-----------------------------------------------------------------------------------------------------------------");
+
         for(Reader bk:disk)
     	{
     		
-			System.out.printf("| %-15s | %-27s | %-10s |%-20s |%-10s |%-15s |%-15s |\n",bk.getId(), bk.getName(), bk.getGender(),bk.getAddress(),bk.getAge(),bk.getTypeCard(),bk.getJob());
+			System.out.printf("| %-10s | %-26s | %-8s |%-20s |%-7s |%-14s |%-15s |\n",bk.getId(), bk.getName(), bk.getGender(),bk.getAddress(),bk.getAge(),bk.getTypeCard(),bk.getJob());
     		
     	} 
-		System.out.println("---------------------------------------------------------------------------------------------------------------------------------------------");
+		System.out.println("-----------------------------------------------------------------------------------------------------------------");
 
 		/*System.out.println("===============*==============");
     	System.out.println("list of Staff: ");

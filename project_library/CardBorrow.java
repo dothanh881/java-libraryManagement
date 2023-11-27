@@ -4,22 +4,16 @@ import java.util.ArrayList;
 
 public class CardBorrow extends Card {
         private ArrayList<CardDetail> listBorrow;
-        private static int numberCardBorrow=0;
 
 	public CardBorrow(String idCard, String idOnwer, ArrayList<CardDetail> listBorrow) {
 		super(idCard, idOnwer);
 		this.listBorrow = listBorrow;
-        numberCardBorrow++;
 	}
 	public CardBorrow() {
 		super();
 		this.listBorrow =new ArrayList<CardDetail>();;
-        numberCardBorrow++;
 	}
-    public static int getNumberCardBorrow()
-    {
-        return numberCardBorrow;
-    }
+  
 	public ArrayList<CardDetail> getListBorrow() {
 		return listBorrow;
 	}
@@ -59,15 +53,15 @@ public class CardBorrow extends Card {
         {
             if(getNameDocument(cdt.getIdDocument()).contentEquals("n"))
             {
-            System.out.println("name document: null");
-            System.out.println("borrow day: null");
-            System.out.println("return day: null");
+            System.out.println("Name document: null");
+            System.out.println("Borrow day: null");
+            System.out.println("Return day: null");
             }
             else
             {
-            System.out.println("name document: "+getNameDocument(cdt.getIdDocument()));
-            System.out.println("borrow day: "+cdt.getTimeBorrow());
-            System.out.println("return day: "+cdt.getTimeReturn());
+            System.out.println("Name document: "+getNameDocument(cdt.getIdDocument()));
+            System.out.println("Borrow day: "+cdt.getTimeBorrow());
+            System.out.println("Return day: "+cdt.getTimeReturn());
             }
 
         }
@@ -77,42 +71,42 @@ public class CardBorrow extends Card {
     public void display()
     {
         super.display();
-        System.out.println("list of document borrow: ");
+        System.out.println("List of document borrow: ");
         for(CardDetail cdt: listBorrow)
         {
             if(getNameDocument(cdt.getIdDocument()).contentEquals("n"))
             {
-            System.out.println("name document: null");
+            System.out.println("Name document: null");
             
             }
             else
             {
-            System.out.println("name document: "+getNameDocument(cdt.getIdDocument()));
+            System.out.println("Name document: "+getNameDocument(cdt.getIdDocument()));
             }
 
         }
-        System.out.println("time use: 1 year ");        
+        System.out.println("Time use: 1 year ");        
         System.out.println("\n");
     }
 
     public void displayTable()
     {
         int i=0;
-        System.out.println("------------------------------------------------------------------------------------------------------------------------------------");
-        System.out.printf("| %-10s | %-10s | %-20s |%-45s |%-15s |%-15s |\n","ID Reader ", "ID Card", "Name Reader  ","Name Document ","Day Borrow ","Day Return ");
-        System.out.println("------------------------------------------------------------------------------------------------------------------------------------");
+        System.out.println("-----------------------------------------------------------------------------------------------------------------");
+        System.out.printf("| %-9s | %-9s | %-17s |%-41s |%-12s |%-12s |\n","ID Reader","ID Card", "Name Reader ","Name Document ","Day Borrow","Day Return");
+        System.out.println("-----------------------------------------------------------------------------------------------------------------");
         for(CardDetail cdt: listBorrow)
         {
             if(i==0)
             {
             if(getNameDocument(cdt.getIdDocument()).contentEquals("n"))
             {
-             System.out.printf("| %-10s | %-10s | %-20s |%-45s |%-15s |%-15s |\n",this.getIdReader(), this.getIdCard(), this.getNameReader(),"NUll ","NULL","NULL ");
+             System.out.printf("| %-9s | %-9s | %-17s |%-41s |%-12s |%-12s |\n",this.getIdReader(), this.getIdCard(), this.getNameReader(),"NUll ","NULL","NULL ");
              i++;
             }
             else
             {
-                 System.out.printf("| %-10s | %-10s | %-20s |%-45s |%-15s |%-15s |\n",this.getIdReader(), this.getIdCard(), this.getNameReader(),getNameDocument(cdt.getIdDocument()),cdt.getTimeBorrow(),cdt.getTimeReturn());
+                 System.out.printf("| %-9s | %-9s | %-17s |%-41s |%-12s |%-12s |\n",this.getIdReader(), this.getIdCard(), this.getNameReader(),getNameDocument(cdt.getIdDocument()),cdt.getTimeBorrow(),cdt.getTimeReturn());
                  i++;
             }
             }
@@ -120,18 +114,18 @@ public class CardBorrow extends Card {
             {
               if(getNameDocument(cdt.getIdDocument()).contentEquals("n"))
               {
-                 System.out.printf("| %-10s | %-10s | %-20s |%-45s |%-15s |%-15s |\n"," ", " ", " ","NUll ","NULL","NULL ");
+                 System.out.printf("| %-9s | %-9s | %-17s |%-41s |%-12s |%-12s |\n"," ", " ", " ","NUll ","NULL","NULL ");
                  i++;
               }
                else
               {
-                 System.out.printf("| %-10s | %-10s | %-20s |%-45s |%-15s |%-15s |\n"," " , " ", " ",getNameDocument(cdt.getIdDocument()),cdt.getTimeBorrow(),cdt.getTimeReturn());
+                 System.out.printf("| %-9s | %-9s | %-17s |%-41s |%-12s |%-12s |\n"," " , " ", " ",getNameDocument(cdt.getIdDocument()),cdt.getTimeBorrow(),cdt.getTimeReturn());
                  i++;
               }
             }
 
         }
-        System.out.println("------------------------------------------------------------------------------------------------------------------------------------");
+        System.out.println("-----------------------------------------------------------------------------------------------------------------");
 
     }
 
@@ -141,7 +135,7 @@ public class CardBorrow extends Card {
     {
         if(Card.testIdOwner().isEmpty()==true)
         {
-            System.out.println("plesase add reader (bussiness or vip ) before add card borrow");
+            System.out.println("Please add reader (bussiness or vip ) before adding borrow card! ");
             pressContinue();
             return 0;
 
@@ -161,7 +155,7 @@ public class CardBorrow extends Card {
             if(alts.isEmpty()==true)
             {
                 main.pmt.Display();
-                 System.out.println("plesase add reader (bussiness or vip ) before add card borrow");
+                 System.out.println("Please add reader (bussiness or vip ) before adding borrow card !");
                  pressContinue();
                  return 0;
             }
@@ -181,14 +175,14 @@ public class CardBorrow extends Card {
                            al.displayTable();
                            System.out.println("\n");
                        }
-                       System.out.println("enter id owner card ");
-                       System.out.println("enter 'e' to end");
+                       System.out.println("Enter id reader you want create for card:");
+                       System.out.println("Enter 'e' to end");
                        choose=sc.nextLine();
                        choose=(choose.toLowerCase()).trim();
-                       if(choose.contentEquals("e")==true) break idOnwer;
+                       if(choose.contentEquals("e")==true) return 0;
                        if(idlist.contains(choose)!=true)
                        {
-                         System.out.println("id you need incorrect or is not exist ! please enter again");
+                         System.out.println("Id you need incorrect or does not exist ! Please enter again!");
                          pressContinue();
                        }
                        else
@@ -219,14 +213,14 @@ public class CardBorrow extends Card {
         {
             try
             {
-                System.out.println("enter number book want to borrow");
+                System.out.println("Enter the number of books want to borrow: ");
                 numbers=sc.nextInt();
                 sc.nextLine();
                 break;
             }
             catch(Exception e)
             {
-                System.out.println("data invidial! please again");
+                System.out.println("Entered data is not suitable! Please enter again!");
                 sc.nextLine();
                 pressContinue();
             }
@@ -239,29 +233,29 @@ public class CardBorrow extends Card {
             String temp12=((a.getId()).toLowerCase()).trim();
             ListIdDocument.add(temp12);
         }
-        System.out.println("enter id of "+numbers+" document you want borrow and borrow day ,return day");
+        System.out.println("Enter id of "+numbers+" document you want to borrow and borrow day ,return day: ");
         int i=0;int in=i+1;
         System.out.println("\n");
         String choice;
        borrow: while (true)
         {
             CardDetail cd=new CardDetail();
-            System.out.println("enter id document+"+in+ " want borrow");
+            System.out.println("Enter id document "+in+ " want to borrow: ");
             choice=sc.nextLine();
             choice=(choice.toLowerCase()).trim();
             if(ListIdDocument.contains(choice)!=true)
             {
-                System.out.println("id document you entered that is not correct or is not exist !please enter again ");
+                System.out.println("Id document you entered that is not correct or does not exist ! Please enter again !!");
                 continue borrow;
             }
             else
             {
-                System.out.println("enter day borrow");
+                System.out.println("Enter borrow day: ");
                 Date ab=new Date();
                 ab.enterDate();
                 String db=ab.DayString();
                 System.out.println("\n");
-                System.out.println("enter day return ");
+                System.out.println("enter return day: ");
                 Date ar=new Date();
                 ar.enterDate();
                 String dr=ar.DayString();

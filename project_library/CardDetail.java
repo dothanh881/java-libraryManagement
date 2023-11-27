@@ -1,6 +1,5 @@
 package project_library;
 
-import javax.print.Doc;
 
 public class CardDetail {
     private String idDocument;
@@ -48,9 +47,9 @@ public class CardDetail {
 			String tempthis=(this.idDocument.toLowerCase()).trim();
             if(temp.contentEquals(tempthis))
             {
-                System.out.println("name book: "+dt.getName());
-				System.out.println("day borrow "+this.timeBorrow);
-				System.out.println("day return "+this.timeReturn);
+                System.out.println("Name book: "+dt.getName());
+				System.out.println("Day borrow: "+this.timeBorrow);
+				System.out.println("Day return: "+this.timeReturn);
             }
         }
     }

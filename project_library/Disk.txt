@@ -1,3 +1,0 @@
-dbsf102, Ready for PET, Cambridge University, education,274,35,rdb001
-dbsf202, Wild World , VTV2,  animal science,120,20,rdb002
-dbsf302, Gender Education, Do Phu Thanh, education,150,30,rdb003

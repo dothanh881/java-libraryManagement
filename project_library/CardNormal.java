@@ -4,25 +4,19 @@ import java.util.ArrayList;
 
 public class CardNormal extends Card {
     int timeUse;
-    private static int numberCardNormal=0;
 
 	public CardNormal(String idCard, String idOnwer, int timeUse) 
 	{
 		super(idCard, idOnwer);
 		this.timeUse = timeUse;
-         numberCardNormal++;
 	}
 
 	public CardNormal()
 	{
 		super();
 		this.timeUse = 0;
-        numberCardNormal++;
 	}
-    public static int getNumberCardNormal()
-    {
-        return numberCardNormal;
-    }
+   
 
 	public int getTimeUse() {
 		return timeUse;
@@ -35,17 +29,17 @@ public class CardNormal extends Card {
     public void display()
     {
         super.display();
-        System.out.println("time use: "+this.timeUse+" day");
+        System.out.println("Time use: "+this.timeUse+" day");
         System.out.println("\n ");
     }
 
     public void displayTable()
     {
-        System.out.println("-------------------------------------------------------------------------------------------------------------------------------");
-	    System.out.printf("| %-15s |%-15s | %-36s | %-15s |%-20s |\n","ID Reader ","ID Card", "Name Reader", "Type Card  ","Time Use(day) ");
-        System.out.println("-------------------------------------------------------------------------------------------------------------------------------");
-        System.out.printf("| %-15s |%-15s | %-36s | %-15s |%-20s |\n",this.getIdReader(), this.getIdCard(), this.getNameReader(),this.getIdTypeCard(),this.getTimeUse());
-        System.out.println("-------------------------------------------------------------------------------------------------------------------------------");
+        System.out.println("-----------------------------------------------------------------------------------------------------------------");
+	    System.out.printf("| %-14s |%-15s | %-36s | %-15s |%-20s |\n","ID Reader ","ID Card", "Name Reader", "Type Card  ","Time Use(day) ");
+        System.out.println("-----------------------------------------------------------------------------------------------------------------");
+        System.out.printf("| %-14s |%-15s | %-36s | %-15s |%-20s |\n",this.getIdReader(), this.getIdCard(), this.getNameReader(),this.getIdTypeCard(),this.getTimeUse());
+        System.out.println("-----------------------------------------------------------------------------------------------------------------");
 
     }
 
@@ -55,7 +49,7 @@ public class CardNormal extends Card {
     {
         if(Card.testIdOwner().isEmpty()==true)
         {
-            System.out.println("plesase add reader (normal) before add card normal");
+            System.out.println("Please add reader (normal) before adding normal card! ");
             pressContinue();
             return 0;
 
@@ -78,7 +72,7 @@ public class CardNormal extends Card {
                  {
                       r.displayTable();
                  }
-                 System.out.println("plesase add reader (normal) before add card normal");
+                 System.out.println("Please add reader (normal) before adding normal card! ");
                  pressContinue();
 				 return 0;
             }
@@ -98,14 +92,14 @@ public class CardNormal extends Card {
                            al.displayTable();
                        }
                        System.out.println("\n ");
-                       System.out.println("enter id reader you want create for card ");
-                       System.out.println("enter 'e' to end");
+                       System.out.println("Enter id of the reader you want to create for card: ");
+                       System.out.println("Enter 'e' to end");
                        choose=sc.nextLine();
                        choose=(choose.toLowerCase()).trim();
-                       if(choose.contentEquals("e")==true) break idOnwer;
+                       if(choose.contentEquals("e")==true) return 0;
                        if(idlist.contains(choose)!=true)
                        {
-                         System.out.println("id you need incorrect or is not exist ! please enter again");
+                         System.out.println("Id you entered that is incorrect or does not exist ! Please enter again!");
                          pressContinue();
                        }
                        else
@@ -136,14 +130,14 @@ public class CardNormal extends Card {
         {
             try
             {
-                System.out.println("enter time use of card ");
+                System.out.println("Enter time use of card: ");
                 this.timeUse=sc.nextInt();
                 sc.nextLine();
                 break;
             }
             catch(Exception e)
             {
-                System.out.println("data invidial! please again");
+                System.out.println("Error data! Please enter again!");
                 sc.nextLine();
                 pressContinue();
             }

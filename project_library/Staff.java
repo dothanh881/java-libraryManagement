@@ -44,6 +44,13 @@ public class Staff extends Person{
     public void setPosition(String potion) {
         this.position = potion;
     }
+     
+    public String getWorkroom()
+    {
+        return this.workRoom;
+    }
+    
+
     public void display()
     {
         super.display();
@@ -52,11 +59,11 @@ public class Staff extends Person{
     }
     public void displayTable()
     {
-        System.out.println("-----------------------------------------------------------------------------------------------------------------------------");
-        System.out.printf("| %-15s | %-27s | %-10s |%-20s |%-10s |%-15s |\n","ID ", "Name", "Gender  ","Address ","Age ","Position ");
-        System.out.println("-----------------------------------------------------------------------------------------------------------------------------");
-        System.out.printf("| %-15s | %-27s | %-10s |%-20s |%-10s |%-15s |\n",this.getId(), this.getName(), this.getGender(),this.getAddress(),this.getAge(),this.getPosition());
-        System.out.println("-----------------------------------------------------------------------------------------------------------------------------");
+        System.out.println("-----------------------------------------------------------------------------------------------------------------");	
+        System.out.printf("| %-10s | %-28s | %-8s |%-21s |%-8s |%-13s |%-11s |\n","ID ", "Name", "Gender  ","Address ","Age ","Position ","area work");
+        System.out.println("-----------------------------------------------------------------------------------------------------------------");	
+        System.out.printf("| %-10s | %-28s | %-8s |%-21s |%-8s |%-13s |%-11s |\n",this.getId(), this.getName(), this.getGender(),this.getAddress(),this.getAge(),this.getPosition(),this.getWorkroom());
+		System.out.println("-----------------------------------------------------------------------------------------------------------------");	
 
     }
       
@@ -70,12 +77,12 @@ public class Staff extends Person{
             try
             {
             ClearScreen.clear();
-            System.out.println("choose position ");
+            System.out.println("Choose position: ");
             System.out.println("1. Director");
             System.out.println("2. Manager");
             System.out.println("3. Employee");
             int choose;
-            System.out.println("enter position follow number ");
+            System.out.println("Enter position follow number: ");
             choose=sc.nextInt();
             sc.nextLine();
               switch (choose)
@@ -93,14 +100,14 @@ public class Staff extends Person{
                     flag=1;
                     break;
                     default:
-                    System.out.println("you entered number is ividial !! please enter again");
+                    System.out.println("Entered data is not suitable !! Please enter again!");
                     pressContinue();
                     break;
                }
             }
             catch(Exception e)
             {
-                System.out.println("choose is not suitable ! please enter again");
+                System.out.println("Choice is not suitable ! Please enter again!");
                 sc.nextLine();
                 pressContinue();
             }
@@ -113,15 +120,15 @@ public class Staff extends Person{
 				int m;
               for(ServiceRoom r:listsr)
 			  {
-				System.out.println("number room: "+r.getNoRoom());
-                System.out.println("name room: "+r.getName());
-				System.out.println("area: "+r.getAreaPlace());
+				System.out.println("Number room: "+r.getNoRoom());
+                System.out.println("Name room: "+r.getName());
+				System.out.println("Area: "+r.getAreaPlace());
 				System.out.println("\n");
 			  }
 			
 				int flag1=0;
 				try{
-                  System.out.println("enter number room you want work ");
+                  System.out.println("Enter the number of the room you want work in: ");
 				  m=sc.nextInt();
 				  sc.nextLine();
 				  int index1=-1;
@@ -144,13 +151,13 @@ public class Staff extends Person{
 				   else if(flag1==0)
 				   {
 					System.out.println("\n");
-					  System.out.println("number room you enter is exist !!please enter again");
+					  System.out.println("Number room you enter does not exist !! Please enter again!");
 					  pressContinue();
 					  System.out.println("\n");
 				   }
 				}catch(Exception e)
 				{
-					System.out.println("data invidial ");
+					System.out.println("Error data");
 					sc.nextLine();
 					pressContinue();
 					continue position;
@@ -179,11 +186,11 @@ public class Staff extends Person{
 			 }
 			 if(rdd.isEmpty()==true)
 			 {
-				System.out.println("service room is delete before");
+				System.out.println("Service room can be deleted before");
 			 }
 			 else
 			 {
-				System.out.println("staff work in room: ");
+				System.out.println("Staff work in room: ");
 			    for(ServiceRoom r:rdd)
 			    {
 					r.display();
@@ -227,13 +234,7 @@ public class Staff extends Person{
         System.out.println("==============*===============");
         return this.salary;
     }
-    public void Statistic()
-    {
-    int a=Staff.SumStaff();
-    System.out.println("total staff: "+a);
-    int b=Staff.AddStaff();
-    System.out.println("total staff add"+b);
-    }
+    
 
     
 }

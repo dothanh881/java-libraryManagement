@@ -2,6 +2,7 @@ package project_library;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.io.FileWriter;
 
 public class main {
 	static ArrayList<Room>room=new ArrayList<Room>();
@@ -36,14 +37,14 @@ public class main {
         {
             try
             {
-                System.out.println("enter number to follow button to work");
+                System.out.println("Enter number follow button to work");
                 a=sc.nextInt();
                 sc.nextLine();
                 break;
             }
             catch(Exception e)
             {
-                System.out.println("data invidial! please again");
+                System.out.println(" Entered data error! Please enter again!!");
                 sc.nextLine();
                 pessContinue.press();
             }
@@ -277,15 +278,20 @@ public class main {
 		
 		int chooseObject;int chooseRoom;int chooseDocument;int choosePerson;int chooseCard;
 	rdpr:while(true)
-		{
-			object:while(true)
-			{
+		{			
 				
 				ClearScreen.clear();
+				System.out.println("-------------------------------------------------------------------");
+				System.out.printf("|%-65s|\n",LibraryManagement.nameLibaray);
+				System.out.printf("|%-65s|\n","ADDRESS: "+ LibraryManagement.adress);
+				System.out.printf("|%-65s|\n","PHONE  : "+LibraryManagement.Phone);
+				System.out.printf("|%-65s|\n","FOUNDED: "+LibraryManagement.Founded);
+			    System.out.println("-------------------------------------------------------------------");
+				System.out.println("\n");
 				System.out.println("-------------------------------------------------------------------------------------");
 		        System.out.printf("| %-14s | %-14s | %-14s |%-14s |%-14s |\n"," 1. ROOM "," 2. DOCUMENT ","  3. PERSON ","  4 .CARD ","  0. END ");
 	            System.out.println("-------------------------------------------------------------------------------------");
-				System.out.println("choose object to work");
+				System.out.println("Choose object to work");
 				/*System.out.println("choose object to work");
 				System.out.println("1.room ");
 				System.out.println("2.document");
@@ -457,13 +463,188 @@ public class main {
 			      	}
 					
 				}
-				
-			}
-		    
- 
+				else if(chooseObject==0) break;
 		} 
+		
+      // ghi dữ liệu xuống file cho lớp phòng dịch vụ
+	  try {
+			
+		   FileWriter fw=new FileWriter( "ServiceRoom.txt");
+		   for(ServiceRoom rom: rmt.getServiceRoom())
+		   {
+			fw.write(rom.getNoRoom()+","+rom.getRoomId()+","+rom.getName()+","+rom.getAreaPlace());
+			fw.write("\n");
+		   }
+		   fw.flush();
+		   fw.close();
+		
+		}
+		catch(Exception e)
+		{
+			System.out.println("error write file serviceroom !! ");
+			e.printStackTrace();
+			pessContinue.press();
 
-	
+		}
+
+		//ghi dữ liệu xuống cho phòng đọc
+		try {
+			
+		   FileWriter fw=new FileWriter( "ReadRoom.txt");
+		   for(ReadRoom rom: rmt.getReadRoom())
+		   {
+			fw.write(rom.getNoRoom()+","+rom.getRoomId()+","+rom.IdDocument());
+			fw.write("\n");
+		   }
+		   fw.flush();
+		   fw.close();
+		
+		}
+		catch(Exception e)
+		{
+			System.out.println("error write file readroom !! ");
+			e.printStackTrace();
+			pessContinue.press();
+
+		}
+
+		//ghi dữ liệu xuống cho sách
+		try {
+			
+		   FileWriter fw=new FileWriter( "Book.txt");
+		   for(Book rom: dmt.getListBook())
+		   {
+			fw.write(rom.getId()+","+rom.getName()+","+rom.getAuthor()+","+rom.getType()+","+rom.getPage()+","+rom.getPotion());
+			fw.write("\n");
+		   }
+		   fw.flush();
+		   fw.close();
+		
+		}
+		catch(Exception e)
+		{
+			System.out.println("error write file book !! ");
+			e.printStackTrace();
+			pessContinue.press();
+
+		}
+
+		//ghi dữ liệu xuống cho đĩa
+		try {
+			
+		   FileWriter fw=new FileWriter( "Disk.txt");
+		   for(Disk rom: dmt.getListDisk())
+		   {
+			fw.write(rom.getId()+","+rom.getName()+","+rom.getAuthor()+","+rom.getType()+","+rom.getTime()+","+rom.getRam()+","+rom.getPotion());
+			fw.write("\n");
+		   }
+		   fw.flush();
+		   fw.close();
+		
+		}
+		catch(Exception e)
+		{
+			System.out.println("error write file book !! ");
+			e.printStackTrace();
+			pessContinue.press();
+
+		}
+
+		// ghi dữ liệu xuống cho nhân viên
+	 	try {
+			
+		   FileWriter fw=new FileWriter( "Staff.txt");
+		   for(Staff rom: pmt.geListStaff())
+		   {
+			fw.write(rom.getName()+","+rom.getGender()+","+rom.getAddress()+","+rom.getId()+","+rom.getAge()+","+rom.getWorkroom()+","+rom.getPosition());
+			fw.write("\n");
+		   }
+		   fw.flush();
+		   fw.close();
+		
+		}
+		catch(Exception e)
+		{
+			System.out.println("error write file staff !! ");
+			e.printStackTrace();
+			pessContinue.press();
+
+		}
+
+       	// ghi dữ liệu xuống cho người đọc
+		try {
+			
+		   FileWriter fw=new FileWriter( "Reader.txt");
+		   for(Reader rom: pmt.geListReader())
+		   {
+			fw.write(rom.getName()+","+rom.getGender()+","+rom.getAddress()+","+rom.getId()+","+rom.getAge()+","+rom.getTypeCard()+","+rom.getIdcard()+","+rom.getJob());
+			fw.write("\n");
+		   }
+		   fw.flush();
+		   fw.close();
+		
+		}
+		catch(Exception e)
+		{
+			System.out.println("error write file reader !! ");
+			e.printStackTrace();
+			pessContinue.press();
+
+		}
+
+		// ghi dữ liệu xuống cho thẻ thường
+		try {
+			
+		   FileWriter fw=new FileWriter( "NormalCard.txt");
+		   for(CardNormal rom: cmt.getListCardNormal())
+		   {
+			fw.write(rom.getIdCard()+","+rom.getIdOnwer()+","+rom.getTimeUse());
+			fw.write("\n");
+		   }
+		   fw.flush();
+		   fw.close();
+		
+		}
+		catch(Exception e)
+		{
+			System.out.println("error write file normal card !! ");
+			e.printStackTrace();
+			pessContinue.press();
+
+		}
+
+		// ghi dữ liệu xuống cho thẻ mượn
+		try {
+			
+		   FileWriter fw=new FileWriter( "BorrowCard.txt");
+		   for(CardBorrow rom: cmt.getListCardBorrow())
+		   {
+			for(CardDetail s:rom.getListBorrow())
+			{
+               fw.write(s.getIdDocument()+"/"+s.getTimeBorrow()+"/"+s.getTimeReturn());
+			   fw.write("\n");
+			}
+			fw.write(rom.getIdCard()+","+rom.getIdOnwer());
+			fw.write("\n");
+			
+		   }
+		   fw.flush();
+		   fw.close();
+		
+		}
+		catch(Exception e)
+		{
+			System.out.println("error write file borrow card !! ");
+			e.printStackTrace();
+			pessContinue.press();
+
+		}
+
+		System.out.println("-------------------------------------------------------------------");
+		System.out.printf("|%-65s|\n","            THANKS FOR USE !! SEE YOU AGAIN ");
+		System.out.println("-------------------------------------------------------------------");
+		System.out.println("\n");
+
 	}
 		
 	

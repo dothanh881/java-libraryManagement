@@ -5,7 +5,6 @@ import java.util.Scanner;
 
 public class Card {
     Scanner sc=new Scanner(System.in);
-    private static int numberCard=0;
 
     protected String idCard;
 	protected String idOnwer;
@@ -14,13 +13,11 @@ public class Card {
 	{
 		this.idCard = idCard;
 		this.idOnwer = idOnwer;
-        numberCard++;
 	}
 	public Card()
 	{
 		this.idCard = " ";
 		this.idOnwer = " ";
-        numberCard++;
 	}
 	public String getIdCard() {
 		return idCard;
@@ -96,16 +93,16 @@ public class Card {
     public void display()
     {
         int flag=0;
-        System.out.println("id card: "+this.idCard);
+        System.out.println("Id card: "+this.idCard);
         for(Reader pn:main.pmt.geListReader() )
         {
             String temp=((this.idOnwer).toLowerCase()).trim();
             String gid=((pn.getIdcard()).toLowerCase()).trim();
             if(temp.contentEquals(gid))
             {
-                System.out.println("id reader: "+pn.getId());
-                System.out.println("name reader: "+pn.getName());
-                System.out.println("type card: "+pn.getTypeCard());
+                System.out.println("Id reader: "+pn.getId());
+                System.out.println("Name reader: "+pn.getName());
+                System.out.println("Type card: "+pn.getTypeCard());
                 flag=1;
                 break;
             }
@@ -113,8 +110,8 @@ public class Card {
         }
         if(flag==0)
         {
-            System.out.println("id reader: NULL ");
-            System.out.println("name reader: NULL");
+            System.out.println("Id reader: NULL ");
+            System.out.println("Name reader: NULL");
         }
     }
 
@@ -123,8 +120,6 @@ public class Card {
 		
 	}
 
-
-	
 
 	public static ArrayList<Reader> testIdOwner()
 	{
@@ -147,7 +142,7 @@ public class Card {
 			{
 				int flag=0;int index=-1;int i=0;
 
-				System.out.println("enter Id card: ");
+				System.out.println("Enter Id card: ");
 		        this.idCard=sc.nextLine();
 				String temp=((this.idCard).toLowerCase()).trim();
 				for(Card d:list)
@@ -166,7 +161,7 @@ public class Card {
 				{
 					System.out.println("\n");
 					list.get(index).displayTable();
-					System.out.println("Id card is exist!!please enter again");
+					System.out.println("Id card exists !! Please enter again!");
 					pressContinue();
 				}
 

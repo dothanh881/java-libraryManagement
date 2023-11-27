@@ -21,6 +21,33 @@ public class DocumentManagement implements LibraryManagement {
 	{
              return list;
 	}
+
+	public ArrayList<Book> getListBook()
+	{
+		ArrayList<Book> a =new ArrayList<Book>();
+		for(Document r:list)
+		{
+           if(r instanceof Book)
+		   {
+              Book m=(Book) r;
+			  a.add(m);
+		   }
+		}
+		return a;
+	}
+	public ArrayList<Disk> getListDisk()
+	{
+		ArrayList<Disk> a =new ArrayList<Disk>();
+		for(Document r:list)
+		{
+           if(r instanceof Disk)
+		   {
+              Disk m=(Disk) r;
+			  a.add(m);
+		   }
+		}
+		return a;
+	}
      
     // hàm xóa màn hình
 	public void clearScreen()
@@ -76,7 +103,7 @@ public class DocumentManagement implements LibraryManagement {
 				System.out.println("-----------------------------------------------------------------------");
 				System.out.printf("| %-20s | %-20s | %-20s |\n"," 1. ADD BOOK "," 2. ADD DISK ","  0. END ");
 				System.out.println("-----------------------------------------------------------------------");
-    		    System.out.println("enter type document want to add ");
+    		    System.out.println("Enter type document want to add ");
 		     	choose=sc.nextInt();
 		    	sc.nextLine();
 			    if(choose==0) break work_add ;			
@@ -88,7 +115,7 @@ public class DocumentManagement implements LibraryManagement {
 				bk.enterData( main.rmt.getReadRoom());
 				bk.enterId(list);
 				list.add(bk);
-				System.out.println("add book successfully");
+				System.out.println("Add book successfully");
 				pressContinue();
 				break;
 
@@ -97,7 +124,7 @@ public class DocumentManagement implements LibraryManagement {
 				dk.enterData( main.rmt.getReadRoom());
 				dk.enterId(list);
 				list.add(dk);
-				System.out.println("add disk successfully");
+				System.out.println("Add disk successfully");
 				pressContinue();
 				break;				   
     		    }
@@ -108,7 +135,7 @@ public class DocumentManagement implements LibraryManagement {
 	    }
 	    catch(Exception e)
 	    {
-		    System.out.println("data error! ");
+		    System.out.println("Data error! Please enter again! ");
 		    sc.nextLine();
 		    pressContinue();
 	    }
@@ -121,14 +148,14 @@ public class DocumentManagement implements LibraryManagement {
     {
 	    Display();
 		String request;
-		System.out.println("enter id document you want to delete ");
+		System.out.println("Enter id document you want to delete ");
 		request=sc.nextLine();
 		request.toLowerCase();
 		String choice;
 		int checkId=checkIdRoom(request);
 		
 		if(checkId==-1) {
-			System.out.println("document you want to delete no exits or is deleted before");
+			System.out.println("Document you want to delete that does not exits or  deleted before");
 			pressContinue();
 
 		}
@@ -141,26 +168,26 @@ public class DocumentManagement implements LibraryManagement {
 			System.out.println("\n");
             action:while(true)
 			{			
-			   System.out.println("are you sure want to delete  this document (yes/no)? ");			
-			   System.out.println("enter 'y' to choose 'yes' and enter 'n' to choose 'no' ");
+			   System.out.println("Are you sure want to delete  this document (yes/no)? ");			
+			   System.out.println("Enter 'y' to choose 'yes' and enter 'n' to choose 'no' ");
 			   choice=sc.nextLine();
 			   (choice.toLowerCase()).trim();
 		        if(choice.contentEquals(yes))
 			    {
 				    list.remove(checkId);
-				    System.out.println("you have deleted sucessful ");
+				    System.out.println("You have deleted sucessful! ");
 				    pressContinue();
 				    break action;
 			    }
 			    else if(choice.contentEquals(no))
 			    {
-				    System.out.println("delete failed");
+				    System.out.println("Delete failed !");
 				    pressContinue();
 				    break action;
 			    }
 			    else
 			    {
-				    System.out.println("your choice is unsuitable!! please enter again");
+				    System.out.println("Your choice is unsuitable!! please enter again");
 				    pressContinue();
 			    }
 			}
@@ -174,14 +201,14 @@ public  void Edit()
 	
 	Display();
 	String request;String save;int type=0;
-	System.out.println("enter id document you want to edit ");
+	System.out.println("Enter id document you want to edit ");
 	request=sc.nextLine();
 	request=(request.toLowerCase()).trim();
 	int checkId=checkIdRoom(request);
 		
 	if(checkId==-1)
 	{
-		System.out.println("document you want to edit no exits ");
+		System.out.println("Document you want to edit that does not exits ");
 		pressContinue();
 	}
 	else
@@ -210,7 +237,7 @@ public  void Edit()
 			Document sr=new Book();
 			temp.displayTable();
 			System.out.println("\n");
-			System.out.println("enter data new for book");
+			System.out.println("Enter new data  for book: ");
 			sr.enterData( main.rmt.getReadRoom());	
 			sr.setId(id);						
  			list.add(checkId, sr);				    
@@ -221,27 +248,27 @@ public  void Edit()
 			Document rd=new Disk();
 			temp1.displayTable();
 			System.out.println("\n");
-			System.out.println("enter data new for disk");
+			System.out.println("Enter new data  for disk :");
 			rd.enterData( main.rmt.getReadRoom()); 
 			rd.setId(id1);           
 			list.add(checkId,rd);
 		}
 		action:while(true)
 				{
-					System.out.println("are you sure want to save change this (yes/no)? ");
-					System.out.println("enter 'y' to choose 'yes' and enter 'n' to choose no");
+					System.out.println("Are you sure want to save this change (yes/no)? ");
+					System.out.println("Enter 'y' to choose 'yes' and enter 'n' to choose 'no' :");
 					save=sc.nextLine();
 					save.toLowerCase();
 					if(save.contentEquals("y"))
 					{
-					  System.out.println("you have save change sucessful ");
+					  System.out.println("You have save change sucessfully! ");
 					  pressContinue();
 					  break action;
 					}
 					else if(save.contentEquals("n"))
 					{
 					  list.remove(checkId);
-					  System.out.println("save change failed");
+					  System.out.println("Save change failed !");
 					  if(type==1) list.add(checkId,temp);					
 					  else if(type==2) list.add(checkId,temp1); 
 					  pressContinue();
@@ -249,7 +276,7 @@ public  void Edit()
 					}
 					else
 					{
-					  System.out.println("your choice is unsuitable!! please enter again");
+					  System.out.println("Your choice is unsuitable!! Please enter again");
 					  pressContinue();
 					}
 				}
@@ -261,7 +288,7 @@ public  void Search()
 {
 	String request; ArrayList <Document>cmm=new ArrayList<Document>();
 	ArrayList<Document> cmn= new ArrayList<Document>();
-	System.out.println("enter key word document (id,author,name,type) you want to search ");
+	System.out.println("Enter key word document (id,author,name,type) you want to search ");
 	request=sc.nextLine();
 	String temp=(request.toLowerCase()).trim();
 	int flag=0;int flagsg=0;
@@ -289,7 +316,7 @@ public  void Search()
 	}
 	if(flag==1)
 	{
-		System.out.println("document you want find ");
+		System.out.println("Document you want find ");
 		for(Document c: cmm)
 		{
 			if(c instanceof Book)
@@ -310,7 +337,7 @@ public  void Search()
 	}
 	 if(flagsg==2)
 	{
-		System.out.println("document suggest: ");
+		System.out.println("Document suggest: ");
 		for(Document c:cmn)
 		{
 			if(c instanceof Book)
@@ -336,14 +363,15 @@ public  void Search()
   public   void Display()
   {    ArrayList<Disk> disk=new ArrayList<Disk>();   
 	    System.out.println("        BOOK LIST      ");
-        System.out.println("----------------------------------------------------------------------------------------------------------------------------------");
-        System.out.printf("| %-15s | %-50s | %-30s |%-23s |%-5s |\n","ID ", "Name", "Author  ","Type ","Page ");
+        System.out.println("-----------------------------------------------------------------------------------------------------------------");
+        System.out.printf("| %-10s | %-45s | %-19s |%-21s |%-5s |\n","ID ", "Name", "Author  ","Type ","Page ");
+		System.out.println("-----------------------------------------------------------------------------------------------------------------");
 		for(Document listTest:list)
     	{
     		if(listTest instanceof Book)
     		{
     			Book bk=(Book)listTest;
-				System.out.printf("| %-15s | %-50s | %-30s |%-23s |%-5s |\n",bk.getId(), bk.getName(), bk.getAuthor(),bk.getType(),bk.getPage());
+				System.out.printf("| %-10s | %-45s | %-19s |%-21s |%-5s |\n",bk.getId(), bk.getName(), bk.getAuthor(),bk.getType(),bk.getPage());
 
     		}
     		else if(listTest instanceof Disk)
@@ -352,17 +380,18 @@ public  void Search()
     			disk.add(dk);
     		}
     	}
-		System.out.println("-----------------------------------------------------------------------------------------------------------------------------------");
+		System.out.println("-----------------------------------------------------------------------------------------------------------------");
+
 		System.out.println("\n");
         System.out.println("          DISK LIST");
-		System.out.println("----------------------------------------------------------------------------------------------------------------------------------");
-        System.out.printf("| %-14s | %-37s | %-25s |%-17s |%-15s |%-15s |\n","ID ", "Name", "Author  ","Type ","Time (minute) ","Ram (Gb) ");
+		System.out.println("-----------------------------------------------------------------------------------------------------------------");
+        System.out.printf("| %-10s | %-32s | %-21s |%-16s |%-14s |%-7s |\n","ID ", "Name", "Author  ","Type ","Time (minute) ","Ram (Gb) ");
+		System.out.println("-----------------------------------------------------------------------------------------------------------------");
     	for(Disk sr:disk)
     	{
-    		System.out.printf("| %-14s | %-37s | %-25s |%-17s |%-15s |%-15s |\n",sr.getId(), sr.getName(), sr.getAuthor(),sr.getType(),sr.getTime(),sr.getRam());
-
+    		System.out.printf("| %-10s | %-32s | %-21s |%-16s |%-14s |%-7s |\n",sr.getId(), sr.getName(), sr.getAuthor(),sr.getType(),sr.getTime(),sr.getRam());
     	}
-		System.out.println("----------------------------------------------------------------------------------------------------------------------------------");
+		System.out.println("-----------------------------------------------------------------------------------------------------------------");
 
 
    /*  ArrayList<Disk> disk=new ArrayList<Disk>();

@@ -57,8 +57,8 @@ public void setAreaPlace(String name) {
 public void display()
 {
 	super.display();
-	System.out.println("name room: " +name+" ");
-  System.out.println("arae work: "+this.areaPlace);
+	System.out.println("Name room: " +name+" ");
+  System.out.println("Arae work: "+this.areaPlace);
 
 }
 public void displayTable()
@@ -72,7 +72,7 @@ public void displayTable()
 public void enterData()
 {
 	super.enterData();
-	System.out.println("enter name room: ");
+	System.out.println("Enter name room: ");
 	name=sc.nextLine();
 
   
@@ -83,7 +83,7 @@ public void enterAreaPlace(ArrayList<Room>list)
   {
       int index=-1;int i=0;
 
-    System.out.println("enter area place: ");
+    System.out.println("Enter area place: ");
         this.areaPlace=sc.nextLine();
         String temp=((this.areaPlace).toLowerCase()).trim();
     for(Room d:list)

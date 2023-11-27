@@ -5,7 +5,7 @@ public class pessContinue {
     {
         Scanner sc=new Scanner(System.in);
         String key;
-        System.out.println("\n press enter to continue... ");
+        System.out.println("\n Press enter to continue... ");
         key=sc.nextLine();
     }
 }

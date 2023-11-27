@@ -35,6 +35,7 @@ public class CardManagement implements LibraryManagement {
    {
       return list;
    }
+
    public ArrayList <String> getIdOnwer()
    {
       ArrayList <String> a=new ArrayList<String>();
@@ -44,6 +45,35 @@ public class CardManagement implements LibraryManagement {
       }
       return a;
    }
+
+   
+	public ArrayList<CardBorrow> getListCardBorrow()
+	{
+		ArrayList<CardBorrow> a =new ArrayList<CardBorrow>();
+		for(Card r:list)
+		{
+           if(r instanceof CardBorrow)
+		   {
+              CardBorrow m=(CardBorrow) r;
+			  a.add(m);
+		   }
+		}
+		return a;
+	}
+	public ArrayList<CardNormal> getListCardNormal()
+	{
+		ArrayList<CardNormal> a =new ArrayList<CardNormal>();
+		for(Card r:list)
+		{
+           if(r instanceof CardNormal)
+		   {
+              CardNormal m=(CardNormal) r;
+			  a.add(m);
+		   }
+		}
+		return a;
+	}
+
    public int checkIdCard( String m)
 	{
 		m=(m.toLowerCase()).trim();
@@ -139,7 +169,7 @@ public class CardManagement implements LibraryManagement {
 				System.out.println("-------------------------------------------------------------------------------------");
 				System.out.printf("| %-25s | %-25s | %-25s |\n"," 1. ADD CARD NORMAL "," 2. ADD CARD BORROW ","  0. END ");
 				System.out.println("-------------------------------------------------------------------------------------");
-    		    System.out.println("enter type card want to add ");
+    		    System.out.println("Enter type card want to add: ");
 				  choose=sc.nextInt();
 				  sc.nextLine();
 				  if(choose==0) break work_add ;			
@@ -152,7 +182,7 @@ public class CardManagement implements LibraryManagement {
                    flag1=bk.enterIdOwner();
                    if(flag1==0)
                    {
-                       System.out.println("add normal card unsuccessfully");
+                       System.out.println("Add normal card unsuccessfully!");
 				       pressContinue();
                    }
                    else
@@ -160,7 +190,7 @@ public class CardManagement implements LibraryManagement {
 				     bk.enterIdcard(list); 
                      bk.enterTimeUse();
 				     list.add(bk);
-				     System.out.println("add normal card successfully");
+				     System.out.println("Add normal card successfully!");
 				     pressContinue();
                   }
 				  break;
@@ -171,7 +201,7 @@ public class CardManagement implements LibraryManagement {
 				  ClearScreen.clear();
                   if(flag2==0)
                   {
-                       System.out.println("add borrow card unsuccessfully");
+                       System.out.println("Add borrow card unsuccessfully!");
 				       pressContinue();
                   }
                   else
@@ -179,7 +209,7 @@ public class CardManagement implements LibraryManagement {
 			        	dk.enterIdcard(list);
                         dk.enterDocumentBorrow();
 			        	list.add(dk);
-				        System.out.println("add borrow card successfully");
+				        System.out.println("Add borrow card successfully!");
 				        pressContinue();
                   }
 				  break;				   
@@ -191,7 +221,7 @@ public class CardManagement implements LibraryManagement {
 		   }
 		   catch(Exception e)
 		   {
-			  System.out.println("data error! cho nay ne ");
+			  System.out.println("Data error! Please enter again!");
 			  	sc.nextLine();
 			  e.printStackTrace();
 			  pressContinue();
@@ -203,14 +233,14 @@ public class CardManagement implements LibraryManagement {
    {
 	Display();
 		String request;
-		System.out.println("enter id person you want to delete ");
+		System.out.println("Enter id of the person you want to delete: ");
 		request=sc.nextLine();
 		request.toLowerCase();
 		String choice;
 		int checkId=checkIdCard(request);
 		
 		if(checkId==-1) {
-			System.out.println("person you want to delete no exits or is deleted before");
+			System.out.println("Person you want to delete that does not exit or can be deleted before!");
 			pressContinue();
 
 		}
@@ -223,26 +253,26 @@ public class CardManagement implements LibraryManagement {
 			
             action:while(true)
 			{			
-			   System.out.println("are you sure want to delete  this card (yes/no)? ");			
-			   System.out.println("enter 'y' to choose 'yes' and enter 'n' to choose 'no' ");
+			   System.out.println("Are you sure want to delete  this card (yes/no)? ");			
+			   System.out.println("Enter 'y' to choose 'yes' and enter 'n' to choose 'no' ");
 			   choice=sc.nextLine();
 			  choice=(choice.toLowerCase()).trim();
 		        if(choice.contentEquals(yes))
 			    {
 				    list.remove(checkId);
-				    System.out.println("you have deleted sucessful ");
+				    System.out.println("You have deleted sucessfully! ");
 				    pressContinue();
 				    break action;
 			    }
 			    else if(choice.contentEquals(no))
 			    {
-				    System.out.println("delete failed");
+				    System.out.println("Delete failed");
 				    pressContinue();
 				    break action;
 			    }
 			    else
 			    {
-				    System.out.println("your choice is unsuitable!! please enter again");
+				    System.out.println("Your choice is unsuitable!! Please enter again!");
 				    pressContinue();
 			    }
 			}
@@ -254,14 +284,14 @@ public class CardManagement implements LibraryManagement {
    {
 	Display();
 	String request;String save;int type=0;
-	System.out.println("enter id card you want to edit ");
+	System.out.println("Enter id of the card you want to edit: ");
 	request=sc.nextLine();
 	request=(request.toLowerCase()).trim();
 	int checkId=checkIdCard(request);
 		
 	if(checkId==-1)
 	{
-		System.out.println("card you want to edit no exits ");
+		System.out.println("Card you want to edit does not exit!");
 		pressContinue();
 	}
 	else
@@ -291,7 +321,7 @@ public class CardManagement implements LibraryManagement {
 		{
 			CardNormal sr=new CardNormal();
 			temp.displayTable();
-			System.out.println("enter data new for card normal");
+			System.out.println("Enter new data for normal card: ");
 			sr.enterIdcard(list);
 			sr.enterTimeUse();
 			sr.setIdOnwer(idCard);
@@ -302,12 +332,12 @@ public class CardManagement implements LibraryManagement {
 		{
 			CardBorrow rd=new CardBorrow();
 			temp1.displayTable();
-			System.out.println("enter data new for card borrow");
+			System.out.println("Enter new data for borrow card: ");
 			rd.enterIdcard(list);
 			actions:while(true)
 				{
-					System.out.println("are you sure want to change list borrow document (yes/no)? ");
-					System.out.println("enter 'y' to choose 'yes' and enter 'n' to choose no");
+					System.out.println("Are you sure want to change list borrow document (yes/no)? ");
+					System.out.println("Enter 'y' to choose 'yes' and enter 'n' to choose no: ");
 					save=sc.nextLine();
 					save.toLowerCase();
 					if(save.contentEquals("y"))
@@ -322,7 +352,7 @@ public class CardManagement implements LibraryManagement {
 					}
 					else
 					{
-					  System.out.println("your choice is unsuitable!! please enter again");
+					  System.out.println("Your choice is unsuitable!! Please enter again!");
 					  pressContinue();
 					}
 				}
@@ -331,20 +361,20 @@ public class CardManagement implements LibraryManagement {
 		}
 		action:while(true)
 				{
-					System.out.println("are you sure want to save change this (yes/no)? ");
-					System.out.println("enter 'y' to choose 'yes' and enter 'n' to choose no");
+					System.out.println("Are you sure want to save  this change (yes/no)? ");
+					System.out.println("Enter 'y' to choose 'yes' and enter 'n' to choose no: ");
 					save=sc.nextLine();
 					save.toLowerCase();
 					if(save.contentEquals("y"))
 					{
-					  System.out.println("you have save change sucessful ");
+					  System.out.println("You have saved the change sucessfully! ");
 					  pressContinue();
 					  break action;
 					}
 					else if(save.contentEquals("n"))
 					{
 					  list.remove(checkId);
-					  System.out.println("save change failed");
+					  System.out.println("Save change failed");
 					  if(type==1) list.add(checkId,temp);					
 					  else if(type==2) list.add(checkId,temp1); 
 					  pressContinue();
@@ -352,7 +382,7 @@ public class CardManagement implements LibraryManagement {
 					}
 					else
 					{
-					  System.out.println("your choice is unsuitable!! please enter again");
+					  System.out.println("Your choice is unsuitable!! Please enter again!");
 					  pressContinue();
 					}
 				}
@@ -364,7 +394,7 @@ public class CardManagement implements LibraryManagement {
    {
 	String request; ArrayList <Card>cmm=new ArrayList<Card>();
 	ArrayList<Card> cmn= new ArrayList<Card>();
-	System.out.println("enter id or name owner you want to search ");
+	System.out.println("Enter id or name owner you want to search: ");
 	request=sc.nextLine();
 	String temp=(request.toLowerCase()).trim();
 	int flag=0;int flagsg=0;
@@ -376,7 +406,7 @@ public class CardManagement implements LibraryManagement {
 	{
 	if(fullname.isEmpty()!=true)
 	{
-		System.out.println("Card you want to find");
+		System.out.println("Card you want to find: ");
 		for(String n:fullname)
 		{
 			int indexful=checkIdOwner(n);
@@ -400,7 +430,7 @@ public class CardManagement implements LibraryManagement {
 	}
 	if(suggestname.isEmpty()!=true)
 	{
-		System.out.println("suggest Card you want to find");
+		System.out.println("Suggest Card you want to find: ");
 		for(String n:suggestname)
 		{
 			int indexsug=checkIdOwner(n);
@@ -445,7 +475,7 @@ public class CardManagement implements LibraryManagement {
 	}
 	if(flag==1)
 	{
-		System.out.println("card you want find ");
+		System.out.println("Card you want to find:");
 		for(Card c: cmm)
 		{
 			if(c instanceof CardNormal)
@@ -495,14 +525,15 @@ public class CardManagement implements LibraryManagement {
    {
 	ArrayList<CardBorrow> cardnormals=new  ArrayList<CardBorrow>();
 	System.out.println("        NORMAL CARD LIST      ");
-	System.out.println("-------------------------------------------------------------------------------------------------------------------------------");
-	System.out.printf("| %-15s |%-15s | %-36s | %-15s |%-20s |\n","ID Reader ","ID Card", "Name Reader", "Type Card  ","Time Use(day) ");
+	System.out.println("-----------------------------------------------------------------------------------------------------------------");
+	System.out.printf("| %-14s |%-15s | %-36s | %-15s |%-20s |\n","ID Reader ","ID Card", "Name Reader", "Type Card  ","Time Use(day) ");
+	System.out.println("-----------------------------------------------------------------------------------------------------------------");
 	for(Card listTest:list)
 	{
 		if(listTest instanceof CardNormal)
 		{
 			CardNormal bk=(CardNormal)listTest;
-			System.out.printf("| %-15s |%-15s | %-36s | %-15s |%-20s |\n",bk.getIdReader(), bk.getIdCard(), bk.getNameReader(),bk.getIdTypeCard(),bk.getTimeUse());
+			System.out.printf("| %-14s |%-15s | %-36s | %-15s |%-20s |\n",bk.getIdReader(), bk.getIdCard(), bk.getNameReader(),bk.getIdTypeCard(),bk.getTimeUse());
 
 		}
 		else if(listTest instanceof CardBorrow)
@@ -511,17 +542,20 @@ public class CardManagement implements LibraryManagement {
 			cardnormals.add(dk);
 		}
 	}
-	System.out.println("------------------------------------------------------------------------------------------------------------------------------");
+	System.out.println("-----------------------------------------------------------------------------------------------------------------");
 	System.out.println("\n");
 	System.out.println("          BORROW CARD    ");
-	System.out.println("-------------------------------------------------------------------------------------------------------------------------");
-	System.out.printf("| %-15s | %-15s | %-36s |%-15s |%-20s |\n","ID Reader ", "ID Card", "Name Reader  ","Type Card ","Time Use ");
+	System.out.println("-----------------------------------------------------------------------------------------------------------------");
+	System.out.printf("| %-14s | %-15s | %-36s |%-15s |%-20s |\n","ID Reader ", "ID Card", "Name Reader  ","Type Card ","Time Use ");
+	System.out.println("-----------------------------------------------------------------------------------------------------------------");
+
 	for(CardBorrow sr:cardnormals)
 	{
-		System.out.printf("| %-15s | %-15s | %-36s |%-15s |%-20s |\n",sr.getIdReader(), sr.getIdCard(), sr.getNameReader(),sr.getIdTypeCard()," 1 Year ");
+		System.out.printf("| %-14s | %-15s | %-36s |%-15s |%-20s |\n",sr.getIdReader(), sr.getIdCard(), sr.getNameReader(),sr.getIdTypeCard()," 1 Year ");
 
 	}
-	System.out.println("--------------------------------------------------------------------------------------------------------------------------");
+	System.out.println("-----------------------------------------------------------------------------------------------------------------");
+
 
 
 

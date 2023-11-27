@@ -65,11 +65,11 @@ public class Document {
 		
 		public void display()
 		{
-			System.out.println("id    : "+this.id);
-			System.out.println("name  : "+this.name);
-			System.out.println("author:"+this.author);
-			System.out.println("type  : "+this.type);
-			System.out.println("id document: "+this.potion);
+			System.out.println("Id    : "+this.id);
+			System.out.println("Name  : "+this.name);
+			System.out.println("Author:"+this.author);
+			System.out.println("Type  : "+this.type);
+			System.out.println("Id document: "+this.potion);
 		}
 		public void displayTable()
 		{
@@ -91,12 +91,12 @@ public class Document {
 			 }
 			 if(rdd.isEmpty()==true)
 			 {
-				System.out.println("read room is delete before");
+				System.out.println("Read room is deleted before");
 				pressContinue();
 			 }
 			 else
 			 {
-				System.out.println("book is put in: ");
+				System.out.println("Book is put in: ");
 			    for(ReadRoom r:rdd)
 			    {
 					System.out.println("\n");
@@ -113,7 +113,7 @@ public class Document {
 			{
 				int flag=0;int index=-1;int i=0;
 
-				System.out.println("enter Id: ");
+				System.out.println("Enter Id: ");
 		        this.id=sc.nextLine();
 				String temp=((this.id).toLowerCase()).trim();
 				for(Document d:list)
@@ -132,7 +132,7 @@ public class Document {
 				{
 					System.out.println("\n");
 					list.get(index).displayTable();
-					System.out.println("Id document is exist!!please enter again");
+					System.out.println("Id document exist!!please enter again");
 					pressContinue();
 				}
 
@@ -143,11 +143,11 @@ public class Document {
 		public void enterData(ArrayList<ReadRoom> listrd)
 		{
 			
-			System.out.println("enter name: ");
+			System.out.println("Enter name: ");
 			name=sc.nextLine();
-			System.out.println("enter author name: ");
+			System.out.println("Enter name of the author : ");
 			author=sc.nextLine();
-			System.out.println("enter type: ");
+			System.out.println("Enter type: ");
 			type=sc.nextLine();
 
 			position:while(true)
@@ -155,14 +155,14 @@ public class Document {
 				int m;
               for(ReadRoom r:listrd)
 			  {
-				System.out.println("number room: "+r.getNoRoom());
+				System.out.println("Number room: "+r.getNoRoom());
 				System.out.println(r.IdDocument());
 				System.out.println("\n");
 			  }
 			
 				int flag1=0;
 				try{
-                  System.out.println("enter number room you want put in book ");
+                  System.out.println("Enter number room you want to put in book ");
 				  m=sc.nextInt();
 				  sc.nextLine();
 				  int index1=-1;
@@ -185,13 +185,13 @@ public class Document {
 				   else if(flag1==0)
 				   {
 					System.out.println("\n");
-					  System.out.println("number room you enter is not exist !!please enter again");
+					  System.out.println("Number room you entered that doesn't exist !!Please enter again");
 					  pressContinue();
 					  System.out.println("\n");
 				   }
 				}catch(Exception e)
 				{
-					System.out.println("data invidial ");
+					System.out.println("data error!! Please enter again! ");
 					sc.nextLine();
 					pressContinue();
 					continue position;

@@ -52,8 +52,8 @@ Scanner sc=new Scanner(System.in);
 	// in thong tin số phòng , id phòng
 	public void display()
 	{
-		System.out.println("number room: "+this.noRoom);
-		System.out.println("id room: "+this.roomId);
+		System.out.println("Number room: "+this.noRoom);
+		System.out.println("Id room: "+this.roomId);
 	}
     public void displayTable()
 	{
@@ -66,13 +66,13 @@ Scanner sc=new Scanner(System.in);
 	{
 		while(true)
 		{try {
-			System.out.println("enter number room ");
+			System.out.println("Enter number room ");
 			this.noRoom=sc.nextInt();
 			sc.nextLine();
 			break;
 		}catch(Exception e)
 		{
-			System.out.println(" you entered invalid data number room !! plese enter again ");
+			System.out.println(" Data error !! Please enter again ");
 			sc.nextLine();
 		pessContinue.press();
 		System.out.print("\033[H\033[2J");  // clear sreen
@@ -80,7 +80,7 @@ Scanner sc=new Scanner(System.in);
 
 		}
 		}
-		System.out.println("enter id room ");
+		System.out.println("Enter id room ");
 		this.roomId=sc.nextLine();
 		
 		

@@ -35,10 +35,11 @@ public class Book extends Document {
     }
     public void displayTable()
     {
-        System.out.println("----------------------------------------------------------------------------------------------------------------------------------");
-        System.out.printf("| %-15s | %-50s | %-30s |%-23s |%-5s |\n","ID ", "Name", "Author  ","Type ","Page ");
-        System.out.println("----------------------------------------------------------------------------------------------------------------------------------");
-        System.out.printf("| %-15s | %-50s | %-30s |%-23s |%-5s |\n",this.getId(), this.getName(), this.getAuthor(),this.getType(),this.getPage());
+        System.out.println("-----------------------------------------------------------------------------------------------------------------");
+        System.out.printf("| %-10s | %-45s | %-19s |%-21s |%-5s |\n","ID ", "Name", "Author  ","Type ","Page ");
+        System.out.println("-----------------------------------------------------------------------------------------------------------------");
+        System.out.printf("| %-10s | %-45s | %-19s |%-21s |%-5s |\n",this.getId(), this.getName(), this.getAuthor(),this.getType(),this.getPage());
+        System.out.println("-----------------------------------------------------------------------------------------------------------------");
 
     }
     public void enterData(ArrayList<ReadRoom> listrd)

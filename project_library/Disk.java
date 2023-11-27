@@ -49,10 +49,11 @@ public class Disk extends Document {
     }
     public void displayTable()
     {
-        System.out.println("----------------------------------------------------------------------------------------------------------------------------------");
-        System.out.printf("| %-14s | %-37s | %-25s |%-17s |%-15s |%-15s |\n","ID ", "Name", "Author  ","Type ","Time (minute) ","Ram (Gb) ");
-        System.out.println("----------------------------------------------------------------------------------------------------------------------------------");
-        System.out.printf("| %-14s | %-37s | %-25s |%-17s |%-15s |%-15s |\n",this.getId(), this.getName(), this.getAuthor(),this.getType(),this.getTime(),this.getRam());
+        System.out.println("-----------------------------------------------------------------------------------------------------------------");
+        System.out.printf("| %-10s | %-32s | %-21s |%-16s |%-14s |%-7s |\n","ID ", "Name", "Author  ","Type ","Time (minute) ","Ram (Gb) ");
+        System.out.println("-----------------------------------------------------------------------------------------------------------------");
+        System.out.printf("| %-10s | %-32s | %-21s |%-16s |%-14s |%-7s |\n",this.getId(), this.getName(), this.getAuthor(),this.getType(),this.getTime(),this.getRam());
+        System.out.println("-----------------------------------------------------------------------------------------------------------------");
 
     }
      public void enterData(ArrayList<ReadRoom> listrd)

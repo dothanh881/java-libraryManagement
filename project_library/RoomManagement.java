@@ -148,7 +148,7 @@ public class  RoomManagement implements LibraryManagement {
 			System.out.println("-------------------------------------------------------------------------------------------");
 			System.out.printf("| %-27s | %-27s | %-27s |\n"," 1. ADD SERVICE ROOM "," 2. ADD READ ROOM ","          0. END ");
 			System.out.println("-------------------------------------------------------------------------------------------");
-    		System.out.println("enter type room want to add ");
+    		System.out.println("Enter type room want to add ");
 			choose=sc.nextInt();
 			sc.nextLine();
 			if(choose==0) break work_add ;
@@ -168,7 +168,7 @@ public class  RoomManagement implements LibraryManagement {
 					if(checkId==-1&&checkNo==-1) // thông báo nhập thành công
     					    {
     					    	list.add(srv);
-    					    	System.out.println("add room service successfully ");
+    					    	System.out.println("Add room service successfully ");
     					    	pressContinue();
     					    	break;
     					    	
@@ -176,7 +176,7 @@ public class  RoomManagement implements LibraryManagement {
     					else if(checkNo!=-1) // báo lỗi và yêu cầu nhập lại nếu người dùng nhập trùng số phòng
     					    {
 								
-								System.out.println("number room service you enter is exits !! ");
+								System.out.println("Number room service you enter that is exits !! ");
 								list.get(checkNo).displayTable();
 								System.out.println("please enter again");
 								pressContinue();
@@ -185,11 +185,11 @@ public class  RoomManagement implements LibraryManagement {
 
 							else if(checkId!=-1) // báo lỗi và yêu cầu nhập lại nếu người dùng nhập trùng id phòng
 							{
-								System.out.println("id room service you enter is exits !! ");
+								System.out.println("Id room service you enter that is exits !! ");
 								//System.out.println("id you enter: "+srv.getRoomId());
 								//System.out.println("\n id trung: "+list.get(checkId));
 								list.get(checkId).displayTable();
-								System.out.println("please enter again");
+								System.out.println("Please enter again");
 								pressContinue();
 							}
     				break;
@@ -207,7 +207,7 @@ public class  RoomManagement implements LibraryManagement {
 					if(checkId==-1&&checkNo==-1) // thông báo nhập thành công
     					    {
     					    	list.add(rd);
-    					    	System.out.println("add room read successfully ");
+    					    	System.out.println("Add room read successfully ");
     					    	pressContinue();
     					    	break;
     					    	
@@ -215,18 +215,18 @@ public class  RoomManagement implements LibraryManagement {
     					else if(checkNo!=-1) // báo lỗi và yêu cầu nhập lại nếu người dùng nhập trùng số phòng
     					    {
 								
-								System.out.println("number room read you enter is exits !! ");
+								System.out.println("Number room read you enter that is exits !! ");
 								list.get(checkNo).displayTable();
-								System.out.println("please enter again");
+								System.out.println("Please enter again");
 								pressContinue();
 
     					    }
 
 							else // báo lỗi và yêu cầu nhập lại nếu người dùng nhập trùng id phòng
 							{
-								System.out.println("id room you enter is exits!! please enter again ");
+								System.out.println("Id room you enter is that exits!! please enter again ");
 								list.get(checkId).displayTable();
-								System.out.println("please enter again");
+								System.out.println("Please enter again");
 								pressContinue();
 							}
     				break;
@@ -240,7 +240,7 @@ public class  RoomManagement implements LibraryManagement {
 		break;
 	}catch(Exception e)
 	{
-		System.out.println("data error! ");
+		System.out.println("Data error! ");
 		sc.nextLine();
 		pressContinue();
 	}
@@ -253,14 +253,14 @@ public class  RoomManagement implements LibraryManagement {
 
 		Display();
 		String request;
-		System.out.println("enter id room you want to delete ");
+		System.out.println("Enter id room you want to delete ");
 		request=sc.nextLine();
 		request.toLowerCase();
 		String choice;
 		int checkId=checkIdRoom(request);
 		
 		if(checkId==-1) {
-			System.out.println("room you want to delete no exits or is deleted before");
+			System.out.println("Room you want to delete that does not  exits or is deleted before");
 			pressContinue();
 
 		}
@@ -273,27 +273,27 @@ public class  RoomManagement implements LibraryManagement {
 			System.out.println("\n");
             action:while(true){
 			
-			System.out.println("are you sure want to delete this (yes/no)? ");
+			System.out.println("Are you sure want to delete this (yes/no)? ");
 			
-			System.out.println("enter 'y' to choose 'yes' and enter 'n' to choose 'no' ");
+			System.out.println("Enter 'y' to choose 'yes' and enter 'n' to choose 'no' ");
 			choice=sc.nextLine();
 			choice.toLowerCase();
 		      if(choice.contentEquals(yes))
 			  {
 				list.remove(checkId);
-				System.out.println("you have deleted sucessful ");
+				System.out.println("You have deleted sucessful ");
 				pressContinue();
 				break action;
 			  }
 			  else if(choice.contentEquals(no))
 			  {
-				System.out.println("deletion failed");
+				System.out.println("Deletion failed");
 				pressContinue();
 				break action;
 			  }
 			  else
 			  {
-				System.out.println("your choice is unsuitable!! please enter again");
+				System.out.println("Your choice is unsuitable!! please enter again");
 				pressContinue();
 
 			  }
@@ -310,13 +310,13 @@ public class  RoomManagement implements LibraryManagement {
    {
 		Display();
 		String request;String save;int type=0;
-		System.out.println("enter id room you want to edit ");
+		System.out.println("Enter id room you want to edit ");
 		request=sc.nextLine();String end=" ";int new_num;
 		request=(request.toLowerCase()).trim();
 		int checkId=checkIdRoom(request);
        
 		if(checkId==-1) {
-			System.out.println("room you want to edit no exits ");
+			System.out.println("Room you want to edit that does not exits ");
               pressContinue();
 		}
 		else
@@ -346,7 +346,7 @@ public class  RoomManagement implements LibraryManagement {
 				{
 					ServiceRoom sr=new ServiceRoom();
 					temp.displayTable();
-				    System.out.println("enter data new for service room");
+				    System.out.println("Enter new data for service room");
 					sr.enterData();	
 					sr.setAreaPlace(areawork);
 					checkType1:while(true)
@@ -363,7 +363,7 @@ public class  RoomManagement implements LibraryManagement {
 						{
                             System.out.println("\n");
 					        list.get(checktype1).displayTable();
-					        System.out.println("id room is exist !! please enter again id room");
+					        System.out.println("Id room is exist !! please enter again id room");
 					        System.out.println("\n");
 				         	end=sc.nextLine();
 				        	sr.setRoomId(end);
@@ -377,13 +377,13 @@ public class  RoomManagement implements LibraryManagement {
 						  {
 							try
 							{
-								System.out.println("number room is exist !! please enter again number room");
+								System.out.println("Number room is exist !! Please enter again number room");
                                  new_num=sc.nextInt();
 								 sc.nextLine();
 								 break;
 							}catch(Exception e)
 							{
-								System.out.println("data invidial!! please enter again");
+								System.out.println("Data error !! Please enter again");
 								sc.nextLine();
 
 								pressContinue();
@@ -400,7 +400,7 @@ public class  RoomManagement implements LibraryManagement {
 				{
 					ReadRoom rd=new ReadRoom();
 					temp1.displayTable();
-				    System.out.println("enter data new for read room");
+				    System.out.println("Enter new data  for read room");
 					rd.enterData();
 					rd.setIdDocuemt(positionBook);
 					checkType2:while(true)
@@ -417,7 +417,7 @@ public class  RoomManagement implements LibraryManagement {
 						{
                             System.out.println("\n");
 					        list.get(checktype1).displayTable();
-					        System.out.println("iD room is exist !! please enter again id room");
+					        System.out.println("ID room is exist !! Please enter again id room");
 					        System.out.println("\n");
 				         	end=sc.nextLine();
 				        	rd.setRoomId(end);
@@ -432,13 +432,13 @@ public class  RoomManagement implements LibraryManagement {
 						  {
 							try
 							{
-								System.out.println("number room is exist !! please enter again number room");
+								System.out.println("Number room is exist !! Please enter again number room");
                                  new_num=sc.nextInt();
 								 sc.nextLine();
 								 break;
 							}catch(Exception e)
 							{
-								System.out.println("data invidial!! please enter again");
+								System.out.println("Data error !! Please enter again");
 								sc.nextLine();
 								pressContinue();
 							}
@@ -451,21 +451,21 @@ public class  RoomManagement implements LibraryManagement {
 				}
 				action:while(true)
 				{
-					System.out.println("are you sure want to save change this (yes/no)? ");
-			        System.out.println("enter 'y' to choose 'yes' and enter 'n' to choose no");
+					System.out.println("Are you sure want to save change this (yes/no)? ");
+			        System.out.println("Enter 'y' to choose 'yes' and enter 'n' to choose no");
 			        save=sc.nextLine();
 		         	save.toLowerCase();
 
 		           if(save.contentEquals("y"))
 			       {
-				     System.out.println("you have save change sucessful ");
+				     System.out.println("You have save change sucessfully! ");
 				     pressContinue();
 				     break action;
 			       }
 			       else if(save.contentEquals("n"))
 			       {
 				    list.remove(checkId);
-			     	System.out.println("save change failed");
+			     	System.out.println("Save change failed !");
 			    	if(type==1)
 			    	list.add(checkId,temp);
 			    	else if(type==2) list.add(checkId,temp1); 
@@ -474,7 +474,7 @@ public class  RoomManagement implements LibraryManagement {
 			       }
 			        else
 			       {
-				    System.out.println("your choice is unsuitable!! please enter again");
+				    System.out.println("Your choice is unsuitable!! please enter again");
 				    pressContinue();
 			        }
 				}
@@ -483,17 +483,11 @@ public class  RoomManagement implements LibraryManagement {
 		
 	}
 			
-		
-		
-		
-   
-
-
    // hàm tìm kiếm
    public  void Search() {
     String request; ArrayList<Room> rsr=new ArrayList<Room>();
 	ArrayList<Room> srsm =new ArrayList<Room>();
-	System.out.println("enter id or name room you want to search ");
+	System.out.println("Enter id or name room you want to search ");
 	request=sc.nextLine();
 	String temp=(request.toLowerCase()).trim();
 	int flag=0;int flagsg=0;
@@ -551,7 +545,7 @@ public class  RoomManagement implements LibraryManagement {
 	}
 	 if(flag==1)
 	{
-		System.out.println("information room you need search ");
+		System.out.println("Information room you need search ");
 		for(Room rm:rsr)
     	{
     		if(rm instanceof ReadRoom)
@@ -592,7 +586,7 @@ public class  RoomManagement implements LibraryManagement {
 	}
 	else if(flag==0&&flagsg==0)
 	{
-		System.out.println("id or name room you entered no exist");
+		System.out.println("Id or name room you entered that does not  exist");
 		pressContinue();
 	}
 	

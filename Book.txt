@@ -3,8 +3,4 @@ brsf103, Dracula , Bram Stoker , horror novel,239,rdb001
 brsf201, I See Yellow Flowers In The Green Grass , Nguyen Nhat Anh , VieT Nam literature ,255,rdb002
 brsf203, Turn of the light, Ngo Tat To , VieT Nam literature ,305,rdb002
 brsf301, Parallel Worlds , Michio Kaku , science ,390,rdb003
-brsf303, A Brief History of Time , Stephen Hawking , science,450,rdb003
-
-
-
-
+brsf303, A Brief History of Time , Stephen Hawking , science,450,rdb00

@@ -1,3 +1,0 @@
-1,sr111, Borrow-return Book Room,area1
-2,sr112, Support Room,area2
-3,sr113, Lost And Found Room,area3
